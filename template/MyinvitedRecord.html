@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css" />
+    <link rel="stylesheet" href="../css/invitedRecord.css">
+    <link rel="stylesheet" href="../css/mui.css">
+	</head>
+	<body>
+		<div class="wrapper" id="invitedRecord">
+        <a href="invitation.html" style="position: absolute; left: 0.6rem; top: 0.6rem; font-size: 1.5rem;color: darkgrey;">&lt;</a>
+        <div class="header">我的佣金</div>
+        <div class="line-gray"></div>
+		<div class="mui-content" style="background: none; height: 100%; overflow-y: auto;">
+			<div style="padding: 10px 10px;">
+				<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1">一级</a>
+					<a class="mui-control-item" href="#item2">二级</a>					
+				</div>
+			</div>
+			<div>
+				<div id="item1" class="mui-control-content mui-active">
+					<div v-for="(item,index) in invitationArr">
+                    <div class="line-gray"></div>
+                    <div  class="into-pieces">                       
+                    </div>
+                    <div class="to-account">
+                        <div class="account-header">
+                            <div class="account-box">
+                                <span class="first-bar" v-text="index+1+'，'+item.loanName"></span>
+                                <img :src="item.logo" alt="" class="box">
+                            </div>                           
+                        </div>
+                        <div class="account-body">
+                            <div class="account-bar">
+                                <div class="title-bar" style="flex: 1.2;">
+                                    <span class="span-first">放款时间</span>
+                                    <span v-text="item.actualTime"></span>
+                                </div>
+                                <div class="title-bar" style="flex: 1;">
+                                    <span class="span-first" v-text="item.bonusType==0?'CPS':'CPA'"></span>
+                                    <span v-text="item.bonusType==0? item.abonusRatio+'%':'1'" v-if="CP1">0</span><!--一级会员一级分拥CPS--> 
+                                    <span v-text="item.bonusType==0? item.abonusRatio21+'%':'1'" v-if="CP2">0</span><!--二级会员一级分拥CPS--> 
+                                    <span v-text="item.bonusType==0? item.abonusRatio31+'%':'1'" v-if="CP3">0</span><!--三级会员一级分拥CPS--> 
+                                    
+                                </div>
+                            </div>
+                            <div class="account-bar">
+                                <div class="title-bar" style="flex: 1.2;">
+                                     <span class="span-first" v-text="item.bonusType==0?'放款金额':'单价'"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio+'￥'" v-if="CP4"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio21+'￥'" v-if="CP5"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio31+'￥'" v-if="CP6"></span>
+                                </div>
+                                <div class="title-bar" style="flex: 1;">
+                                    <span class="span-first" >应收佣金</span>
+                                    <!--<span v-text="item.abonusRatio*item.lenderMoney/100+'元'"></span>-->
+                              		<span v-text="item.bonusType==0? (item.abonusRatio/100)*item.channelData+'￥':item.abonusRatio+'￥'" v-if="CP7"></span>
+                             		<span v-text="item.bonusType==0? (item.abonusRatio21/100)*item.channelData+'￥':item.abonusRatio21+'￥'" v-if="CP8"></span>
+                             		<span v-text="item.bonusType==0? (item.abonusRatio31/100)*item.channelData+'￥':item.abonusRatio31+'￥'" v-if="CP9"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                	</div>
+				</div>
+				<div id="item2" class="mui-control-content">
+					<div v-for="(item,index) in invitationArr2">
+                    <div class="line-gray"></div>
+                    <div  class="into-pieces">  
+                    </div>
+                    <div  class="to-account">
+                        <div class="account-header">
+                            <div class="account-box">
+                                <span class="first-bar" v-text="index+1+'，'+item.loanName"></span>
+                                <img :src="item.logo" alt="" class="box">
+                            </div>
+                        </div>
+                        <div class="account-body">
+                            <div class="account-bar">
+                                <div class="title-bar" style="flex: 1.2;">
+                                    <span class="span-first">放款时间</span>
+                                    <span v-text="item.actualTime"></span>
+                                </div>
+                               
+                                <div class="title-bar" style="flex: 1;">
+                                      <span class="span-first" v-text="item.bonusType==0?'CPS':'CPA'"></span>
+                                    <span v-text="item.bonusType==0? item.abonusRatio2+'%':'1'" v-if="CP1">0</span><!--一级会员一级分拥CPS--> 
+                                    <span v-text="item.bonusType==0? item.abonusRatio22+'%':'1'" v-if="CP2">0</span><!--二级会员一级分拥CPS--> 
+                                    <span v-text="item.bonusType==0? item.abonusRatio32+'%':'1'" v-if="CP3">0</span><!--三级会员一级分拥CPS-->                                    
+                                </div>
+                            </div>
+                            
+                            <div class="account-bar">
+                                <div class="title-bar" style="flex: 1.2;">
+                                    <span class="span-first" v-text="item.bonusType==0?'放款金额':'单价'"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio2+'￥'" v-if="CP4"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio22+'￥'" v-if="CP5"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio32+'￥'" v-if="CP6"></span>
+                                </div>
+                                <div class="title-bar" style="flex: 1;">
+                                    <span class="span-first" >应收佣金</span>
+                                    <!--<span v-text="item.abonusRatio*item.lenderMoney/100+'元'"></span>-->
+                             		<span v-text="item.bonusType==0? (item.abonusRatio2/100)*item.channelData+'￥':item.abonusRatio2+'￥'" v-if="CP7"></span>
+                             		<span v-text="item.bonusType==0? (item.abonusRatio22/100)*item.channelData+'￥':item.abonusRatio22+'￥'" v-if="CP8"></span>
+                             		<span v-text="item.bonusType==0? (item.abonusRatio32/100)*item.channelData+'￥':item.abonusRatio32+'￥'" v-if="CP9"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                	</div>
+				</div>
+				
+			</div>	
+		</div>
+</body>
+</html>
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+<script type="text/javascript" src="../js/sm.min.js"></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/md5.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script src="../js/vue-lazyload.js"></script>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/MyinvitedRecord.js"></script>
+</html>

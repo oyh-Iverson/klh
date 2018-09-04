@@ -1,0 +1,47 @@
+.page{
+	background-color: #F6F6F6;
+}
+textarea {
+		border: solid 0.05rem transparent;
+		outline: none;
+		width: 94%;
+		height: 10rem;
+		margin-top: 1rem;
+		margin-left: 3%;
+		border-radius: 0.3rem;
+		padding: 0.2rem;
+		font-size: 0.7rem;
+}
+.zishu {
+		float: right;
+		margin-right: 3%;
+		font-size: 0.5rem;
+}
+.content {
+		background-color: white;
+}
+.fb-top{
+	position: fixed; 
+	top: 0;
+	width: 100%;
+	height: 2rem;
+	text-align: center;
+	line-height: 2rem;
+	background: white;
+}
+.fb-top > a{
+	float: left;
+	font-size: 1.6rem;
+	padding-left: 0.6rem; 
+	color: darkgray;
+}
+.fb-top > span{
+	margin-left: -2.5rem;
+	font-size: 1rem; 
+	font-weight: bold;
+}
+.app-text{
+	background-color: white; 
+	height: 13rem;
+	margin-top: 2.2rem;
+}

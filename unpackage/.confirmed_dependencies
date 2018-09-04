@@ -1,0 +1,56 @@
+{
+  "template/invitation.html": {
+    "refer": [
+      "template/wode.html",
+      "template/home.html"
+    ]
+  },
+  "template/home.html": {
+    "refer": [
+      "template/invitation.html",
+      "template/wode.html"
+    ]
+  },
+  "template/wode.html": {
+    "refer": [
+      "template/home.html",
+      "template/invitation.html",
+      "template/xiaoxi.html",
+      "template/login.html",
+      "template/shezhi.html",
+      "template/myCommission.html",
+      "template/yjfk.html"
+    ]
+  },
+  "template/login.html": {
+    "refer": [
+      "template/wode.html"
+    ]
+  },
+  "template/myCommission.html": {
+    "refer": [
+      "template/withdrawal.html",
+      "template/wode.html"
+    ]
+  },
+  "template/withdrawal.html": {
+    "refer": [
+      "template/myCommission.html"
+    ]
+  },
+  "template/shezhi.html": {
+    "refer": [
+      "template/wode.html"
+    ]
+  },
+  "template/xiaoxi.html": {
+    "refer": [
+      "template/wode.html"
+    ]
+  },
+  "template/yjfk.html": {
+    "refer": [
+      "template/wode.html"
+    ]
+  }
+}

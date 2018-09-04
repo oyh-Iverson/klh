@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+    <meta charset="utf-8" />
+    <title>我的二维码</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css" />
+    <link rel="stylesheet" href="../css/QRCode.css" />
+</head> 
+</head>
+<body>
+    <div class="wrapper" id="ORCode" >
+        <div v-cloak>
+            <div class="wrapper-Con">
+            	<div class="bg">
+                	<div class="bg-no"></div>
+                	<div class="bg-close" @click.stop="closeShare" >关闭</div>
+                	<div  class="bgimgs">
+                	 	<div class="qrcode" id="qrcode"></div>
+                	 	<div class="Commissioner">
+                	 		<div class="Commissioner-text">推荐专员</div>
+                	 		<div class="Commissioner-numbers">{{localStorage.getItem("selfRefereeCode")}}</div>
+                	 	</div>
+                	</div>
+            	</div>
+        	</div>
+    	</div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script src="../js/qrcode.min.js"></script>
+<script type="text/javascript" src="../js/QRCode.js"></script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>资金流水</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css" />
+    <link rel="stylesheet" href="../css/flowingWater.css">
+</head>
+<body>
+<div class="wrapper" id="myCommission">
+    <div class="header">
+    	<a href="myCommission.html"> < </a>
+    	<span>资金流水</span>
+    </div>
+    <div class="main">
+        <div class="box" v-for="item in assets" v-if="assets.length > 0">
+            <div class="box-header" v-text="item.createTime"></div>
+            <div class="box-content">
+                <div class="content-bar">
+                    <div class="first-text">
+                    	<span>金额（元）</span>
+                    	<span v-text="item.operationBalance"></span>
+                    </div>
+                    <span class="second-text" v-text="item.balancType==0?'一级分佣':item.balancType==1?'提现申请':item.balancType==2?'提现驳回':'二级分佣'"></span>
+                </div>
+                <div class="content-bar">
+                    
+                </div>
+            </div>
+        </div>
+        <div v-if="assets.length < 1" class="box Nodata">
+            	暂无数据!
+        </div>
+    </div>
+
+
+</div>
+</body>
+<!--<script type='text/javascript' src='https://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>-->
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+<script type="text/javascript" src="../js/vue.js"></script>
+<!--<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>-->
+<script type="text/javascript" src="../js/md5.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/flowingWater.js"></script>
+</html>

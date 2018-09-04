@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>我的</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../css/sm.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/wode.css" />
+	<link rel="stylesheet" href="../css/mui.css" />
+	<link rel="stylesheet" href="../css/weui.min.css"/>
+</head>
+<body class="page" style="background-color: white;">
+<div id="app" class="content">
+	<div class="user_info">
+		<img class="bg_img" src="../img/user_bg.png" />
+		<span class="Member"></span>
+		<a class="info_ui">可乐花</a>
+		<div class="info" id="userInfo"></div>
+	</div>
+	<div class="line" @click="enterMy">
+			<img src="../img/lljl.png" />
+			<div class="line_title">我的佣金</div>
+	</div>
+	<div class="line" style="display: none;">
+		<a href="liulanjilu.html">
+			<img src="../img/lljl.png" />
+			<div class="line_title">浏览记录</div>
+		</a>
+	</div>
+	<div class="line" style="display: none;">
+		<a href="shoucang.html">
+			<img src="../img/sc.png" />
+			<div class="line_title">收藏</div>
+		</a>
+	</div>
+	<div class="line" style="display: none;">
+		<a href="Order.html">
+			<img src="../img/hktx.png" />
+			<div class="line_title">我的订单</div>
+		</a>
+	</div>
+	<div class="line" style="display: none;">
+		<a href="hktx.html">
+			<img src="../img/hktx.png" />
+			<div class="line_title">还款提醒</div>
+		</a>
+	</div>
+	<div class="line">
+		<a href="xiaoxi.html">
+			<img src="../img/wdxx.png" />
+			<div class="line_title">我的消息</div>
+		</a>
+
+	</div>
+	<div class="line">
+		<a href="#" id="guanzuwx">
+			<img src="../img/gzwx.png" />
+			<div class="line_title">关注公众号</div>
+		</a>
+	</div>
+	<div class="line">
+		<a href="help.html">
+			<img src="../img/bzzx.png" />
+			<div class="line_title">帮助中心</div>
+		</a>
+	</div>
+	<div class="line">
+		<a href="yjfk.html">
+			<img src="../img/bzzx.png" />
+			<div class="line_title">意见反馈</div>
+		</a>
+	</div>
+	<div class="line last_one">
+		<a href="shezhi.html">
+			<img src="../img/sz.png" />
+			<div class="line_title">设置</div>
+		</a>
+	</div>
+
+</div>
+
+<nav class="bar bar-tab">
+	<a class="tab-item external" href="home.html">
+		<span class="icon icon-home"></span>
+		<span class="tab-label">首页</span>
+	</a>
+	<a class="tab-item external" href="invitation.html">
+		<span class="icon icon-message"></span>
+		<span class="tab-label">邀请</span>
+	</a>
+	<a class="tab-item external active" href="wode.html">
+		<span class="icon icon-me"></span>
+		<span class="tab-label">我的</span>
+	</a>
+</nav>
+
+<div class="popup popup-about">
+	<div class="content-block">
+		<div class="popup_title">
+			<ul>
+				<li class="node">轻松过审核，最快3分钟到账。</li>
+				<li class="dow">来这里↓↓让你的手机吐出钱来！</li>
+			</ul>
+		</div>
+		<img src="../img/gzgzh.png" />
+		<div class="popup_btn"><a href="#" class="close-popup">确定</a></div>
+	</div>
+</div>
+
+
+</body>
+<script type='text/javascript' src='../js/mui.min.js' ></script>
+<script type='text/javascript' src='../js/zepto.min.js' ></script>
+<script type='text/javascript' src='../js/sm.min.js' ></script>
+<script type="text/javascript" src="../js/md5.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/weui.min.js" async></script>
+<script type="text/javascript" src="../js/wode.js"></script>
+</html>

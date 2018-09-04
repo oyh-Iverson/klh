@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>邀请</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css" />
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/invitation.css">
+    <link rel="stylesheet" href="../mescroll/mescroll.min.css" />
+    <link rel="stylesheet" href="../css/mui.css">
+    <link rel="stylesheet" href="../css/swiper-4.1.0.min.css" />
+    <link rel="stylesheet" href="../css/weui.min.css"/>  
+</head>
+<body class="page">
+<div id="mescroll" class="content mescroll" style="background: #ffffff;">
+    <!-- 广告轮播图 -->
+    <div class="swiper-container" id="swiper1"></div>
+    <!-- 喇叭消息 -->
+    <div class="message">
+        <div class="laba"></div>
+        <div class="swiper-container" id="swiper2"></div>
+    </div>
+    <div class="line-gray"></div>
+    <div class="invite-box">
+        <div class="box-bar">
+            <span class="first-bar">你已邀请人数</span>
+            <div class="second-bar">
+                <img src="../img/friend.png" alt="" class="first-icon">
+                <span class="first-text" v-text="inviteAmount"></span>
+                <span class="first-textDS"> / </span>
+                <span class="first-text" v-text="inviteAmount2"></span>
+                <span class="first-textRE" >(一级/二级)</span>
+                <span class="people">人</span>
+            </div>
+        </div>
+        <div class="box-bar">
+            <span class="first-bar">你已获得佣金</span>
+            <div class="second-bar">
+                <img src="../img/moneyAdd.png" alt="" class="first-icon">
+                <span class="first-text" v-text="moneyAmount==''?'0':moneyAmount"></span>
+                <span class="people">元</span>
+            </div>
+            <div class="invite-title" @click="jumpInvite">我的佣金</div>
+        </div>
+    </div>
+    <div class="line-gray"></div>
+    <div class="tab-invitation">
+        <div class="tab-header">
+            <div @click="selctTab(0)" class="header-bar" >
+                <span class="tab-rule"  :class="active?'header-bottom':''">邀请规则</span>
+            </div>
+            <div @click="selctTab(1)" class="header-bar">
+                <span class="tab-rule"  :class="active?'':'header-bottom'">常见问题</span>
+            </div>
+        </div>
+        <div class="tab-main">
+            <div class="main-bar" v-show="active">
+                <div class="title-header">
+                                                      注册即有机会邀请好友赚取佣金。邀请人分享自己
+                    <a href="javascript:;" class="exclusive">专属二维码/链接</a>
+                                                       邀请好友办理贷款，好友所借产品必须是新户首次获得放款，邀请人即可获得不同比例的佣金。佣金多多上不封顶，快来参加吧！
+                </div>
+                <div class="title-main" v-for="(item,index) in linkArr">
+                    <!--<div class="clicle-box" v-text="index+1"></div>-->
+                    <span v-text="index+1+'.'+item.text" class="title-text"></span>
+                </div>
+            </div>
+            <div class="main-bar"  v-show="!active">
+                <p>1.请在“我的申请”,点击已申请的产品，登录后即可查询产品申请状态。正常情况下，小额急速产品最快2小时可出审批结果，大额产品最快当天可查看审批结果</p>
+                <p>2.您的审核结果是由系统综合您的资质评定的，未通过是因为您的资质未满足产品需求。不同产品审核条件是不一样的，您可申请多款以满足您资金的需求。</p>
+                <p>3.如遇银行卡绑定不成功，请查看攻略详情活拨打相关产品的客服电话进行咨询。</p>
+                <p>4,如您已提现，等待放款，通常情况下当天可到账，具体转账时间以银行为准（如遇节假日转账可能出现延迟情况）。</p>
+            </div>
+        </div>
+    </div>    
+    <div class="main-invitation">
+        <ul>
+            <li class="li-bar">
+                <span class="span-bar first-span special-bar">产品名称</span>
+                <span class="span-bar second-span special-bar">贷款额度</span>
+                <span class="span-bar third-span special-bar">一级</span>
+                <span class="span-bar fine-span special-bar">二级</span>
+                <span class="span-bar fourth-span special-bar">类型</span>                 
+            </li>
+            <li v-for="item in showArr" class="li-bar" v-if="showArr.length>0" id="mm">
+                <span class="span-bar first-span" v-text="item.loanName"></span>
+                <span class="span-bar second-span" v-text="'最高'+item.maxQuota"></span>
+                <span class="span-bar third-span"  v-if="abonusRatio">{{item.abonusRatio}}</span>
+                <span class="span-bar fine-span"  v-if="abonusRatio2">{{item.abonusRatio2}}</span>    
+                <span class="span-bar third-span"  v-if="abonusRatio21">{{item.abonusRatio21}}</span>
+                <span class="span-bar fine-span"  v-if="abonusRatio22">{{item.abonusRatio22}}</span>
+                <span class="span-bar third-span"  v-if="abonusRatio31">{{item.abonusRatio31}}</span>
+                <span class="span-bar fine-span"   v-if="abonusRatio32">{{item.abonusRatio32}}</span>
+               <span class="span-bar fourth-span" v-text="item.bonusType=='0'?'CPS(%)':'CPA(￥)'"></span>               
+            </li>
+        </ul>
+    </div>
+    <div class="line-gray"></div>
+    <div class="list-invitation">
+        <div class="list-header">
+            <span class="active-data">2018</span>
+            <span>年</span>
+            <span class="active-data">7</span>
+            <span>月排行榜</span>
+        </div>
+        <div class="list-main">
+            <div class="list-bar list-bar-top" >
+                <span class="phone-bar">用户名</span>
+                <span class="number-bar">佣金</span>
+            </div>
+            <div class="list-bar-tottom">
+                <div class="list-bar" v-for="item in phoneArr">
+                    <span class="phone-bar" v-text="item.phone"></span>
+                    <span class="number-bar" v-text="item.number"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="line-gray"></div>
+
+    <div class="footer-invitation">
+        Copyright@2015爱加空间(深圳)科技有限公司    版权所有
+    </div>
+    <div style="width: 100%;height: 2rem;background-color: #ffffff;"></div>
+    <div style="width: 100%;height: 2rem;position: fixed;left: 3%;bottom:3.3rem;">
+        <div class="footer-btn"  @click="showMessage">立即邀请</div>
+    </div>
+
+    <div style="position: fixed;left: 0;right:0;bottom:0;top: 0;margin:auto;background-color: rgba(0,0,0,.2);z-index: 9;" v-show="showMsg" v-cloak>
+        <div class="overflow-top" v-cloak>
+            <span class="right-dic" @click="cloneTip">关闭</span>
+            <div class="overflow-title">分享到</div>
+             <div class="main-bar">
+            <div class="bar-sign" @click="checkArea('1')">
+                <img src="../img/qq.png" alt="" class="first-icon">
+                <span class="first-text">QQ好友</span>
+            </div>
+            <!--<div class="bar-sign" @click="checkArea('2')">
+                <img src="../img/pengyouquan.png" alt="" class="first-icon">
+                <span class="first-text">朋友圈</span>
+            </div>-->
+            <div class="bar-sign" @click="checkArea('3')">
+                <img src="../img/qqkongjian.png" alt="" class="first-icon">
+                <span class="first-text">QQ空间</span>
+            </div>
+            <div class="bar-sign" @click="qrcodeChange">
+                <img src="../img/5.png" alt="" class="first-icon">
+                <span class="sjjjaj" id="textChange">{{link}}</span>
+                <span class="first-text">生成二维码</span>
+            </div>
+        	</div>
+            <div class="main-bar">
+                <div class="bar-sign btner" @click="copy" data-clipboard-action="copy" data-clipboard-target="#foo">
+                    <img src="../img/4.jpg" alt="" class="first-icon">
+                    <span class="fonsn" id="foo">{{link}}</span>
+                    <button class="first-text btner">复制链接</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="bar bar-tab">
+    <a class="tab-item external" href="home.html">
+        <span class="icon icon-home"></span>
+        <span class="tab-label">首页</span>
+    </a>
+    <a class="tab-item external active" href="invitation.html">
+        <span class="icon icon-message"></span>
+        <span class="tab-label">邀请</span>
+    </a>
+    <a class="tab-item external" href="wode.html" >
+        <span class="icon icon-me"></span>
+        <span class="tab-label">我的</span>
+    </a>
+</nav>
+</body>
+<script src="../js/vue-lazyload.js"></script>
+<script src="../js/clipboard.min.js"></script>
+<script src="../js/qrcode.min.js"></script>
+<script type='text/javascript' src='../js/mui.js' ></script>
+<script type='text/javascript' src='../js/zepto.min.js' ></script>
+<script type='text/javascript' src='../js/sm.min.js' ></script>
+<script type="text/javascript" src="../js/swiper-4.1.0.min.js" ></script>
+<!--<script type="text/javascript" src="../js/md5.js"></script>-->
+<script type="text/javascript" src="../js/md5.min.js"></script>
+<script type="text/javascript" src="../js/swiper-4.1.0.min.js" ></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../mescroll/mescroll.min.js" ></script>
+<script type="text/javascript" src="../js/weui.min.js" async></script>
+<script type="text/javascript" src="../js/invitation.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

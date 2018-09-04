@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>我的消息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/sm.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/xiaoxi.css" />
+		<link rel="stylesheet" href="../mescroll/mescroll.min.css" />		
+	</head>
+	<body class="page">
+
+		<div id="mescroll" class="content mescroll">
+			<div id="xx-top" class="xx-top">
+				<a href="wode.html"> < </a>
+				<span>我的消息</span>
+			</div>
+			<div id="list-container" class="list-container">
+				<div class="item" v-for="item in daikuanList" v-on:click="daikuanClick(item)">
+					<div class="item_top">
+						<div class="item_title" v-on:click="to" v-text="item.title"></div>
+						<div class="item_tip" v-text="item.subtitle"></div>
+					</div>
+					<div class="item_bottom">
+						<div class="item_date">
+							<span class="item_date2"  v-text="item.createTime.split(' ')[0]"></span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript" src="../js/sm.min.js"></script>
+	<script type="text/javascript" src="../js/md5.js"></script>
+	<script type="text/javascript" src="../js/util.js" ></script>	
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" src="../mescroll/mescroll.min.js" ></script>	
+	<script src="../js/vue-lazyload.js"></script>
+	<script type="text/javascript" src="../js/xiaoxi.js"></script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>意见反馈</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/sm.css" />
+		<link rel="stylesheet" href="../css/wode.css" />
+		<link rel="stylesheet" href="../css/yjfk.css" />	
+	</head>
+	<body class="page">
+	<div id="fb-top" class="fb-top" >
+		<a href="wode.html"> < </a>
+		<span>发表意见</span>
+	</div>
+		<div id="app" class="app-text">
+			<textarea v-model="content" placeholder="主人，请您留下宝贵意见，我们一定会拼命更好的向您服务~~" maxlength="100"></textarea>
+			<span class="zishu">还可以输入{{zishu}}字</span>
+		</div>
+		<div id="saveClick" @click="saveClick" class="login_out">保存</div>
+	</body>
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript" src="../js/sm.min.js"></script>
+	<script type="text/javascript" src="../js/md5.js"></script>
+	<script type="text/javascript" src="../js/util.js" ></script>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" src="../js/yjfk.js"></script>
+</html>

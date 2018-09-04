@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>首页</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../css/sm.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/home.css" />
+	<link rel="stylesheet" href="../css/swiper-4.1.0.min.css" />
+	<link rel="stylesheet" href="../mescroll/mescroll.min.css" />
+	<link rel="stylesheet" href="../css/mui.css" />
+	<!--<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">-->	
+	<link rel="stylesheet" href="../css/weui.min.css"/>
+</head>
+<body class="page" onload="javaScript:func()">
+<div id="mescroll" class="content mescroll">
+	<!-- 广告轮播图 -->
+	<div class="swiper-container" id="swiper1"></div>
+	<!-- 喇叭消息 -->
+	<div class="message">
+		<div class="laba"></div>
+		<div class="swiper-container" id="swiper2"></div>
+	</div>
+	<!-- 贷款分类2 -->
+	<div class="Recommends">
+		<div class="div_title">为您推荐</div>
+		<div class="classify2">
+			<div class="classify_item2" @click="detailsClick(item.id,item.applyCount)" v-for="item in dataList" v-bind:style="{backgroundImage: item.backImg}">
+				<div class="classify2_title" v-text="item.loanName" v-bind:style="{color: item.titleColor}"></div>
+				<div class="classify2_tip" v-text="item.introduce" v-bind:style="{color: item.tipColor}"></div>
+				<div class="classify2_top"></div>
+			</div>
+		</div>
+	</div>
+	<div class="hot_title">精选借款</div>
+	<div class="hot">
+		<div id="list-container">
+			<div class="item" @click="detailsClick(item.id,item.applyCount)" v-for="item in daikuanList">
+				<div class="item-top">
+					<div  class="item-logo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
+					<div class="item-Con">
+						<div class="item-loanName" v-text="item.loanName"></div>
+						<div>
+							<div class="item-tit">
+								<span>额度范围</span>
+								<span>月利率</span>
+								<span>借款期限</span>
+							</div>
+							<div class="item-titome">
+								<span v-text="item.maxQuota">11</span>
+								<span v-text="item.monthRate+'%/月'">22</span>
+								<span v-text="item.minTerm+'/'+item.maxTerm">33</span>
+							</div>
+						</div>				
+					</div>
+					<div class="apples">立即申请</div>
+				</div>
+				<div  class="item-bottom">
+					<div class="item-bottom-Con">
+						<div class="item-keyword">{{item.keyword}}</div>
+						<div class="item-applyCount">
+						已有<span class="item-applyCount-Number">{{item.applyCount}}</span>人申请成功
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+
+<nav class="bar bar-tab">
+	<a class="tab-item external active" href='home.html'>
+		<span class="icon icon-home"></span>
+		<span class="tab-label">首页</span>
+	</a>
+	<a class="tab-item external" href="invitation.html">
+		<span class="icon icon-message"></span>
+		<span class="tab-label">邀请</span>
+	</a>
+	<a class="tab-item external" href="wode.html" >
+		<span class="icon icon-me"></span>
+		<span class="tab-label">我的</span>
+	</a>
+</nav>
+</body>
+<!--<script type="text/javascript" src="../js/md5.js"></script>-->
+<script type="text/javascript" src="../js/md5.min.js"></script>
+<script type="text/javascript" src="../js/weui.min.js" async></script>
+<script type="text/javascript" src="../js/swiper-4.1.0.min.js"></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script src="../js/vue-lazyload.js"></script>
+<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8' async></script> 
+<script type='text/javascript' src='../js/sm.min.js' charset='utf-8' async></script>
+<script type="text/javascript" src="../mescroll/mescroll.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+<script type="text/javascript" src="../js/vue.js"></script>
+
+<script type="text/javascript" src="../js/home.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>详情页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css" />
+    <link rel="stylesheet" href="../css/detailsPage.css">
+    <link rel="stylesheet" href="../css/invitation.css">
+    
+</head>
+
+<body>
+<div class="wrapper" id="detailsPage">
+    <div class="header">
+        <a href="home.html" class="first-bar"><</a>
+        <span class="second-bar" v-text="dataObj.loanName"></span>
+        <img>
+    </div>
+    <div class="title-sign">
+        <img :src="dataObj.logo" alt="" class="first-bar">
+        <div class="second-bar">
+            <span class="first-text" v-text="dataObj.loanName">></span>
+            <span class="second-text">已成功申请<span class="third-text" v-text="dataObj.applyCount"></span>人</span>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="banner-bar first-bar">
+            <span class="first-text" style="margin-left: 2rem">最高额度</span>
+            <span class="second-text" style="margin-left: 2rem" v-text="dataObj.maxQuota"></span>
+        </div>
+        <div class="banner-bar">
+            <span class="first-text">最高月利率</span>
+            <span class="second-text" v-text="dataObj.monthRate+'%'"></span>
+        </div>
+    </div>
+    <div class="line-gray"></div>
+
+
+    <div class="tab-change">
+        <span class="tab-bar" @click="slectBtn(0)">
+            <span  :style="{borderBottom:iconShow?'':'0.15rem solid #E8B342'}">产品详情</span>
+        </span>
+        <span class="tab-bar" @click="slectBtn(1)">
+            <span :style="{borderBottom:iconShow?'0.15rem solid #E8B342':''}">产品评价</span>
+        </span>
+    </div>
+
+    <div class="main" v-show="iconShow">
+        <div class="box-evaluation">
+            <div class="first-bar">
+                <span class="first-text"></span>
+                <span class="second-text">产品综合评价</span>
+            </div>
+            <div class="second-bar">
+                <div class="left-bar">
+                    <span>五星</span>
+                    <span>放款速度</span>
+                    <span>利率水平</span>
+                    <span>服务流程</span>
+                </div>
+                <div class="right-bar">              	
+                		<div>
+                        	<div v-for="item in 5" ></div>
+                    	</div>
+                    	<div>
+                        	<div v-for="item in 5"></div>
+                    	</div>
+                    	<div>
+                        	<div v-for="item in 5"></div>
+                    	</div>
+                    	<div>
+                        	<div v-for="item in rating"></div>
+                    	</div>
+                </div>
+            </div>
+        </div>
+        <div class="box-evaluation">
+            <div class="first-bar">
+                <span class="first-text"></span>
+                <span class="second-text">用户评论（0）</span>
+            </div>
+            <div class="comments">
+                <div class="second-bar2">
+                    <div v-for="item in commentInfo" class="input-duo">
+                        <div   v-text="item.commentInfo"></div>
+                        <div class="userPhone" v-text="item.userPhone"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main" v-show="!iconShow">
+        <div class="box">
+            <div class="first-bar">
+                <span class="first-text"></span>
+                <span class="second-text">申请流程</span>
+            </div>
+            <div class="second-bar  process">
+                <div class="renzheng_item" v-for="item in dataObj.certifiedList">
+                    <img src="../img/lljl.png" />
+                    <span v-text="item.loan_key"></span>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="first-bar">
+                <span class="first-text"></span>
+                <span class="second-text">申请条件及资料</span>
+            </div>
+            <div class="second-bar" v-text="dataObj.applyCondition"></div>
+        </div>
+        <div class="box introduces">
+            <div class="first-bar">
+                <span class="first-text"></span>
+                <span class="second-text">产品介绍</span>
+            </div>
+            <div class="second-bar" v-text="dataObj.introduce"></div>
+        </div>
+    </div>
+    <div class="line-gray"></div>
+
+    <div class="footer">
+        <div class="footer-title">Copyright@2015爱加空间(深圳)科技有限公司版权所有</div>
+    </div>
+    <div  class="Loans">
+        <div class="footer-btn" @click="moneyApply">申请借款</div>
+    </div>
+    <div class="copyright"></div>
+</div>
+</body>
+<script src="../js/vue-lazyload.js"></script>
+<script src="../js/clipboard.min.js"></script>
+<script src="../js/qrcode.min.js"></script>
+<script type='text/javascript' src='https://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='https://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+<script type="text/javascript" src="../js/vue.js"></script>
+<!--<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>-->
+<script type="text/javascript" src="../js/md5.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/detailsPage.js"></script>
+</html>

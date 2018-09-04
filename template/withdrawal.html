@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>提现</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css" />
+    <link rel="stylesheet" href="../css/withdrawal.css">
+    
+</head>
+<body>
+    <div class="wrapper" id="withdrawal">
+        <div class="header">
+            <a href="myCommission.html" class="title-allow"><</a>
+            <span class="title-withdrawal">提现</span>
+            <a class="flowing-water"></a>
+        </div>
+        <div class="account">
+            <span class="first-bar">支付宝账号</span>
+            <div class="second-bar">
+                <img src="../img/zhifubao.jpg" alt="" class="box">
+                <input type="text" class="input" v-model="accounts">
+            </div>
+        </div>
+        <div class="line-gray"></div>
+        
+        <div class="main">
+        	<div class="boxs">
+        		<div class="title">提现</div>
+        	</div>
+            
+            
+            <div class="boxs">
+                <img src="../img/xiugai.png" alt="" class="mondy-icon">
+                <input class="input" :placeholder="''+userPhone+''" readonly="readonly"  type="text">
+                <span class="title-all" @click="getvalidateCode">获取验证码</span>
+            </div>
+            <div class="boxs">
+                <img src="../img/h5_dk.png" alt="" class="mondy-icon">
+                <input class="input" :placeholder="'本次最多可提现'+titleTip+'元'" v-model="money" type="number" onkeyup="value=value.replace(/[^\d.]/g,'')">
+                <!-- <span class="title-all">全部体现</span> -->
+            </div>
+            <div class="boxs">
+            	<input  type="tel" maxlength="4" placeholder="验证码" class="input inputs" v-model="validateCode" onkeyup="value=value.replace(/[^\d]/g,'')"/>
+            </div>
+            <a :href="withdrawal" class="sure-button" @click="getData">确认提现</a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+<script type="text/javascript" src="../js/sm.js"></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/md5.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/withdrawal.js"></script>
+</html>

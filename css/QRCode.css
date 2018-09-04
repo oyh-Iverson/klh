@@ -1,0 +1,97 @@
+*{
+	touch-action: none;
+}
+.bg {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    width: 100%;
+    margin: 0 auto;
+    background-color:#FF5201;
+}
+.bg .img {
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    margin-top: 0.3rem;
+}
+.mui-content{
+    background: none;
+}
+.qrcode{
+	width: 7.8rem;
+	height: 7.8rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -4.2rem; 
+	margin-top: -2.4rem;
+}
+.qrcode img{
+	border: 2px black solid;
+    padding: 10px;
+    background: white;
+}
+.wrapper > div{
+	position: fixed;
+	left: 0;
+	right:0;
+	bottom:0;
+	top: 0;
+	margin:auto;
+	background-color: rgba(0,0,0,.2);
+	z-index: 99;
+}
+.wrapper-Con{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: rgba(0,0,0,.1);
+}
+.bg .bg-no{
+	position: absolute;
+	font-size: 1rem;
+	color: #666666;
+	right: 0;
+	padding-top: 0.3rem;
+}
+.bg .bg-close{
+	text-align:center; 
+	font-size: 1rem;
+	color: #666666; 
+	padding-top: 0.3rem;
+}
+.bg .bgimgs{
+	width: 100%;
+	height: 100%; 
+	background-image: url(../img/twoerweima.png); 
+	background-size: 100% 100%; 
+	margin-top: 0.3rem;
+}
+.bg .bgimgs .Commissioner{
+	width: 13rem; 
+	height: 2rem; 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -8.6rem;
+	margin-top: 9rem; 
+	display: flex;
+}
+.Commissioner-text{
+	line-height: 2rem; 
+	font-size: 1rem;
+}
+.Commissioner-numbers{
+	height: 2rem;
+	width: 174px;
+	margin-left: 0.2rem;
+	border: 1px black solid;
+	text-align: center;
+	line-height: 2rem;
+	background: white;
+}

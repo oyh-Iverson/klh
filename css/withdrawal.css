@@ -1,0 +1,180 @@
+.wrapper{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #ffffff;
+}
+.header{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #e5e5e5;
+}
+.line-gray11 {
+    width: 100%;
+    height: 0.25rem;
+    background-color: rgb(242, 242, 242);
+}
+.header .title-allow{
+    margin-left: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    color: darkgrey;
+    font-size: 1.5rem;
+}
+.header .title-withdrawal{
+    font-weight: 700;
+    font-size: 1rem;
+    color: #343434;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+.header .flowing-water{
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #999999;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 1.2rem;
+    flex: 1;
+}
+
+
+.account{
+    width: 100%;
+    height: 5.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.account .first-bar{
+    font-weight: 700;
+    margin: 1rem 0 1.1rem 0.8rem;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+.account .second-bar{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.account .second-bar .box{
+    width: 30px;
+    height: 30px;
+    /*border: 1px solid rgba(121, 121, 121, 1);*/
+    margin: 0 0.4rem 0 0.8rem;
+}
+.account .second-bar .input{
+    height: 1.3rem;
+    width: 77%;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    text-indent: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    color: #999999;
+}
+
+
+.line-gray{
+    width: 100%;
+    height: 0.25rem;
+    background-color: rgb(242,242,242);
+}
+
+
+.main{
+    width: 100%;
+    height: 22rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.main .title{
+    width: 100%;
+    line-height: 1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #343434;
+    margin: 1.7rem 0 1.2rem 0.8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.main .boxs{
+    width: 100%;
+    height: 1.4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 4rem;
+    position: relative;
+}
+
+.main .boxs:first-child{
+	margin-top: 0;
+}
+.main .boxs .mondy-icon{
+    width: 1.4rem;
+    height: 1.4rem;
+    margin: 0 0.5rem 0 0.8rem;
+}
+.main .boxs .input{
+    height: 1.3rem;
+    width: 78%;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    text-indent: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    color: #999999;   
+}
+.inputs{
+	margin: 0 0.5rem 0 2.5rem;
+}
+.main .boxs .title-all{
+    position: absolute;
+    top: 0 ;
+    bottom: 0;
+    right: 01.4rem;
+    margin: auto;
+    font-weight: 700;
+    font-size: 16px;
+    color: #E8B342;
+}
+
+
+.sure-button{
+    width: 10.5rem;
+    height: 2rem;
+    margin: 3rem auto 0;
+    background-color: #FF5201;
+    box-shadow: 0 6px 10px 0 #FFBB9C;
+    border-radius: 0.25rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

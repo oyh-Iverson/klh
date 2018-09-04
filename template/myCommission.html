@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+    <meta charset="utf-8" />
+    <title>我的佣金</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css" />
+    <link rel="stylesheet" href="../css/myCommission.css">
+    <link rel="stylesheet" href="../css/mui.css">
+</head>
+<body>
+    <div class="wrapper" id="myCommission" >
+
+        <div class="money-detail">
+            <a href="wode.html" class="back"> < </a>
+            <div class="title-bar">我的佣金</div>
+            <a href="flowingWater.html" class="flowing-water">资金流水</a>                    
+            <div class="title-amount">总佣金（元）</div>
+            <div class="money-amount">
+                <span v-if="showAmount" v-text="assets.abonusMoney==''?'0':assets.abonusMoney"></span>
+                <span v-else>****</span>
+                <div class="icon-box" @click="showMoney">
+                	<img src="../img/hide_pw.png" alt="" class="eyes-icon" v-if="eyes">
+                	<img src="../img/show_eye.png" alt="" class="eyes-icon" v-else>
+                </div>
+                
+            </div>
+            <span class="make-money">本月赚取佣金（元）</span>
+            <span class="month-make" v-text="assets.sameMonthMoney"></span>
+        </div>
+
+        <div class="balance-withdrawal" >
+            <span class="title-balance">可用余额&nbsp;<span v-text="assets.balance"></span>&nbsp;元</span>
+            <a href="withdrawal.html" class="withdrawal-allow">提现 ></a>
+        </div>
+
+        <div class="invitation">
+            <div class="invitation-bar" @click="rili">
+                <img src="" alt="">
+                <span class="span-bar">邀请日历</span>
+            </div>
+            <div class="vertical-bar"></div>
+            <div class="invitation-bar" @click="invitFriends">
+                <img src="" alt="">
+                <span class="span-bar">邀请好友</span>
+            </div>
+        </div>
+        <div class="SharBox" v-show="showMsg" v-cloak>
+            <div class="overflow-top">
+                <span class="right-dic" @click="cloneTip">关闭</span>
+                <div class="overflow-title">分享到</div>
+                <div class="main-bar main-barTop">
+                    <div class="bar-sign" @click="checkArea('1')">
+                        <img src="../img/qq.png" alt="" class="first-icon">
+                        <span class="first-text">QQ好友</span>
+                    </div>
+                    <!--<div class="bar-sign" @click="checkArea('2')">
+                        <img src="../img/pengyouquan.png" alt="" class="first-icon">
+                        <span class="first-text">朋友圈</span>
+                    </div>-->
+                    <div class="bar-sign" @click="checkArea('3')">
+                        <img src="../img/qqkongjian.png" alt="" class="first-icon">
+                        <span class="first-text">QQ空间</span>
+                    </div>
+                    <div class="bar-sign" @click="qrcodeChange">
+                        <img src="../img/5.png" alt="" class="first-icon">
+                        <span class="sjjjaj myLink" id="textChange">{{link}}</span>
+                        <span class="first-text">生成二维码</span>
+                    </div>
+                </div>
+                <div class="main-bar">
+                    <div class="bar-sign btner" @click="copy" data-clipboard-action="copy" data-clipboard-target="#foo">
+                        <img src="../img/4.jpg" alt="" class="first-icon">
+                        <span class="fonsn myLink" id="foo">{{link}}</span>
+                        <button class="first-text btner" style="width: 65px;">复制链接</button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="line-gray" ></div>
+        <div class="invited-record">推广记录</div>
+        <div class="line-gray"></div>
+        <div class="list-invitationArr" >
+        	<div class="mui-content">
+        		<div class="mui-contentTOP">
+				<div id="segmentedControl"  class="mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#tbs1">一级</a>
+					<a class="mui-control-item" href="#tbs2">二级</a>					
+				</div>
+			</div>
+        	<div>
+            <div class="more-record mui-control-content mui-active" id="tbs1" v-cloak>
+                <div  v-if="showRecord" v-cloak>
+                 <div v-for="(item,index) in invitationArr" v-cloak>        
+                    <div class="to-account" >
+                        <div class="account-header" >
+                            <div class="account-box" >
+                                <span class="first-bar" v-text="index+1+'，'+item.loanName"></span>
+                                <img :src="item.logo" alt="" class="box">
+                            </div>
+                        </div>
+                        <div class="account-body" >
+                            <div class="account-bar" >
+                                <div class="title-bar" style="flex: 1.2;" >
+                                    <span class="span-first">放款时间</span>
+                                    <span v-text="item.actualTime"></span>
+                                </div>
+                                <div class="title-bar" style="flex: 1;" >
+                                    <span class="span-first" v-text="item.bonusType==0?'CPS':'CPA'"></span>
+                                    <span v-text="item.bonusType==0? item.abonusRatio+'%':'1'" v-if="CP1">0</span><!--一级会员一级分拥CPS--> 
+                                    <span v-text="item.bonusType==0? item.abonusRatio21+'%':'1'" v-if="CP2">0</span><!--二级会员一级分拥CPS--> 
+                                    <span v-text="item.bonusType==0? item.abonusRatio31+'%':'1'" v-if="CP3">0</span><!--三级会员一级分拥CPS-->     
+                                </div>
+                            </div>
+                            <div class="account-bar" >
+                                <div class="title-bar" style="flex: 1.2;" >
+                                    <span class="span-first" v-text="item.bonusType==0?'放款金额':'单价'"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio+'￥'" v-if="CP4"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio21+'￥'" v-if="CP5"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio31+'￥'" v-if="CP6"></span>
+                                </div>
+                                <div class="title-bar" style="flex: 1;" >
+                                    <span class="span-first" >应收佣金</span>
+                              		<span v-text="item.bonusType==0? (item.abonusRatio/100)*item.channelData+'￥':item.abonusRatio+'￥'" v-if="CP7"></span>
+                             		<span v-text="item.bonusType==0? (item.abonusRatio21/100)*item.channelData+'￥':item.abonusRatio21+'￥'" v-if="CP8"></span>
+                             		<span v-text="item.bonusType==0? (item.abonusRatio31/100)*item.channelData+'￥':item.abonusRatio31+'￥'" v-if="CP9"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-gray"></div>
+                 </div>
+                </div>
+                <div class="more" v-if="mos1" v-cloak>
+                    <a href="invitedRecord.html" class="more-jump" >更多 >></a> 
+                    <span class="span-box"></span>
+                </div>
+                <div v-if="!showRecord" class="Nodatas" v-cloak>暂无数据！</div>
+            </div>
+			<div class="more-record mui-control-content " id="tbs2" >
+                <div  v-if="showRecord">
+                 <div v-for="(item,index) in invitationArr2" v-cloak>                
+                    <div class="to-account" >
+                        <div class="account-header" >
+                            <div class="account-box" >
+                                <span class="first-bar" v-text="index+1+'，'+item.loanName"></span>
+                                <img :src="item.logo" alt="" class="box">
+                            </div>
+                        </div>
+                         	<!--一级会员-->
+                        <div class="account-body" >  
+                            <div class="account-bar" >
+                                <div class="title-bar" style="flex: 1.2;" >
+                                    <span class="span-first">放款时间</span>
+                                    <span v-text="item.actualTime"></span>
+                                </div>
+                                <div class="title-bar" style="flex: 1;" >
+                                    <span class="span-first" v-text="item.bonusType==0?'CPS':'CPA'"></span>
+                                    <span v-text="item.bonusType==0? item.abonusRatio2+'%':'1'" v-if="CP1">0</span><!--一级会员一级分拥CPS--> 
+                                    <span v-text="item.bonusType==0? item.abonusRatio22+'%':'1'" v-if="CP2">0</span><!--二级会员一级分拥CPS--> 
+                                    <span v-text="item.bonusType==0? item.abonusRatio32+'%':'1'" v-if="CP3">0</span><!--三级会员一级分拥CPS--> 
+                                    
+                                </div>
+                            </div>
+                            <div class="account-bar" >
+                                <div class="title-bar" style="flex: 1.2;" >
+                                    <span class="span-first" v-text="item.bonusType==0?'放款金额':'单价'"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio2+'￥'" v-if="CP4"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio22+'￥'" v-if="CP5"></span>
+                                    <span v-text="item.bonusType==0? item.channelData+'￥':item.abonusRatio32+'￥'" v-if="CP6"></span>
+                                </div>
+                                <div class="title-bar" style="flex: 1;">
+                                    <span class="span-first" >应收佣金</span>
+                                    <!--<span v-text="item.abonusRatio*item.lenderMoney/100+'元'"></span>-->
+                             		<span v-text="item.bonusType==0? (item.abonusRatio2/100)*item.channelData+'￥':item.abonusRatio2+'￥'" v-if="CP7"></span>
+                             		<span v-text="item.bonusType==0? (item.abonusRatio22/100)*item.channelData+'￥':item.abonusRatio22+'￥'" v-if="CP8"></span>
+                             		<span v-text="item.bonusType==0? (item.abonusRatio32/100)*item.channelData+'￥':item.abonusRatio32+'￥'" v-if="CP9"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-gray"></div>
+                 </div>
+                </div>
+                <div class="more" v-if="mos2"v-cloak>
+                    <a href="invitedRecord2.html" class="more-jump" >更多 >></a> 
+                    <span class="span-box"></span>
+                </div>
+                <div v-if="!showRecord" class="Nodatas" v-cloak>暂无数据！</div>
+            </div>
+			
+			</div>
+			</div>
+            <div class="footer">
+                <span class="first-bar">客服电话：400 880 0888</span>
+                <span class="second-bar">服务时间：9:00-19:00</span>
+            </div>
+       </div> 
+    </div>
+</body>
+<script type="text/javascript" src="../js/mui.js" ></script>
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+<script type="text/javascript" src="../js/sm.min.js"></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/md5.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script src="../js/clipboard.min.js"></script>
+<script src="../js/qrcode.min.js"></script>
+<script type="text/javascript" src="../js/myCommission.js"></script>
+</html>

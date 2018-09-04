@@ -1,0 +1,481 @@
+*{
+	touch-action: none;
+}
+.wrapper{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    position: relative;
+}
+.money-detail{
+    width: 100%;
+    height: 10.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.money-detail .title-bar{
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    color: #343434;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 4px solid #e5e5e5;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.money-detail .title-amount{
+    color: lightslategray;
+    font-size: 0.9rem;
+    line-height: 0.8rem;
+    font-weight: 400;
+    margin-top: 0.7rem;
+}
+.money-detail .money-amount{
+    margin: 0.25rem 0 1rem 0;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    color: #FF9900;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.money-detail .icon-box{
+    width: 1.8rem;
+    height: 1.8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 1.8rem;
+}
+.money-detail .eyes-icon{
+    width: 1.25rem;
+    height: 0.75rem;
+}
+.money-detail .make-money{
+    color: lightslategray;
+    font-size: 0.9rem;
+    line-height: 0.8rem;
+    /* color: #999999; */
+    line-height: 0.8rem;
+    font-weight: 400;
+}
+.money-detail .month-make{
+    margin-top: 0.25rem;
+    font-weight: 700;
+    line-height: 1.8rem;
+    font-size: 1.8rem;
+    color: #FF9900;
+}
+
+
+.balance-withdrawal{
+    color: #343434;
+    width: 100%;
+    height: 2.3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    border-bottom: 0.05rem solid #e5e5e5;
+}
+.title-balance{
+    font-size: 0.9rem;
+    margin-left: 0.8rem;
+}
+.title-balance > span{
+	color:#008000;
+}
+.withdrawal-allow{
+    font-size: 0.8rem;
+    margin-right: 1rem;
+    color: #999999;
+}
+
+.invitation{
+    width: 100%;
+    height: 2.7rem;
+    display: flex;
+
+}
+
+
+.invitation .invitation-bar{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #666666;
+
+}
+.invitation .span-bar{
+    margin-left: 10px;
+}
+.invitation .vertical-bar{
+    height: 2.7rem;
+    width: 1px;
+    background-color: #e5e5e5;
+}
+
+
+.invited-record{
+    width: 100%;
+    height: 2rem;
+    font-weight: 700;
+    color: #343434;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 0.8rem;
+}
+
+
+.line-gray{
+    width: 100%;
+    height: 0.25rem;
+    background-color: rgb(242,242,242);
+}
+
+.list-invitationArr{
+    width: 100%;
+    height: 16rem;
+    max-height: 16rem;
+    overflow-y: auto;
+}
+.more-record{
+    width: 100%;
+    min-height: 10rem;
+}
+.more-record .into-pieces{
+    width: 100%;
+    height: 4.2rem;
+    display: flex;
+    flex-direction: column;
+}
+.into-pieces .record-bar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+.into-pieces .record-bar .record-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.into-pieces .record-bar .first-bar,.account-header .account-box .first-bar{
+    margin: 0 0.8rem;
+}
+.into-pieces .record-bar .second-bar{
+    margin: 0 0.5rem 0  0.8rem;
+    color:#999999;
+}
+.into-pieces .record-bar .box,.account-header .account-box .box{
+    width: 1rem;
+    height: 1rem;
+}
+.into-pieces .record-bar .already{
+    margin-right: 0.9rem;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #999999;
+}
+.into-pieces .record-bar .update,.to-account .account-header .update{
+    margin-right: 0.9rem;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #FF3300;
+}
+.to-account .account-header .update-bar{
+    margin-right: 0.9rem;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #999999;
+}
+
+.to-account{
+    width: 100%;
+    height: 6.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.to-account .account-header{
+    width: 100%;
+    height: 2.1rem;
+    /*border-bottom: 0.05rem solid #cccccc;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.account-header .account-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.to-account .account-body{
+    width: 100%;
+    height: 4.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #343434;
+    font-size: 0.8rem;
+}
+.account-body .account-bar{
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.account-body .account-bar .title-bar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    /*border-bottom: 4px solid #e5e5e5;*/
+}
+.account-body .account-bar .title-bar .span-first{
+    margin: 0 0.5rem 0 0.6rem;
+    color: #999999;
+}
+
+
+.footer{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    position: relative;
+    top: 2.5rem;
+    border-top: 1px solid #e5e5e5;
+}
+.footer .first-bar{
+    margin: 0.8rem 0 0.3rem 0;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    color: #666666;
+}
+.footer .second-bar{
+    font-size: 0.7rem;
+    line-height: 0.7rem;
+    color: #999999;
+}
+
+
+.more{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    margin: 1.2rem 0 1rem 0;
+
+}
+.more .more-jump{
+    color: #666666;
+    font-size: 0.8rem;
+}
+.more .span-box{
+    width: 0.9rem;
+}
+
+.overflow-top {
+    width: 80%;
+    margin: auto;
+    border: 0.05rem solid #ccc;
+    border-radius: 0.2rem;
+    height: 11.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    top: 10rem;
+    z-index: 9999;
+}
+.overflow-top .main-bar .first-icon {
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    z-index: 99;
+}
+
+.btner{
+    background: transparent;
+    border: none;
+}
+.fonsn,.sjjjaj{
+    color: #ffffff;
+    font-size: 0.6rem;
+    /*visibility: hidden;*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.overflow-top .overflow-title {
+    width: 100%;
+    height: 0.8rem;
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-align: center;
+    color: #343434;
+    /*margin-top: 0.5rem; */
+    padding-top: 1.5rem;
+}
+.overflow-top .right-dic {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    font-size: 0.7rem;
+    color: #666666;
+}
+.overflow-top .main-bar .bar-sign {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    top: -0.5rem;
+}
+.overflow-top .main-bar .bar-sign .first-text {
+    font-weight: 400;
+    font-size: 0.6rem;
+    color: #343434;
+    background: transparent;
+    border: none;
+}
+.overflow-top .main-bar {
+    width: 80%;
+    /* height: 2.2rem; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-top: 0.5rem; */
+    padding-top: 1.5rem !important;
+}
+.overflow-top .main-barTop{
+	padding-top: 2.4rem !important;
+}
+
+.bg {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    width: 100%;
+    margin: 0 auto;
+    background-color:#FF5201;
+}
+.bg .img {
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    margin-top: 0.3rem;
+}
+.changIconLong {
+    width: 7rem;
+    height: 7rem;
+    position: absolute;
+    left: 0.5rem;
+    right: 0;
+    top: 5rem;
+    bottom: 0;
+    margin: auto;
+   	overflow: hidden;
+}
+.yaoqingma {
+    width: 3rem;
+    height: 1.5rem;
+    position: absolute;
+    left: 1rem;
+    right: 0;
+    top: 18.5rem;
+    bottom: 0;
+    margin: auto;
+    overflow: hidden;
+}
+.flowing-water{
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    color: darkkhaki;
+    font-weight: 700;
+    font-size: 1rem;
+}
+[v-cloak] {
+    display: none;
+
+}
+#qrcode img{
+	border: 2px black solid;
+    background: white;
+}
+.back{
+	position: absolute;
+	left: 0.6rem;
+	font-size: 1.5rem; 
+	color: darkgrey;
+	top: 0.4rem;
+}
+.SharBox{
+	position: absolute;
+	left: 0;
+	right:0;
+	bottom:0;
+	top: 0;
+	margin:auto;
+	background-color: rgba(0,0,0,.2);
+	z-index: 99;
+}
+.myLink{
+	position: absolute;color: transparent!important;
+}
+.mui-contentTOP{
+	padding: 10px 10px;
+}
+.Nodatas{
+	text-align: center;
+	color: rgb(153, 153, 153);
+	padding-top:50px; 
+}

@@ -1,0 +1,238 @@
+*{
+	touch-action: none;
+}
+.wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #ffffff;
+}
+.wrapper > a{
+	position: absolute; 
+	left: 0.6rem; 
+	top: 0.6rem; 
+	font-size: 1.5rem;
+	color: darkgrey;
+}
+.header{
+    width: 100%;
+    height: 3rem;
+    font-weight: 700;
+    color: #343434;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.line-gray{
+    width: 100%;
+    height: 0.25rem;
+    background-color: rgb(242,242,242);
+}
+
+
+.main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.screening{
+    width: 100%;
+    height: 1.7rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.05rem solid #e5e5e5;
+}
+.screening .first-bar{
+     display: flex;
+     flex: 1;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+     font-weight: 700;
+     font-size: 0.8rem;
+     color: #343434;
+ }
+.screening .second-bar{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #e5e5e5;
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1.7rem;
+    color: #343434;
+}
+.screening .allow-icon{
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-left:0.3rem;
+    transform:rotate(7deg);
+    -ms-transform:rotate(90deg); 	/* IE 9 */
+    -moz-transform:rotate(90deg); 	/* Firefox */
+    -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+    -o-transform:rotate(90deg);
+}
+.screening .third-bar{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #e5e5e5;
+    line-height: 1.7rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #343434;
+}
+.screening .fourth-bar{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    line-height: 1.7rem;
+    align-items: center;
+    border-left: 1px solid #e5e5e5;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #0066FF;
+}
+
+
+.more-record{
+    width: 100%;
+    height: 29.5rem;
+    overflow-y: auto;
+}
+.more-record .into-pieces{
+    width: 100%;
+    height: 4.2rem;
+    display: flex;
+    flex-direction: column;
+}
+.into-pieces .record-bar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+.into-pieces .record-bar .record-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.into-pieces .record-bar .first-bar,.account-header .account-box .first-bar{
+    margin: 0 0.8rem;
+}
+.into-pieces .record-bar .second-bar{
+    margin: 0 0.5rem 0  0.8rem;
+    color: #999999;
+}
+.into-pieces .record-bar .box,.account-header .account-box .box{
+    width: 1rem;
+    height: 1rem;
+}
+.account-header .account-box .box-bar{
+    color: #ff9900;
+    border-color: rgba(255, 153, 0, 1);
+}
+.into-pieces .record-bar .already{
+    margin-right: 0.9rem;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #999999;
+}
+.into-pieces .record-bar .update,.to-account .account-header .update{
+    margin-right: 0.9rem;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #FF3300;
+}
+.to-account .account-header .update-bar{
+    margin-right: 0.9rem;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #999999;
+}
+
+.to-account{
+    width: 100%;
+    height: 6.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.to-account .account-header{
+    width: 100%;
+    height: 2.1rem;
+    border-bottom: 0.05rem solid #cccccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.account-header .account-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.to-account .account-body{
+    width: 100%;
+    height: 4.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #343434;
+    font-size: 0.8rem;
+}
+.account-body .account-bar{
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.account-body .account-bar .title-bar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.account-body .account-bar .title-bar:nth-child(1),.account-body .account-bar .title-bar:nth-child(3){
+	flex: 1.2;
+}
+.account-body .account-bar .title-bar:nth-child(2),.account-body .account-bar .title-bar:nth-child(4){
+	flex: 1;
+}
+.account-body .account-bar .title-bar .span-first{
+    margin: 0 0.5rem 0 0.6rem;
+    color: #999999;
+}
+.mui-card .mui-control-content {
+	padding: 10px;
+}
+			
+.mui-control-content {
+	height: 150px;
+}
