@@ -38,10 +38,10 @@ textarea {
 .fb-top > span{
 	margin-left: -2.5rem;
 	font-size: 1rem; 
-	font-weight: bold;
+	/*font-weight: bold;*/
 }
 .app-text{
 	background-color: white; 
 	height: 13rem;
-	margin-top: 2.2rem;
+	margin-top: 2.1rem;
 }

@@ -13,14 +13,14 @@
 .wrapper > a{
 	position: absolute; 
 	left: 0.6rem; 
-	top: 0.6rem; 
+	/*top: 0.6rem; */
 	font-size: 1.5rem;
 	color: darkgrey;
 }
 .header{
     width: 100%;
-    height: 3rem;
-    font-weight: 700;
+    height: 2rem;
+    /*font-weight: 700;*/
     color: #343434;
     font-size: 1rem;
     display: flex;
@@ -33,7 +33,7 @@
 
 .line-gray{
     width: 100%;
-    height: 0.25rem;
+    height: 0.03rem;
     background-color: rgb(242,242,242);
 }
 
@@ -182,7 +182,7 @@
 .to-account .account-header{
     width: 100%;
     height: 2.1rem;
-    border-bottom: 0.05rem solid #cccccc;
+    border-bottom: 0.05rem solid rgb(242,242,242);
     display: flex;
     flex-direction: row;
     justify-content: space-between;

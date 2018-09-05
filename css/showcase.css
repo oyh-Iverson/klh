@@ -11,7 +11,8 @@
 body,
 .mui-content {
 	background-color: #F5F5F5;
-	margin-top: 2.5rem;
+	margin-top: 1.05rem;
+	overflow-y: auto;
 }
 
 

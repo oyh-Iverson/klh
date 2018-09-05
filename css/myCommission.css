@@ -24,9 +24,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-bottom: 4px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
     font-size: 1rem;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 .money-detail .title-amount{
     color: lightslategray;
@@ -147,7 +147,7 @@
 
 .line-gray{
     width: 100%;
-    height: 0.25rem;
+    height: 0.05rem;
     background-color: rgb(242,242,242);
 }
 
@@ -439,9 +439,9 @@
     position: absolute;
     top: 0.4rem;
     right: 0.4rem;
-    color: darkkhaki;
-    font-weight: 700;
-    font-size: 1rem;
+    color: lightgray;
+    /* font-weight: 700; */
+    font-size: 17px;
 }
 [v-cloak] {
     display: none;

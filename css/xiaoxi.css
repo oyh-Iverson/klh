@@ -1,8 +1,11 @@
 .item{
 	width: 100%;
 	height: 4.5rem;
-	margin-top: 0.5rem;
+	margin-top: 0.2rem;
 	background-color: white;
+}
+.item:first-child{
+	margin-top: 0.5rem;
 }
 .item_top {
 	height: 2.5rem;
@@ -84,7 +87,7 @@
 .xx-top > span{
 	margin-left: -1.5rem;
 	font-size: 1rem; 
-	font-weight: bold;
+	/*font-weight: bold;*/
 }
 .list-container{
 	position: relative;
