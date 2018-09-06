@@ -41,7 +41,9 @@
             yzmTime2: '发送验证码',
             // 登录按钮样式
             loginClass: 'login_btn',
-            yzmColor: '#1184FF',
+//          yzmColor: '#1184FF',
+            yzmColor: 'deeppink',
+            clearinviteCodeFirst:false 
         },
         watch: {
             // 快捷登录   账号密码登录  切换
@@ -83,6 +85,14 @@
                 }
                 this.isActive2();
             },
+            //验证码改变事件
+            inviteCodeFirst: function(val,oldVal){
+            	if (val.length ==0) {
+                    this.clearinviteCodeFirst = false;
+                } else{
+                    this.clearinviteCodeFirst = true;
+                } 
+            },
             passwd: function(val,oldVal){
                 this.isActive2();
             },
@@ -92,6 +102,7 @@
             if(localStorage.getItem('refereeCode') != null && localStorage.getItem('refereeCode')!=undefined &&localStorage.getItem('refereeCode') != "null"){
                 this.inviteCodeFirst = localStorage.getItem('refereeCode');//推荐码  url中有字段则自动填充
             }
+                      
         },
         methods: {
             getQueryString(name) {
@@ -172,6 +183,7 @@
                                         self.yzmTime = '发送验证码';
                                         self.yzmTime2 = '发送验证码';
                                         self.yzmColor = '#1184FF"';
+                                        
                                     }
                                 },1000);
                             } else{

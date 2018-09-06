@@ -42,7 +42,7 @@
 		</div>
 		<div class="login_input">
 			<input v-model="inviteCodeFirst" type="text" placeholder="请输入邀请码（可选）"  style="width: 9rem" id="codeFirst"/>
-			<div  class="clear" style="right: 0;"></div>
+			<div class="clear" style="right: 0;" @click="inviteCodeFirst = ''" v-if="clearinviteCodeFirst"></div>
 		</div>
 	</div>
 	<!-- 账号密码输入框 -->
