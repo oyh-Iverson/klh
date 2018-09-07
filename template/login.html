@@ -10,8 +10,8 @@
 	<link rel="stylesheet" href="../css/login.css" />
 	<link rel="stylesheet" href="../css/adnimations.css">
 </head>
-<body class="page">
-<div id="app">
+<body class="page">	
+ 	<div id="app">
 	<!-- 首页 注册 -->
 	<div class="top_title">
 		<div @click="goHomeClick" class="home">首页</div>
@@ -32,7 +32,7 @@
 	<!-- 快捷登录输入框 -->
 	<div id="tel_input" v-if="is_tel == true">
 		<div class="login_input">
-			<input v-model="telVal" type="tel" placeholder="请输入手机号" maxlength="11" />
+			<input v-model="telVal" type="tel" placeholder="请输入手机号" maxlength="11" id="telVal" autofocus="autofocus"/>
 			<div @click="telVal = ''" v-if="showTelClear" class="clear" style="right: 0;"></div>
 		</div>
 		<div class="login_input">
@@ -48,17 +48,17 @@
 	<!-- 账号密码输入框 -->
 	<div id="zhanghao_input" v-if="is_tel == false ">
 		<div class="login_input">
-			<input v-model="zhanghao" type="tel" placeholder="请输入账号" />
+			<input v-model="zhanghao" type="tel" placeholder="请输入账号" autofocus="autofocus"/>
 			<div @click="zhanghao = ''" v-if="showZhanghaoClear" class="clear" style="right: 0;"></div>
 		</div>
 		<div class="login_input">
 			<input style="width: 7.5rem;" v-model="passwd" v-bind:type="pwType" maxlength="22" placeholder="请输入6~22位密码" />
 			<div @click="showPwClick" v-bind:class="show_hide" style="right: 3.8rem;"></div>
-			<div @click="forgetPwClick" class="timer">忘记密码</div>
+			<div @click="forgetPwClick" class="timer" v-bind:style="{color: yzmColor}">忘记密码</div>
 		</div>
 		<div class="login_input">
 			<input v-model="inviteCodeSecond" type="text" placeholder="请输入邀请码（可选）"  style="width: 9rem" id="codeSecond"/>
-			<div  class="clear" style="right: 0;"></div>
+			<div  class="clear" style="right: 0;" @click="inviteCodeFirst = ''" v-if="clearinviteCodeFirst"></div>
 		</div>
 	</div>
 	<!-- 登录按钮 -->
@@ -66,6 +66,8 @@
 	<!-- 语音验证码 -->
 	<!--<div v-if="is_tel == true" class="login_yuyin">没收到短信？试试<span @click="yuyinClick" style="color: #1184FF;">电话语音验证码</span></div>-->
 </div>
+	
+
 </body>
 <script type="text/javascript" src="../js/zepto.min.js"></script>
 <script type="text/javascript" src="../js/sm.min.js"></script>

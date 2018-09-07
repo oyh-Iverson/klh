@@ -101,8 +101,7 @@
             this.isLogin();
             if(localStorage.getItem('refereeCode') != null && localStorage.getItem('refereeCode')!=undefined &&localStorage.getItem('refereeCode') != "null"){
                 this.inviteCodeFirst = localStorage.getItem('refereeCode');//推荐码  url中有字段则自动填充
-            }
-                      
+            };
         },
         methods: {
             getQueryString(name) {
