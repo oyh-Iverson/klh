@@ -1,7 +1,7 @@
 body{
 	font-family: 'Arial Negreta', 'Arial Normal', 'Arial';
 }
-
+ 
 #swiper1 {
 	height: 9.4rem;
 	width: 100%;
@@ -242,7 +242,8 @@ body{
 .apples{
 	width: 3.5rem;
 	height: 1.5rem;
-	background:rgb(248,184,111);
+	/*background:rgb(248,184,111);*/
+	background: #FF5201;
 	font-size: 13px;
 	line-height: 1.5rem;
 	border-radius: 5px;

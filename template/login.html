@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="../css/adnimations.css">
 </head>
 <body class="page">	
+	<div class="pageBGI"></div>
  	<div id="app">
 	<!-- 首页 注册 -->
 	<div class="top_title">
@@ -40,7 +41,7 @@
 			<div @click="yzmVal = ''" v-if="showYzmClear" class="clear" style="right: 4.5rem;"></div>
 			<div @click="sendYzmClick" class="timer" v-bind:style="{color: yzmColor}" v-text="yzmTime2"></div>
 		</div>
-		<div class="login_input">
+		<div class="login_input" style="display: none;">
 			<input v-model="inviteCodeFirst" type="text" placeholder="请输入邀请码（可选）"  style="width: 9rem" id="codeFirst"/>
 			<div class="clear" style="right: 0;" @click="inviteCodeFirst = ''" v-if="clearinviteCodeFirst"></div>
 		</div>
