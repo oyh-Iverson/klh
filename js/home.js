@@ -108,6 +108,9 @@
             if(localStorage.getItem('referee') == null || localStorage.getItem('referee') == ""){
             	localStorage.setItem('referee',this.getQueryString('referee') || '');
             }
+            if(localStorage.getItem('userType') == null || localStorage.getItem('userType') == ""){
+            	localStorage.setItem('userType',this.getQueryString('userType') || '');
+            }
             if(localStorage.getItem('refereeCode') == null || localStorage.getItem('refereeCode') == ""){
             	localStorage.setItem('refereeCode',this.getQueryString('refereeCode') || '');
             }
@@ -217,8 +220,7 @@
                 window.location.href = 'dkdetail.html?id=' + id;
             },
             // 获取 火热 列表数据源
-            getData2: function(){
-            	
+            getData2: function(){            
                 var self = this;
                 var urlStr = Util.baseUrl + '/DuG/api/basics/loan/findLoanList.do';
                 var md5Str = Util.basekey
@@ -226,9 +228,18 @@
                     + self.requestData.maxQuota
                     + self.requestData.minTerm
                     + self.requestData.maxTerm
-                    + '-2'
+                    + '-1'
                     + self.requestData.page
                     + '10';
+                var userType = localStorage.getItem("userType");
+        				console.log(userType);
+        				var showType = "";
+        				if(userType == 3){
+        					showType = 0;
+        				}else{
+        					showType = 1;
+        				}
+        				console.log(showType);
                 $.ajax({
                     type:"get",
                     url: urlStr,
@@ -239,16 +250,17 @@
                         maxQuota: self.requestData.maxQuota,
                         minTerm: self.requestData.minTerm,
                         maxTerm: self.requestData.maxTerm,
-                        label: '-2' ,
+                        label: '-1' ,
                         page: self.requestData.page,
                         rows: 10,
                         key: Util.basekey,
                         auth: Util.base32Encode('key,minQuota,maxQuota,minTerm,maxTerm,label,page,rows'),
-                        token: md5(md5Str)
+                        token: md5(md5Str),
+                        showType: showType
                     },
                     success: function(res){
-                    	console.log(res);
                         // 请求成功
+                        console.log(res);
                         if (res.ret_code == '0') {
                             if(res.ret_data.length>=2){
                                 self.dataList.push(res.ret_data[0]);
@@ -256,10 +268,9 @@
 							}else{
                                 self.dataList = res.ret_data;
 							}
-                            self.daikuanList = res.ret_data;
-                            var dataList = JSON.stringify(self.daikuanList);
-                            
-                            localStorage.setItem("indexListData",dataList);
+                          
+                            var dataList = JSON.stringify(self.daikuanList);    
+                            //localStorage.setItem("indexListData",dataList);                            
                             var len = self.dataList.length;
                             for (var i = 0; i < len; i++) {
                                 if (i <= 4) {
@@ -282,13 +293,76 @@
                     }
                 })
             },
+                        getData3: function(){           	
+                var self = this;
+                var urlStr = Util.baseUrl + '/DuG/api/basics/loan/findLoanList.do';
+                var md5Str = Util.basekey
+                    + self.requestData.minQuota
+                    + self.requestData.maxQuota
+                    + self.requestData.minTerm
+                    + self.requestData.maxTerm
+                    + self.requestData.page
+                    + '10';
+                var userType = localStorage.getItem("userType");
+        				console.log(userType);
+        				var showType = "";
+        				if(userType == 3){
+        					showType = 0;
+        				}else{
+        					showType = 1;
+        				}
+        				console.log(showType);
+                $.ajax({
+                    type:"get",
+                    url: urlStr,
+                    async:true,
+                    //dataType:'json',
+                    data: {
+                        minQuota: self.requestData.minQuota,
+                        maxQuota: self.requestData.maxQuota,
+                        minTerm: self.requestData.minTerm,
+                        maxTerm: self.requestData.maxTerm,
+                       
+                        page: self.requestData.page,
+                        rows: 10,
+                        key: Util.basekey,
+                        auth: Util.base32Encode('key,minQuota,maxQuota,minTerm,maxTerm,page,rows'),
+                        token: md5(md5Str),
+                        showType: showType
+                    },
+                    success: function(res){
+                        // 请求成功
+                        console.log(res);
+                        if (res.ret_code == '0') {               
+                            self.daikuanList = res.ret_data;   
+                            //localStorage.setItem("indexListData",dataList);                            
+                            var len = self.dataList.length;
+                        } else{
+                            $.toast(res.ret_msg);
+                        }
+                    },
+                    error: function(res){
+                        $.toast('网路请求失败，请稍后重试');
+                    }
+                })
+            },
         }
     });
 
     var banners = [];
+    //广告轮播
     function getBanners(){
         var urlStr = Util.baseUrl + '/DuG/api/basics/advertOperation/findAdvertOperationList.do';
         var md5Str = Util.basekey;
+        var userType = localStorage.getItem("userType");
+        console.log(userType);
+        var showType = "";
+        if(userType == 3){
+        	showType = 0;
+        }else{
+        	showType = 1;
+        }
+        console.log(showType);
         $.ajax({
             type:"get",
             url: urlStr,
@@ -297,15 +371,16 @@
             data: {
                 key: Util.basekey,
                 auth: Util.base32Encode('key'),
-                token: md5(md5Str)
+                token: md5(md5Str),
+                showType: showType
             },
             success: function(res){
+            	console.log(res);
                 // 获取成功
                 if (res.ret_code == '0') {
                     banners = res.ret_data;
-                    console.log(banners);
                     var tempHtml = '';
-                    $.each(banners, function(index,item) {
+                    $.each(banners, function(index,item) {	
                         tempHtml = tempHtml + '<div class="swiper-slide" data-id="' + item.id + '">' +
 							'<a  href="'+item.advertUrl+'">'+
 								'<img src="' + item.imgUrl + '">' +
@@ -343,6 +418,7 @@
     }
     
     var messages = [];
+    //喇叭消息
     function getMessages(){
         var urlStr = Util.baseUrl + '/DuG/api/basics/advertOperation/findLoanSucce.do';
         var md5Str = Util.basekey;
@@ -357,6 +433,7 @@
                 token: md5(md5Str)
             },
             success: function(res){
+            	console.log(res);
                 // 获取成功
                 if (res.ret_code == '0') {
                     messages = res.ret_data;
@@ -391,4 +468,5 @@
     	// 贷款成功信息
         getMessages();
         app.getData2();
+        app.getData3();
     }

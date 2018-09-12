@@ -21,9 +21,9 @@
 		<a class="info_ui">可乐花</a>
 		<div class="info" id="userInfo"></div>
 	</div>
-	<div class="line" @click="enterMy">
-			<img src="../img/lljl.png" />
-			<div class="line_title">我的佣金</div>
+	<div class="line" @click="enterMy" id="Mycommissions">
+		<img src="../img/lljl.png" />
+		<div class="line_title">我的佣金</div>
 	</div>
 	<div class="line" style="display: none;">
 		<a href="liulanjilu.html">
@@ -88,7 +88,7 @@
 		<span class="icon icon-home"></span>
 		<span class="tab-label">首页</span>
 	</a>
-	<a class="tab-item external" href="invitation.html">
+	<a class="tab-item external" href="invitation.html" id="Invitations">
 		<span class="icon icon-message"></span>
 		<span class="tab-label">邀请</span>
 	</a>
@@ -122,4 +122,12 @@
 <script type="text/javascript" src="../js/weui.min.js" async></script>
 <script type="text/javascript" src="../js/wode.js"></script>
 <script type="text/javascript" src="../js/IOSReturn.js"></script>
+<script>
+	var userType = localStorage.getItem("userType");
+	console.log(userType);
+	if(userType == 3){
+		mui("#Invitations")[0].style.display="none";
+		mui("#Mycommissions")[0].style.display="none";
+	}		
+</script>
 </html>

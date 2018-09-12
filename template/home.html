@@ -61,15 +61,13 @@
 				</div>
 				<div  class="item-bottom">
 					<div class="item-bottom-Con">
-						<div class="item-keyword">{{item.keyword}}</div>
+						<div class="item-keyword">{{item.introduce}}</div>
 						<div class="item-applyCount">
 						已有<span class="item-applyCount-Number">{{item.applyCount}}</span>人申请成功
 						</div>
 					</div>
 				</div>
-			</div>
-			
-			
+			</div>	
 		</div>
 	</div>
 </div>
@@ -79,7 +77,7 @@
 		<span class="icon icon-home"></span>
 		<span class="tab-label">首页</span>
 	</a>
-	<a class="tab-item external" href="invitation.html">
+	<a class="tab-item external" href="invitation.html" id="Invitations">
 		<span class="icon icon-message"></span>
 		<span class="tab-label">邀请</span>
 	</a>
@@ -95,13 +93,20 @@
 <script type="text/javascript" src="../js/swiper-4.1.0.min.js"></script>
 <script type="text/javascript" src="../js/util.js"></script>
 <script src="../js/vue-lazyload.js"></script>
+<script type="text/javascript" src="../js/mui.js"></script>
 <script type='text/javascript' src='../js/zepto.min.js' charset='utf-8' async></script> 
 <script type='text/javascript' src='../js/sm.min.js' charset='utf-8' async></script>
 <script type="text/javascript" src="../mescroll/mescroll.min.js"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
 <script type="text/javascript" src="../js/vue.js"></script>
-
 <script type="text/javascript" src="../js/home.js"></script>
+<script>
+	var userType = localStorage.getItem("userType");
+	console.log(userType);
+	if(userType == 3){
+		mui("#Invitations")[0].style.display="none";
+	}		
+</script>
 </html>
 
 
