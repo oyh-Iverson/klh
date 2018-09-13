@@ -85,7 +85,7 @@
             var self = this;
             self.mescroll = new MeScroll("mescroll", { //请至少在vue的mounted生命周期初始化mescroll,以确保您配置的id能够被找到
                 up: {
-                    callback: self.upCallback, //上拉回调
+                    callback: self.upCallback,//上拉回调                    
                     //以下参数可删除,不配置
                     isBounce: false, //此处禁止ios回弹,解析(务必认真阅读,特别是最后一点): http://www.mescroll.com/qa.html#q10
                     //page:{size:8}, //可配置每页8条数据,默认10
@@ -104,16 +104,27 @@
                         }
                     },
                 }
+                
+
             });
-            if(localStorage.getItem('referee') == null || localStorage.getItem('referee') == ""){
+            if(this.getQueryString('referee')!=null && this.getQueryString('referee') != ""){
             	localStorage.setItem('referee',this.getQueryString('referee') || '');
             }
-            if(localStorage.getItem('userType') == null || localStorage.getItem('userType') == ""){
+            if(this.getQueryString('userType')!=null && this.getQueryString('userType') != ""){
             	localStorage.setItem('userType',this.getQueryString('userType') || '');
             }
-            if(localStorage.getItem('refereeCode') == null || localStorage.getItem('refereeCode') == ""){
+            if(this.getQueryString('refereeCode')!=null && this.getQueryString('refereeCode') != ""){
             	localStorage.setItem('refereeCode',this.getQueryString('refereeCode') || '');
             }
+            /*if(localStorage.getItem('referee') == null || localStorage.getItem('referee') == ""){
+            	localStorage.setItem('referee',this.getQueryString('referee') || '');
+            }*/
+            /*if(localStorage.getItem('userType') == null || localStorage.getItem('userType') == ""){
+            	localStorage.setItem('userType',this.getQueryString('userType') || '');
+            }*/
+//          if(localStorage.getItem('refereeCode') == null || localStorage.getItem('refereeCode') == ""){
+//          	localStorage.setItem('refereeCode',this.getQueryString('refereeCode') || '');
+//          }
             
             /* this.getData2(); */
          /* // 贷款成功信息
@@ -293,7 +304,7 @@
                     }
                 })
             },
-                        getData3: function(){           	
+            getData3: function(){           	
                 var self = this;
                 var urlStr = Util.baseUrl + '/DuG/api/basics/loan/findLoanList.do';
                 var md5Str = Util.basekey
@@ -322,7 +333,6 @@
                         maxQuota: self.requestData.maxQuota,
                         minTerm: self.requestData.minTerm,
                         maxTerm: self.requestData.maxTerm,
-                       
                         page: self.requestData.page,
                         rows: 10,
                         key: Util.basekey,
@@ -461,6 +471,7 @@
             }
         });
     }
+    
     
     function func(){
     	// 广告轮播图

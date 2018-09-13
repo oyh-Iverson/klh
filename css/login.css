@@ -3,6 +3,8 @@
 }
 .page{
 	background-color: white;
+	position: absolute;
+	z-index: 1;
 }
 .page .pageBGI{
 	background: url(../img/bodyBM.png)no-repeat;
@@ -110,6 +112,7 @@
 	margin-left: calc(50% - 6.4rem);
 	margin-bottom: 1rem;
 	position: relative;
+	cursor: pointer;
 }
 input {
 	border: none;
@@ -121,7 +124,7 @@ input {
 	width: 8rem;
 	margin-top: 0.5rem;
 	background: none;
-	
+	cursor: pointer;
 }
 input::-webkit-input-placeholder{ /*WebKit browsers*/
 color: white;
@@ -159,15 +162,19 @@ color: white;
 	background-image: url(../img/hide_pw.png);
 }
 .login_input .timer {
-	cursor: pointer;
-	font-size: 0.8rem;
-	float: right;
-	width: 4rem;
-	margin-top: 0.3rem;
-	color: #1184FF;
-	height: 1.4rem;
-	line-height: 1.4rem;
-	text-align: right;
+	border: 1px deeppink solid;
+    border-radius: 5px;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    float: right;
+    /* width: 4rem; */
+    margin-top: 0.3rem;
+    color: #1184FF;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    text-align: right;
 }
 .login_btn_active {
 	width: 12.5rem;

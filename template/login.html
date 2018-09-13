@@ -32,8 +32,8 @@
 	</div>
 	<!-- 快捷登录输入框 -->
 	<div id="tel_input" v-if="is_tel == true">
-		<div class="login_input">
-			<input v-model="telVal" type="tel" placeholder="请输入手机号" maxlength="11" id="telVal" autofocus="autofocus"/>
+		<div class="login_input" >
+			<input v-model="telVal" type="tel" placeholder="请输入手机号" maxlength="11" id="telVal" style="width: 100%;"/>
 			<div @click="telVal = ''" v-if="showTelClear" class="clear" style="right: 0;"></div>
 		</div>
 		<div class="login_input">
@@ -41,15 +41,15 @@
 			<div @click="yzmVal = ''" v-if="showYzmClear" class="clear" style="right: 4.5rem;"></div>
 			<div @click="sendYzmClick" class="timer" v-bind:style="{color: yzmColor}" v-text="yzmTime2"></div>
 		</div>
-		<div class="login_input" id="VerificationC">
-			<input v-model="inviteCodeFirst" type="text" placeholder="请输入邀请码（可选）"  style="width: 9rem" id="codeFirst"/>
+		<div class="login_input" id="VerificationC" >
+			<input v-model="inviteCodeFirst" type="text" placeholder="请输入邀请码（可选）"  style="width: 100%" id="codeFirst"/>
 			<div class="clear" style="right: 0;" @click="inviteCodeFirst = ''" v-if="clearinviteCodeFirst"></div>
 		</div>
 	</div>
 	<!-- 账号密码输入框 -->
 	<div id="zhanghao_input" v-if="is_tel == false ">
 		<div class="login_input">
-			<input v-model="zhanghao" type="tel" placeholder="请输入账号" autofocus="autofocus"/>
+			<input v-model="zhanghao" type="tel" placeholder="请输入账号"/>
 			<div @click="zhanghao = ''" v-if="showZhanghaoClear" class="clear" style="right: 0;"></div>
 		</div>
 		<div class="login_input">
@@ -79,9 +79,24 @@
 <script type="text/javascript" src="../js/login.js"></script>
 <script type="text/javascript">
 	var userType = localStorage.getItem("userType");
-	console.log(userType);
 	if(userType == 3){
 		mui("#VerificationC")[0].style.display="none";
-	}	
+	}
+	var winHeight = $(window).height(); //获取当前页面高度
+	console.log("页面高度:"+winHeight);
+                $(window).resize(function() {
+                    var thisHeight = $(this).height();
+                    
+                    if (winHeight - thisHeight > 50) {
+                        //当软键盘弹出，在这里面操作
+                        //alert('aaa');
+                        $('body').css('height', winHeight + 'px');
+                    } else {
+                        //alert('bbb');
+                        //当软键盘收起，在此处操作
+                        $('body').css('height', '100%');
+                    }
+    			});
+
 </script>
 </html>

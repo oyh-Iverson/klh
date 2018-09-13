@@ -376,6 +376,15 @@
     function getBanners(){
         var urlStr = Util.baseUrl + '/DuG/api/basics/advertOperation/findAdvertOperationList.do';
         var md5Str = Util.basekey;
+        var userType = localStorage.getItem("userType");
+        console.log(userType);
+        var showType = "";
+        if(userType == 3){
+        	showType = 0;
+        }else{
+        	showType = 1;
+        }
+        console.log(showType);
         $.ajax({
             type:"get",
             url: urlStr,
@@ -384,7 +393,8 @@
             data: {
                 key: Util.basekey,
                 auth: Util.base32Encode('key'),
-                token: md5(md5Str)
+                token: md5(md5Str),
+                showType: showType
             },
             success: function(res){
                 // 获取成功
