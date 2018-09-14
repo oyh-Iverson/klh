@@ -147,7 +147,8 @@
             detailsClick(id,n){
                 var userId = localStorage.getItem('userId');
                 if(userId == "" || userId == null || userId == undefined) {
-                    window.location = "login.html?refereeCode="+this.getQueryString('refereeCode')+'&referee='+this.getQueryString('referee')
+                    //window.location = "login.html?refereeCode="+this.getQueryString('refereeCode')+'&referee='+this.getQueryString('referee');
+                    window.location = "login.html";
                 }else{
                     window.location.href = 'detailsPage.html?id='+ id+'&number='+n;
 				}
@@ -392,7 +393,7 @@
                     var tempHtml = '';
                     $.each(banners, function(index,item) {	
                         tempHtml = tempHtml + '<div class="swiper-slide" data-id="' + item.id + '">' +
-							'<a  href="'+item.advertUrl+'">'+
+							'<a href="'+item.advertUrl+'">'+
 								'<img src="' + item.imgUrl + '">' +
 							'</a>'+
 							'</div>'
@@ -419,11 +420,11 @@
                     })
                 } else{
                     $.toast(res.ret_msg);
+     
                 }
             },
             error: function(res){
-                $.toast('网路请求失败，请稍后重试');
-            }
+                $.toast('网路请求失败，请稍后重试');            }
         });
     }
     

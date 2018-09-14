@@ -50,7 +50,7 @@
     </div>
 
     <div class="main" v-show="iconShow">
-        <div class="box-evaluation">
+        <div class="box-evaluation" style="border-bottom: none;">
             <div class="first-bar">
                 <span class="first-text"></span>
                 <span class="second-text">产品综合评价</span>
@@ -64,13 +64,13 @@
                 </div>
                 <div class="right-bar">              	
                 		<div>
-                        	<div v-for="item in 5" ></div>
+                        	<div v-for="item in rating" ></div>
                     	</div>
                     	<div>
-                        	<div v-for="item in 5"></div>
+                        	<div v-for="item in rating"></div>
                     	</div>
                     	<div>
-                        	<div v-for="item in 5"></div>
+                        	<div v-for="item in rating"></div>
                     	</div>
                     	<div>
                         	<div v-for="item in rating"></div>
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-        <div class="box-evaluation">
+        <!--<div class="box-evaluation">
             <div class="first-bar">
                 <span class="first-text"></span>
                 <span class="second-text">用户评论（0）</span>
@@ -91,29 +91,30 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
     <div class="main" v-show="!iconShow">
-        <div class="box">
+        <div class="box" style="height: auto;">
             <div class="first-bar">
                 <span class="first-text"></span>
                 <span class="second-text">申请流程</span>
             </div>
             <div class="second-bar  process">
-                <div class="renzheng_item" v-for="item in dataObj.certifiedList">
-                    <img src="../img/lljl.png" />
+                <div class="renzheng_item" v-for="item in dataObj.certifiedList">               	
+                	<img src="../img/lljl.png" />
                     <span v-text="item.loan_key"></span>
-                </div>
+                    
+                </div>    
             </div>
         </div>
-        <div class="box">
+        <div class="box" style="height: auto;">
             <div class="first-bar">
                 <span class="first-text"></span>
                 <span class="second-text">申请条件及资料</span>
             </div>
             <div class="second-bar" v-text="dataObj.applyCondition"></div>
         </div>
-        <div class="box introduces">
+        <div class="box introduces" style="height: auto; border-bottom: none;">
             <div class="first-bar">
                 <span class="first-text"></span>
                 <span class="second-text">产品介绍</span>

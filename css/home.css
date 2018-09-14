@@ -213,6 +213,8 @@ body{
 .item-logo{
 	width: 3rem;
 	height: 3rem;
+	max-width: 3rem;
+	max-height: 3rem;
 	border-radius: 50%; 
 	border: 1px silver solid;
 }
@@ -264,7 +266,12 @@ body{
 }
 .item-keyword{
 	padding-left: 0.5rem;
-	color: #9c9b9a;
+    color: #9c9b9a;
+    width: 60%;
+    height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .item-applyCount{
 	font-size: 12px; 

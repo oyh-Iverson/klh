@@ -160,11 +160,9 @@
     height: 1.1rem;
     font-size: 0;
     color: #343434;
-    border: 0.02rem #e5e5e5 solid;
+    border: 0.01rem #e5e5e5 solid;
     border-bottom: none;
 }
-
-
 
 .main-invitation ul .li-bar .span-bar{
     font-size: 0.7rem;

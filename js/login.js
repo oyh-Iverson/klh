@@ -123,16 +123,17 @@
             goHomeClick: function(){
 //					window.location.replace('home.html');
                 //refereeCode推荐码  referee渠道ID
-                var refereeCode = "";
-                if(localStorage.getItem("refereeCode")){
-                    refereeCode = localStorage.getItem("refereeCode");
-                }
-                var referee = "";
-                if(localStorage.getItem('referee')){
-                    referee = localStorage.getItem('referee');
-                }
+//              var refereeCode = "";
+//              if(localStorage.getItem("refereeCode")){
+//                  refereeCode = localStorage.getItem("refereeCode");
+//              }
+//              var referee = "";
+//              if(localStorage.getItem('referee')){
+//                  referee = localStorage.getItem('referee');
+//              }
 
-                window.location.href =  'home.html?refereeCode='+refereeCode+'&referee='+referee;
+                //window.location.href =  'home.html?refereeCode='+refereeCode+'&referee='+referee;
+                window.location.href = 'home.html';
             },
             // 注册
             goRegestClick: function(){
@@ -181,6 +182,7 @@
                                     self.yzmTime =  self.yzmTime - 1;
                                     self.yzmTime2 = self.yzmTime + '(s)'
                                     self.yzmColor = '#7A7A7A';
+                                    
                                     if (self.yzmTime == 0) {
                                         clearInterval(timer);
                                         self.yzmTime = '发送验证码';
