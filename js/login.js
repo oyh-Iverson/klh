@@ -42,7 +42,7 @@
             // 登录按钮样式
             loginClass: 'login_btn',
 //          yzmColor: '#1184FF',
-            yzmColor: 'deeppink',
+            yzmColor: '#ff6600',
             clearinviteCodeFirst:false 
         },
         watch: {

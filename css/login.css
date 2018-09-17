@@ -7,9 +7,9 @@
 	z-index: 1;
 }
 .page .pageBGI{
-	background: url(../img/bodyBM.png)no-repeat;
-	background-size: 100% 100%;
-	box-shadow: -4px 5px 33px #d0bfb2 inset;
+	/*background: url(../img/bodyBM.png)no-repeat;*/
+	/*background-size: 100% 100%;*/
+	/*box-shadow: -4px 5px 33px #d0bfb2 inset;*/
 	width: 100%;height: 100%; 
 	position: absolute;
 	z-index: -1;
@@ -23,12 +23,12 @@
 }
 .home {
 	float: left;
-	height: 1rem;
-	width: calc(48% - 1.7rem);
+	/*height: 1rem;*/
+	/*width: calc(48% - 1.7rem);*/
 	margin-left: 1.7rem;
 	text-align: left;
 	color: #7A7A7A;
-	font-size: 0.7rem;
+	font-size: 1.7rem;
 }
 .regest {
 	float: right;
@@ -41,18 +41,14 @@
 	display: none;
 }
 .logo {
-	width: 5rem;
-	height: 5rem;
+	width: 7rem;
+	height: 8rem;
 	border-radius: 0.7rem;
-	margin-left: calc(50% - 2.5rem);
+	margin-left: calc(50% - 3.5rem);
 	margin-top: 3rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	font-size: 3rem;
-	font-weight: 600;
-	color: #FF5201;
+	background: url(../img/what.png);
+	position: relative;
+	background-size: 100% 100%;
 }
 .is-animate.style3 > div { animation-name: style3; }
 
@@ -73,7 +69,7 @@
 .login_type {
 	width: 100%;
 	height: 2.2rem;
-	margin-top: 1.9rem;
+	/*margin-top: 1.9rem;*/
 }
 .login_type .left {
 	float: left;
@@ -108,7 +104,7 @@
 .login_input {
 	width: 12.8rem;
 	height: 2rem;
-	border-bottom: solid 0.05rem #e5e5e5;
+	border-bottom: solid 0.05rem rgb(255, 102, 0);
 	margin-left: calc(50% - 6.4rem);
 	margin-bottom: 1rem;
 	position: relative;
@@ -120,20 +116,20 @@ input {
 	height: 1.4rem;
 	line-height: 1.4rem;
 	font-size: 0.8rem;
-	color: white;
+	color: black;
 	width: 8rem;
 	margin-top: 0.5rem;
 	background: none;
 	cursor: pointer;
 }
 input::-webkit-input-placeholder{ /*WebKit browsers*/
-color: white;
+color: #c8c5c1;
 }
 input::-moz-input-placeholder{ /*Mozilla Firefox*/
-color: white;
+color: #c8c5c1;
 }
 input::-ms-input-placeholder{ /*Internet Explorer*/ 
-color: white;
+color: #c8c5c1;
 }
 .clear {
 	width: 1rem;
@@ -162,7 +158,7 @@ color: white;
 	background-image: url(../img/hide_pw.png);
 }
 .login_input .timer {
-	border: 1px deeppink solid;
+	border: 1px #ff6600 solid;
     border-radius: 5px;
     padding-left: 0.2rem;
     padding-right: 0.2rem;
