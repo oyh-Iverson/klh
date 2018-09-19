@@ -131,6 +131,7 @@
             getMessages();
             // 广告轮播图
             getBanners(); */
+           
         },
         methods: {
             getQueryString(name){
@@ -147,13 +148,53 @@
             detailsClick(id,n){
                 var userId = localStorage.getItem('userId');
                 if(userId == "" || userId == null || userId == undefined) {
+                	localStorage.setItem("pageID",id)
                     //window.location = "login.html?refereeCode="+this.getQueryString('refereeCode')+'&referee='+this.getQueryString('referee');
                     window.location = "login.html";
-                }else{
-                    window.location.href = 'detailsPage.html?id='+ id+'&number='+n;
-				}
+                }else{     
+                	localStorage.setItem("pageID",id);
+                   window.location.href = 'detailsPage.html?id='+ id+'&number='+n;
+                    
+								}
 
-			},
+						},
+						//立即申请的点击
+						detailsClicks(id,n){
+                event.stopPropagation();
+                var userId = localStorage.getItem('userPhone');
+                console.log(userId);
+                if(userId==null){
+                	window,location.href='login.html';
+                };
+                var self = this;
+                var urlStr = Util.baseUrl + '/DuG/api/basics/loan/findLoanModel.do';
+                var id = id;
+                var userId = localStorage.getItem('userId') || '';
+                var md5Str = Util.basekey + userId + id;
+                
+                    $.ajax({
+                        type:"post",
+                        url: urlStr,
+                        async:true,
+                        //dataType:'json',
+                        data: {
+                            userId: userId,
+                            id: id,
+                            key: Util.basekey,
+                            auth: Util.base32Encode('key,userId,id'),
+                            token: md5(md5Str)
+                        },
+                        success: function(res){
+                        console.log(res);
+                        var loanUrl=	res.ret_data.loanUrl
+                        window.location.href=loanUrl;      
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+                    })
+                
+						return false;},
             // 收藏 按钮点击事件
             addCollectionClick: function(id){
                 var self = this;
@@ -305,6 +346,7 @@
                     }
                 })
             },
+           
             getData3: function(){           	
                 var self = this;
                 var urlStr = Util.baseUrl + '/DuG/api/basics/loan/findLoanList.do';
@@ -357,6 +399,7 @@
                     }
                 })
             },
+            
         }
     });
 
@@ -374,6 +417,7 @@
         	showType = 1;
         }
         console.log(showType);
+        
         $.ajax({
             type:"get",
             url: urlStr,
@@ -389,15 +433,17 @@
             	console.log(res);
                 // 获取成功
                 if (res.ret_code == '0') {
+                	var userId = localStorage.getItem('userId');                 
                     banners = res.ret_data;
                     var tempHtml = '';
                     $.each(banners, function(index,item) {	
-                        tempHtml = tempHtml + '<div class="swiper-slide" data-id="' + item.id + '">' +
-							'<a href="'+item.advertUrl+'">'+
+                    	var userPhone = localStorage.getItem('userPhone');
+                        tempHtml = tempHtml + '<div class="swiper-slide" data-id="' + item.id + '" >' +
+							'<a href="'+(userPhone!=null?item.advertUrl:'login.html')+'" >'+
 								'<img src="' + item.imgUrl + '">' +
 							'</a>'+
 							'</div>'
-                    });
+                    });                   
                     var html = '<div class="swiper-wrapper">' + tempHtml + '</div><div class="swiper-pagination"></div>';
                     $('#swiper1').html(html);
                     var swiper1 = new Swiper('#swiper1',{
@@ -417,7 +463,19 @@
                         },
                         observer:true,//修改swiper自己或子元素时，自动初始化swiper
                         observeParents:true,//修改swiper的父元素时，自动初始化swiper
-                    })
+                    });
+                    
+//                var userId = localStorage.getItem('userId');
+//            if(userId == "" || userId == null || userId == undefined) { 
+//           	mui(".links")[0].href="login.html";
+//           	console.log(mui(".links")[0]);
+//              
+//              
+//           }else{
+//                
+//									}
+                
+                
                 } else{
                     $.toast(res.ret_msg);
      
@@ -426,6 +484,7 @@
             error: function(res){
                 $.toast('网路请求失败，请稍后重试');            }
         });
+        
     }
     
     var messages = [];
@@ -462,7 +521,8 @@
                         autoplay:true,
                         observer:true,//修改swiper自己或子元素时，自动初始化swiper
                         observeParents:true,//修改swiper的父元素时，自动初始化swiper
-                    })
+                    });
+                    
                 } else{
                     $.toast(res.ret_msg);
                 }
@@ -473,6 +533,7 @@
         });
     }
     
+     
     
     function func(){
     	// 广告轮播图
@@ -481,4 +542,6 @@
         getMessages();
         app.getData2();
         app.getData3();
+        
     }
+   

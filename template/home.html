@@ -19,7 +19,7 @@
 <body class="page" onload="javaScript:func()">
 <div id="mescroll" class="content mescroll">
 	<!-- 广告轮播图 -->
-	<div class="swiper-container" id="swiper1"></div>
+	<div class="swiper-container " id="swiper1"></div>
 	<!-- 喇叭消息 -->
 	<div class="message">
 		<div class="laba"></div>
@@ -57,7 +57,7 @@
 							</div>
 						</div>				
 					</div>
-					<div class="apples">立即申请</div>
+					<div class="apples" id="translates" @click="detailsClicks(item.id,item.applyCount)">立即申请</div>
 				</div>
 				<div  class="item-bottom">
 					<div class="item-bottom-Con">

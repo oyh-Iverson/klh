@@ -224,6 +224,7 @@
                             type:"get",
                             url: urlStr,
                             async:true,
+                            //async:false,
                             //dataType:'json',
                             data: {
                                 referee:referee,//渠道id
@@ -255,8 +256,14 @@
                                     }
                                     /*localStorage.setItem('refereeCode',codeShow); */
                                     localStorage.setItem('selfRefereeCode',res.ret_data.invitationCode);//自己的邀请码
+                                    var pageID = localStorage.getItem("pageID");
+                                    console.log(pageID);
+                                    if(pageID!=""){
+                                    	window.location.replace('detailsPage.html?id='+pageID);//新地址取代当前文档地址
+                                    }else if(pageID=""){
+                                    	window.location.replace('home.html');//新地址取代当前文档地址
+                                    }
                                     
-                                    window.location.replace('wode.html');//新地址取代当前文档地址
                                 } else{
                                     $.toast(res.ret_msg);
                                 }
@@ -264,7 +271,7 @@
                             error: function(res){
                                 $.toast('网路请求失败，请稍后重试');
                             }
-                        });
+                        })
                     }
                 } else{ // 账号密码登录
                     if (this.isActive2() == true) {
@@ -295,7 +302,13 @@
                                     localStorage.setItem('userId',res.ret_data.userId || '');
                                     localStorage.setItem('userPhone',res.ret_data.userPhone || '');
                                     localStorage.setItem('refereeCode',$("#codeSecond").val());
-                                    window.location.replace('wode.html');
+                                    var pageID = localStorage.getItem("pageID");
+                                    if(pageID!=""){
+                                    	window.location.replace('detailsPage.html?id='+pageID);//新地址取代当前文档地址
+                                    	return;
+                                    }else if(pageID=""){
+                                    	window.location.replace('home.html');//新地址取代当前文档地址
+                                    }
                                 } else{
                                     $.toast(res.ret_msg);
                                 }
