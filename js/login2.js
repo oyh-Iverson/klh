@@ -42,7 +42,7 @@
             // 登录按钮样式
             loginClass: 'login_btn',
 //          yzmColor: '#1184FF',
-             //yzmColor: '#ff6600',
+            //yzmColor: '#ff6600',
             yzmColor: 'black',
             clearinviteCodeFirst:false 
         },
@@ -181,7 +181,7 @@
                                 self.yzmTime = 60;
                                 var timer = setInterval(function(){
                                     self.yzmTime =  self.yzmTime - 1;
-                                    self.yzmTime2 = self.yzmTime + '(s)'
+                                    self.yzmTime2 = self.yzmTime + '(s)';
                                     self.yzmColor = '#7A7A7A';
                                     mui(".timer")[0].style.border="none";
                                     if (self.yzmTime == 0) {
@@ -190,7 +190,9 @@
                                         self.yzmTime2 = '发送验证码';
                                         //self.yzmColor = '#1184FF"';
                                         self.yzmColor = 'black';
-                                        mui(".timer")[0].style.border="1px black solid"; 
+                                        mui(".timer")[0].style.border="1px black solid";
+                                          
+                                        
                                     }
                                 },1000);
                             } else{
@@ -258,13 +260,8 @@
                                     }
                                     /*localStorage.setItem('refereeCode',codeShow); */
                                     localStorage.setItem('selfRefereeCode',res.ret_data.invitationCode);//自己的邀请码
-                                    var pageID = localStorage.getItem("pageID");
-                                    console.log(pageID);
-                                    if(pageID!=""){
-                                    	console.log(pageID);
-                                    	window.location.replace('detailsPage.html?id='+pageID);//新地址取代当前文档地址
-                                    }
-                                    	//window.location.replace('home.html');//新地址取代当前文档地址
+                                  
+                                    	window.location.replace('home.html');//新地址取代当前文档地址
                                     
                                     
                                 } else{
@@ -306,12 +303,8 @@
                                     localStorage.setItem('userPhone',res.ret_data.userPhone || '');
                                     localStorage.setItem('refereeCode',$("#codeSecond").val());
                                     var pageID = localStorage.getItem("pageID");
-                                    if(pageID!=""){
-                                    	console.log(pageID);
-                                    	//window.location.replace('detailsPage.html?id='+pageID);//新地址取代当前文档地址
-                                    	
-                                    } 
-                                    	//window.location.replace('home.html');//新地址取代当前文档地址
+                                   
+                                    	window.location.replace('home.html');//新地址取代当前文档地址
                                     
                                 } else{
                                     $.toast(res.ret_msg);

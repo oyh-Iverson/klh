@@ -20,7 +20,7 @@
         	var str = "";
         	if (userPhone == '') {
         		
-        		str = "<a href='login.html' class='info_li' title='登录'>立即登录</a>"
+        		str = "<a href='login2.html' class='info_li' title='登录'>立即登录</a>"
         	} else {
         		str = "<div class='info_li' >"+userPhone+"</div>";
         	}

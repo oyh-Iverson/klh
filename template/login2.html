@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>登录</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../css/sm.css" />
+	<link rel="stylesheet" href="../css/login.css" />
+	<link rel="stylesheet" href="../css/adnimations.css">
+</head>
+<body class="page">	
+	<div class="pageBGI" :style="{ height: bodyHeight + 'px' }"></div>
+ 	<div id="app">
+	<!-- 首页 注册 -->
+	<div class="top_title">
+		<div @click="goHomeClick" class="home"> < </div>
+		<div @click="goRegestClick" class="regest">注册</div>
+	</div>
+	<!-- 贷 字 -->
+	<div class="logo"></div>
+	<!-- 登录 切换 -->
+	<div class="login_type">
+		<!--<div @click="is_tel = true" id="kuaijie" class="left">快捷登录</div>
+        <div class="middle">|</div>
+        <div @click="is_tel = false"   id="zhanghao" class="right">账号登录</div>-->
+	</div>
+	<!-- 快捷登录输入框 -->
+	<div id="tel_input" v-if="is_tel == true">
+		<div class="login_input" >
+			<input v-model="telVal" type="tel" placeholder="请输入手机号" maxlength="11" id="telVal" style="width: 100%;"/>
+			<div @click="telVal = ''" v-if="showTelClear" class="clear" style="right: 0;"></div>
+		</div>
+		<div class="login_input">
+			<input v-model="yzmVal" type="tel" placeholder="请输入短信验证码" maxlength="4" />
+			<div @click="yzmVal = ''" v-if="showYzmClear" class="clear" style="right: 4.5rem;"></div>
+			<div @click="sendYzmClick" class="timer" v-bind:style="{color: yzmColor}" v-text="yzmTime2"></div>
+		</div>
+		<div class="login_input" id="VerificationC" >
+			<input v-model="inviteCodeFirst" type="text" placeholder="请输入邀请码（可选）"  style="width: 100%" id="codeFirst"/>
+			<div class="clear" style="right: 0;" @click="inviteCodeFirst = ''" v-if="clearinviteCodeFirst"></div>
+		</div>
+	</div>
+	<!-- 账号密码输入框 -->
+	<div id="zhanghao_input" v-if="is_tel == false ">
+		<div class="login_input">
+			<input v-model="zhanghao" type="tel" placeholder="请输入账号"/>
+			<div @click="zhanghao = ''" v-if="showZhanghaoClear" class="clear" style="right: 0;"></div>
+		</div>
+		<div class="login_input">
+			<input style="width: 7.5rem;" v-model="passwd" v-bind:type="pwType" maxlength="22" placeholder="请输入6~22位密码" />
+			<div @click="showPwClick" v-bind:class="show_hide" style="right: 3.8rem;"></div>
+			<div @click="forgetPwClick" class="timer" v-bind:style="{color: yzmColor}">忘记密码</div>
+		</div>
+		<div class="login_input">
+			<input v-model="inviteCodeSecond" type="text" placeholder="请输入邀请码（可选）"  style="width: 9rem" id="codeSecond"/>
+			<div  class="clear" style="right: 0;" @click="inviteCodeFirst = ''" v-if="clearinviteCodeFirst"></div>
+		</div>
+	</div>
+	<!-- 登录按钮 -->
+	<div @click="loginClick" v-bind:class="loginClass">登录</div>
+	<!-- 语音验证码 -->
+	<!--<div v-if="is_tel == true" class="login_yuyin">没收到短信？试试<span @click="yuyinClick" style="color: #1184FF;">电话语音验证码</span></div>-->
+</div>
+	
+
+</body>
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+<script type="text/javascript" src="../js/sm.min.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/md5.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/login2.js"></script>
+<script type="text/javascript">
+	var userType = localStorage.getItem("userType");
+	if(userType == 3){
+		mui("#VerificationC")[0].style.display="none";
+	}
+	var winHeight = $(window).height(); //获取当前页面高度
+	console.log("页面高度:"+winHeight);
+                $(window).resize(function() {
+                    var thisHeight = $(this).height();
+                    
+                    if (winHeight - thisHeight > 50) {
+                        //当软键盘弹出，在这里面操作
+                        //alert('aaa');
+                        $('body').css('height', winHeight + 'px');
+                    } else {
+                        //alert('bbb');
+                        //当软键盘收起，在此处操作
+                        $('body').css('height', '100%');
+                    }
+    			});
+
+</script>
+</html>

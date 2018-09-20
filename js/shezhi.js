@@ -17,7 +17,7 @@ var app = new Vue({
                     localStorage.removeItem('pageID');                    
 					$.toast('退出成功');
 					setTimeout(function(){
-						window.location.replace('login.html');
+						window.location.replace('login2.html');
 					},2000);
 				},
 			},
