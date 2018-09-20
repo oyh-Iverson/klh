@@ -38,12 +38,12 @@
             showZhanghaoClear: false,
             // 验证码计时
             yzmTime: '发送验证码',
-            yzmTime2: '发送验证码',
+            yzmTime2: '获取验证码',
             // 登录按钮样式
             loginClass: 'login_btn',
 //          yzmColor: '#1184FF',
             //yzmColor: '#ff6600',
-            yzmColor: 'black',
+            yzmColor: '#FF5201',
             clearinviteCodeFirst:false 
         },
         watch: {
@@ -189,8 +189,8 @@
                                         self.yzmTime = '发送验证码';
                                         self.yzmTime2 = '发送验证码';
                                         //self.yzmColor = '#1184FF"';
-                                        self.yzmColor = 'black';
-                                        mui(".timer")[0].style.border="1px black solid";
+                                        self.yzmColor = '#FF5201';
+                                        mui(".timer")[0].style.border="1px #FF5201 solid";
                                           
                                         
                                     }
