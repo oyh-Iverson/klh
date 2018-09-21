@@ -40,14 +40,16 @@
                 {
                     title: '宜人贷急速',
                     tip: '全场最高可借6W',
-                    backImg: 'linear-gradient(-135deg, #C0E3FF, #C49FFF)',
-                    titleColor: '#634BCE',
-                    tipColor: '#473A81'
+//                  backImg: 'linear-gradient(-135deg, #C0E3FF, #C49FFF)',
+										backImg: 'url(../img/aa.png)',
+                    titleColor: '#803604',
+                    tipColor: '#691B04'
                 },
                 {
                     title: '宜人贷急速',
                     tip: '全场最高可借6W',
-                    backImg: 'linear-gradient(-135deg, #D4FF85, #FFAD6C)',
+//                  backImg: 'linear-gradient(-135deg, #D4FF85, #FFAD6C)',
+                    backImg: 'url(../img/bb.png)',
                     titleColor: '#803604',
                     tipColor: '#691B04'
                 },
@@ -79,12 +81,12 @@
                 page:     '0',  // 请求页数
             },
         },
-//      beforeMount:function(){
-//      	var userId = localStorage.getItem('userId');
-//      	if(userId == "" || userId == null || userId == undefined) {               	
-//               window.location.href= "login2.html";
-//              }
-//      },
+        beforeMount:function(){
+        	var userId = localStorage.getItem('userId');
+        	if(userId == "" || userId == null || userId == undefined) {               	
+                 window.location.href= "login2.html";
+                }
+        },
         mounted: function() {
             //创建MeScroll对象,down可以不用配置,因为内部已默认开启下拉刷新,重置列表数据为第一页
             //解析: 下拉回调默认调用mescroll.resetUpScroll(); 而resetUpScroll会将page.num=1,再执行up.callback,从而实现刷新列表数据为第一页;
@@ -167,6 +169,7 @@
                 event.stopPropagation();
                 var userId = localStorage.getItem('userPhone');
                 console.log(userId);
+                console.log(n);
                 if(userId==null){
                 	window,location.href='login.html';
                 };
@@ -175,7 +178,6 @@
                 var id = id;
                 var userId = localStorage.getItem('userId') || '';
                 var md5Str = Util.basekey + userId + id;
-                
                     $.ajax({
                         type:"post",
                         url: urlStr,

@@ -397,12 +397,19 @@
                 showType: showType
             },
             success: function(res){
+            	console.log(res);
                 // 获取成功
                 if (res.ret_code == '0') {
                     banners = res.ret_data;
                     var tempHtml = '';
                     $.each(banners, function(index,item) {
-                        tempHtml = tempHtml + '<div class="swiper-slide" data-id="' + item.id + '"><img src="' + item.imgUrl + '"></div>'
+                        //tempHtml = tempHtml + '<div class="swiper-slide" data-id="' + item.id + '"><img src="' + item.imgUrl + '"></div>'
+                        var userPhone = localStorage.getItem('userPhone');
+                        tempHtml = tempHtml + '<div class="swiper-slide" data-id="' + item.id + '" >' +
+							'<a href="'+(userPhone!=null?item.advertUrl:'login.html')+'" >'+
+								'<img src="' + item.imgUrl + '">' +
+							'</a>'+
+							'</div>'
                     });
                     var html = '<div class="swiper-wrapper">' + tempHtml + '</div><div class="swiper-pagination"></div>';
                     $('#swiper1').html(html);

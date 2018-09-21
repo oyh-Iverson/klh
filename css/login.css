@@ -6,6 +6,17 @@
 	position: absolute;
 	z-index: 1;
 }
+.HBimg{
+	background: white;
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
+	border-radius: 23px;
+	padding-top: 30px;
+	padding-bottom: 25px;
+	position: relative;
+	top: -60px;
+}
 .page .pageBGI{
 	/*background: url(../img/bodyBM.png)no-repeat;*/
 	/*background-size: 100% 100%;*/
@@ -46,7 +57,7 @@
 	border-radius: 0.7rem;
 	margin-left: calc(50% - 3.5rem);
 	margin-top: 3rem;
-	background: url(../img/what.png);
+	/*background: url(../img/what.png);*/
 	position: relative;
 	background-size: 100% 100%;
 }
@@ -180,11 +191,13 @@ color: #c8c5c1;
 	height: 2.2rem;
 	line-height: 2.2rem;
 	text-align: center;
-	background-color: #FF5201;
+	/*background-color: #FF5201;*/
+	background:url(../img/register.png);
+	background-size: 100% 100%;
 	color: white;
 	border-radius: 1.1rem;
 	margin: 1.5rem auto 1rem;
-	box-shadow: 0 6px 10px 0 #FFBB9C;
+	/*box-shadow: 0 6px 10px 0 #FFBB9C;*/
 }
 .login_btn {
     width: 12.5rem;

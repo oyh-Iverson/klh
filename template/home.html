@@ -29,14 +29,17 @@
 	<div class="Recommends">
 		<div class="div_title">为您推荐</div>
 		<div class="classify2">
-			<div class="classify_item2" @click="detailsClick(item.id,item.applyCount)" v-for="item in dataList" v-bind:style="{backgroundImage: item.backImg}">
-				<div class="classify2_title" v-text="item.loanName" v-bind:style="{color: item.titleColor}"></div>
+			<div class="classify_item2" @click="detailsClick(item.id,item.applyCount)" v-for="item in dataList" v-bind:style="{backgroundImage: item.backImg}"style="background-size: 100% 100%;">
+				<div class="classify2_title" v-text="item.loanName" v-bind:style="{color: item.titleColor}" style="font-weight: bold;"></div>
 				<div class="classify2_tip" v-text="item.introduce" v-bind:style="{color: item.tipColor}"></div>
 				<div class="classify2_top"></div>
 			</div>
 		</div>
 	</div>
-	<div class="hot_title">精选借款</div>
+	<div class="hot_title" style="display: inline-flex;">
+		<div style="width: 100px;">精选借款</div>
+		<div style="width: 67%;font-size: 12px;color: chocolate;">一次性申请5-10个产品，成功贷款率可高达95%</div>
+	</div>
 	<div class="hot">
 		<div id="list-container">
 			<div class="item" @click="detailsClick(item.id,item.applyCount)" v-for="item in daikuanList">

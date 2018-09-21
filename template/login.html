@@ -10,9 +10,9 @@
 	<link rel="stylesheet" href="../css/login.css" />
 	<link rel="stylesheet" href="../css/adnimations.css">
 </head>
-<body class="page">	
+<body class="page" style="background: #ff6624;">	
 	<div class="pageBGI" :style="{ height: bodyHeight + 'px' }"></div>
- 	<div id="app">
+ 	<div id="app" style="background: url(../img/jiade.png);background-size: 100% 100%;">
 	<!-- 首页 注册 -->
 	<div class="top_title">
 		<div @click="goHomeClick" class="home" style="display: none;"> < </div>
@@ -27,6 +27,7 @@
         <div @click="is_tel = false"   id="zhanghao" class="right">账号登录</div>-->
 	</div>
 	<!-- 快捷登录输入框 -->
+	<div class="HBimg">		
 	<div id="tel_input" v-if="is_tel == true">
 		<div class="login_input" >
 			<input v-model="telVal" type="tel" placeholder="请输入手机号" maxlength="11" id="telVal" style="width: 100%;"/>
@@ -35,7 +36,7 @@
 		<div class="login_input">
 			<input v-model="yzmVal" type="tel" placeholder="请输入短信验证码" maxlength="4" />
 			<div @click="yzmVal = ''" v-if="showYzmClear" class="clear" style="right: 4.5rem;"></div>
-			<div @click="sendYzmClick" class="timer" v-bind:style="{color: yzmColor}" v-text="yzmTime2"></div>
+			<div v-on:click="sendYzmClick" class="timer" v-bind:style="{color: yzmColor}" v-text="yzmTime2"></div>
 		</div>
 		<div class="login_input" id="VerificationC" >
 			<input v-model="inviteCodeFirst" type="text" placeholder="请输入邀请码（可选）"  style="width: 100%" id="codeFirst"/>
@@ -60,6 +61,11 @@
 	</div>
 	<!-- 登录按钮 -->
 	<div @click="loginClick" v-bind:class="loginClass">登录</div>
+	</div>
+	<div style="width: 100%;height: auto;position: relative;margin: 0 auto;font-size: 12px;color: lightgrey;">
+		<div style="text-align: center;">可乐花</div>
+		<div style="text-align: center;">Copyright@2015爱加空间(深圳)科技有限公司版权所有</div>
+	</div>
 	<!-- 语音验证码 -->
 	<!--<div v-if="is_tel == true" class="login_yuyin">没收到短信？试试<span @click="yuyinClick" style="color: #1184FF;">电话语音验证码</span></div>-->
 </div>
