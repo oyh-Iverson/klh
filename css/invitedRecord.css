@@ -16,6 +16,12 @@
 	/*top: 0.6rem; */
 	font-size: 1.5rem;
 	color: darkgrey;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: url(../img/fanhui.png);
+	background-size: 100% 100%;
+	margin-top: 5px;
+   
 }
 .header{
     width: 100%;

@@ -99,6 +99,7 @@
             },
         },
         mounted: function() {
+        	this.horn();
             this.isLogin();
             if(localStorage.getItem('refereeCode') != null && localStorage.getItem('refereeCode')!=undefined &&localStorage.getItem('refereeCode') != "null"){
                 this.inviteCodeFirst = localStorage.getItem('refereeCode');//推荐码  url中有字段则自动填充
@@ -114,6 +115,51 @@
 				var r = window.location.search.substr(1).match(reg);
 				if (r != null) return decodeURI(r[2]); return null;
 			},
+			        	horn(){
+        		var messages = [];
+        		var urlStr = Util.baseUrl + '/DuG/api/basics/advertOperation/findLoanSucce.do';
+        		var md5Str = Util.basekey;
+        		console.log(md5Str);
+        		$.ajax({
+            		type:"get",
+            		url: urlStr,
+            		async:true,
+            			//dataType:'json',
+            		data: {
+                		key: Util.basekey,
+                		auth: Util.base32Encode('key'),
+                		token: md5(md5Str)
+            		},
+            		success: function(res){
+            			console.log(res);
+               			 // 获取成功
+                		if (res.ret_code == '0') {
+                    		messages = res.ret_data;
+                    		var tempHtml = '';
+                    		$.each(messages, function(index,item) {
+                        		tempHtml = tempHtml + '<div class="swiper-slide">' + item + '</div>'
+                    		});
+                    		var html = '<div class="swiper-wrapper">' + tempHtml + '</div>';
+                    		$('#swiper2').html(html);
+                    		var swiper2 = new Swiper('#swiper2',{
+//                      		direction : 'vertical',
+                        		speed: 2000,
+                        		loop: true,
+                        		spaceBetween: 0,
+                        		autoplay:true,
+                        		observer:true,//修改swiper自己或子元素时，自动初始化swiper
+                        		observeParents:true,//修改swiper的父元素时，自动初始化swiper
+                    		});
+                		} else{
+                    		$.toast(res.ret_msg);
+                		}
+            	},
+            	error: function(res){
+                	$.toast('网路请求失败，请稍后重试');
+            	}
+        		});
+        	}
+			,
             isLogin: function(){
                 var userId = localStorage.getItem('userId') || '';
                 if (userId != '') {

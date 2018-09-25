@@ -15,6 +15,12 @@
 	font-size: 1.6rem;
 	padding-left: 0.6rem; 
 	color: darkgray;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: url(../img/fanhui.png);
+	background-size: 100% 100%;
+	margin-top: 5px;
+    margin-left: 11px;
 }
 .shehzhi-top > span{
 	margin-left: -2.5rem;

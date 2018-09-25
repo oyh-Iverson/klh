@@ -15,7 +15,8 @@
 	padding-top: 30px;
 	padding-bottom: 25px;
 	position: relative;
-	top: -60px;
+	/*top: -60px;*/
+	top: -38px;
 }
 .page .pageBGI{
 	/*background: url(../img/bodyBM.png)no-repeat;*/
@@ -79,8 +80,10 @@
 }
 .login_type {
 	width: 100%;
-	height: 2.2rem;
+	height: 1.2rem;
 	/*margin-top: 1.9rem;*/
+	position: relative;
+	top: -43px;
 }
 .login_type .left {
 	float: left;
@@ -217,3 +220,26 @@ color: #c8c5c1;
 	text-align: center;
 	margin-top: 0.5rem;
 }
+.laba{
+	float: left;
+    width: 1rem;
+    height: 1rem;
+    background-image: url(../img/labas.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0.7rem 0.7rem;
+    margin-right: 1rem;
+    margin-left: 1.5rem;
+    margin-top: 0.1rem;
+}
+#swiper2{
+	float: left;
+    height: 1rem !important;
+    width: calc(100% - 4.4rem);
+    padding-bottom: 0 !important;
+    font-size: 0.65rem;
+    color: khaki;
+    margin-top: 0.1rem;
+}
+
+

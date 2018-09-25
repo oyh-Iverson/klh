@@ -25,9 +25,14 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    flex: 1;
+    /*flex: 1;*/
     color: darkgrey;
     font-size: 1.5rem;
+    width: 1.5rem;
+	height: 1.5rem;
+	background: url(../img/fanhui.png);
+	background-size: 100% 100%;
+	margin-top: 4px;
 }
 .header .title-withdrawal{
     /*font-weight: 700;*/
@@ -38,6 +43,7 @@
     justify-content: center;
     align-items: center;
     flex: 1;
+    margin-left: 4rem;
 }
 .header .flowing-water{
     font-weight: 700;

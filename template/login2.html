@@ -9,13 +9,15 @@
 	<link rel="stylesheet" href="../css/sm.css" />
 	<link rel="stylesheet" href="../css/login.css" />
 	<link rel="stylesheet" href="../css/adnimations.css">
+	<link rel="stylesheet" href="../css/swiper-4.1.0.min.css" />
 </head>
 <body class="page" style="background: #ff6624;">	
 	<div class="pageBGI" :style="{ height: bodyHeight + 'px' }"></div>
  	<div id="app" style="background: url(../img/jiade.png);background-size: 100% 100%;">
 	<!-- 首页 注册 -->
 	<div class="top_title">
-		<div @click="goHomeClick" class="home" style="display: none;"> < </div>
+		<!--<div @click="goHomeClick" class="home" style="display: none;"> < </div>-->
+		<div @click="goHomeClick" class="home" style="width: 20px;height: 20px;background: url(../img/fanhui.png);background-size: 100% 100%;display: none;">  </div>
 		<div @click="goRegestClick" class="regest">注册</div>
 	</div>
 	<!-- 贷 字 -->
@@ -25,6 +27,8 @@
 		<!--<div @click="is_tel = true" id="kuaijie" class="left">快捷登录</div>
         <div class="middle">|</div>
         <div @click="is_tel = false"   id="zhanghao" class="right">账号登录</div>-->
+       <div class="laba"></div>
+	   <div class="swiper-container" id="swiper2"></div>
 	</div>
 	<!-- 快捷登录输入框 -->
 	<div class="HBimg">
@@ -78,8 +82,10 @@
 <script type="text/javascript" src="../js/sm.min.js"></script>
 <script type="text/javascript" src="../js/mui.min.js"></script>
 <script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/swiper-4.1.0.min.js"></script>
 <script type="text/javascript" src="../js/md5.js"></script>
 <script type="text/javascript" src="../js/util.js" ></script>
+
 <script type="text/javascript" src="../js/login2.js"></script>
 <script type="text/javascript">
 	var userType = localStorage.getItem("userType");
