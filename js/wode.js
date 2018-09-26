@@ -1,5 +1,6 @@
  $(document).on('click','#guanzuwx', function () {
         $.popup('.popup-about');
+       
     });
 
     var app = new Vue({

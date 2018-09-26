@@ -456,9 +456,9 @@
 	left: 0.6rem;
 	font-size: 1.5rem; 
 	color: darkgrey;
-	top: 0.2rem;
-	width: 1.5rem;
-	height: 1.5rem;
+	/*top: 0.2rem;*/
+	width: 2rem;
+	height: 2rem;
 	background: url(../img/fanhui.png);
 	background-size: 100% 100%;
 }

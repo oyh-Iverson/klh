@@ -50,11 +50,11 @@
 	font-size: 1.6rem;
 	/*padding-left: 0.6rem; */
 	color: darkgray;
-	width: 1.5rem;
-	height: 1.5rem;
+	width: 2rem;
+	height: 2rem;
 	background: url(../img/fanhui.png);
 	background-size: 100% 100%;
-	margin-top: 5px;
+	/*margin-top: 5px;*/
     margin-left: 11px;
 }
 .help-top > span{

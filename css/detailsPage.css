@@ -21,11 +21,16 @@
     font-size: 1.5rem;
     color: darkgrey;
     margin-left: 0.8rem;
+	width: 2rem;
+	height: 2rem;
+    background: url(../img/fanhui.png);
+    background-size: 100% 100%;
 }
 .header .second-bar{
    /* font-weight: 700;*/
     font-size: 20px;
     color: #343434;
+    margin-left: -60px;
 }
 .header .third-bar{
     width: 18px;
