@@ -192,8 +192,39 @@
                         },
                         success: function(res){
                         console.log(res);
-                        var loanUrl=	res.ret_data.loanUrl
-                        window.location.href=loanUrl;      
+                        var loanUrl=	res.ret_data.loanUrl 
+                        console.log(loanUrl);
+                       	window.location.href=loanUrl; 
+                				var urlStr1 = Util.baseUrl + '/DuG/api/basics/loan/createLoanApply.do';			
+                    $.ajax({
+                        type:"post",
+                        url: urlStr1,
+                        async:true,
+                        //dataType:'json',
+                        data: {
+                            userId: userId,
+                            id: id,
+                            key: Util.basekey,
+                            auth: Util.base32Encode('key,userId,id'),
+                            token: md5(md5Str)
+                        },
+                        success: function(res){
+                        	console.log(res);
+                            // 请求成功
+                            if (res.ret_code == '0') {
+//                              if(self.dataObj.loanUrl){
+//                              	console.log(self.dataObj.loanUrl);
+//                                  //window.location.href = self.dataObj.loanUrl;
+//                              }
+
+                            } else{
+                                $.toast(res.ret_msg);
+                            }
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+                    })               
                         },
                         error: function(res){
                             $.toast('网路请求失败，请稍后重试');

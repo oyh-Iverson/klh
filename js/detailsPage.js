@@ -203,13 +203,14 @@ var app = new Vue({
                             token: md5(md5Str)
                         },
                         success: function(res){
+                        	console.log(res);
                             // 请求成功
                             if (res.ret_code == '0') {
                                 if(self.dataObj.loanUrl){
                                 	//console.log(self.dataObj.loanUrl);
                                     window.location.href = self.dataObj.loanUrl;
                                 }else{
-                                    window.location.href = "login.html";
+                                    //window.location.href = "login.html";
                                 }
 
                             } else{
