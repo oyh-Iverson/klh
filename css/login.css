@@ -16,16 +16,16 @@
 	padding-bottom: 25px;
 	position: relative;
 	/*top: -60px;*/
-	top: -38px;
+	top: 25px;
 }
 .page .pageBGI{
-	/*background: url(../img/bodyBM.png)no-repeat;*/
-	/*background-size: 100% 100%;*/
+	background: url(../img/BG.png)no-repeat;
+	background-size: 100% 100%;
 	/*box-shadow: -4px 5px 33px #d0bfb2 inset;*/
 	width: 100%;height: 100%; 
 	position: absolute;
 	z-index: -1;
-	filter: blur(3px);
+	/*filter: blur(3px);*/
 }
 .top_title {
 	width: 100%;
@@ -83,7 +83,7 @@
 	height: 1.2rem;
 	/*margin-top: 1.9rem;*/
 	position: relative;
-	top: -43px;
+	top: 10px;
 }
 .login_type .left {
 	float: left;

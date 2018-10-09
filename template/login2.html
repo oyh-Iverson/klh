@@ -11,17 +11,18 @@
 	<link rel="stylesheet" href="../css/adnimations.css">
 	<link rel="stylesheet" href="../css/swiper-4.1.0.min.css" />
 </head>
-<body class="page" style="background: #ff6624;">	
+<body class="page">	
 	<div class="pageBGI" :style="{ height: bodyHeight + 'px' }"></div>
- 	<div id="app" style="background: url(../img/jiade.png);background-size: 100% 100%;">
+ 	<!--<div id="app" style="background: url(../img/jiade.png);background-size: 100% 100%;">-->
+ 	<div id="app" style="position: relative;top: 250px;">
 	<!-- 首页 注册 -->
-	<div class="top_title">
+	<div class="top_title" style="display: none;">
 		<!--<div @click="goHomeClick" class="home" style="display: none;"> < </div>-->
 		<div @click="goHomeClick" class="home" style="width: 20px;height: 20px;background: url(../img/fanhui.png);background-size: 100% 100%;display: none;">  </div>
 		<div @click="goRegestClick" class="regest">注册</div>
 	</div>
 	<!-- 贷 字 -->
-	<div class="logo"></div>
+	<!--<div class="logo"></div>-->
 	<!-- 登录 切换 -->
 	<div class="login_type">
 		<!--<div @click="is_tel = true" id="kuaijie" class="left">快捷登录</div>
@@ -68,10 +69,11 @@
 	<!-- 登录按钮 -->
 	<div @click="loginClick" v-bind:class="loginClass">登录</div>
 	</div>
-	<div style="width: 100%;height: auto;position: relative;margin: 0 auto;font-size: 12px;color: lightgrey;">
+	<div style="width: 100%;height: auto;position: relative;margin: 0 auto;font-size: 12px;color: lightgrey;margin-top: 43px;">
 		<div style="text-align: center;">可乐花</div>
 		<div style="text-align: center;">Copyright@2015爱加空间(深圳)科技有限公司版权所有</div>
 	</div>
+	
 	<!-- 语音验证码 -->
 	<!--<div v-if="is_tel == true" class="login_yuyin">没收到短信？试试<span @click="yuyinClick" style="color: #1184FF;">电话语音验证码</span></div>-->
 </div>

@@ -16,6 +16,12 @@
 	<!--<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">-->	
 	<link rel="stylesheet" href="../css/weui.min.css"/>
 </head>
+ <style>
+ 	.item-top_logo{
+ 		width: 2.5rem;
+ 		height: 2.5rem;
+ 	}
+ </style>
 <body class="page" onload="javaScript:func()">
 <div id="mescroll" class="content mescroll">
 	<!-- 广告轮播图 -->
@@ -27,22 +33,67 @@
 	</div>
 	<!-- 贷款分类2 -->
 	<div class="Recommends">
-		<div class="div_title">为您推荐</div>
+		<!--<div class="div_title">为您推荐</div>
 		<div class="classify2">
 			<div class="classify_item2" @click="detailsClick(item.id,item.applyCount)" v-for="item in dataList" v-bind:style="{backgroundImage: item.backImg}"style="background-size: 100% 100%;">
 				<div class="classify2_title" v-text="item.loanName" v-bind:style="{color: item.titleColor}" style="font-weight: bold;"></div>
 				<div class="classify2_tip" v-text="item.introduce" v-bind:style="{color: item.tipColor}"></div>
 				<div class="classify2_top"></div>
 			</div>
+		</div>-->
+		<div class="Recommends-left">
+			<div class="Recommends-left-top" @click="Complete()">
+				<div>贷款大全</div>
+				<div>海量产品任你选</div>
+				<div></div>
+			</div>
+			<div class="Recommends-left-bottom" @click="large()">
+				<div style="width: 80%;">
+					<div>大额低息贷</div>
+					<div>1-20万额度</div>
+				</div>
+				<div style="width: 27%;">
+					<div></div>
+				</div>
+			</div>
+		</div>
+		<div class="Recommends-right">
+			<div class="Recommends-rightone" @click="Newmouth()">
+				<div style="width: 80%;">
+					<div class="RecommendsTitlt">新口子</div>
+					<div class="Recommendstext">优惠多多,降息大</div>
+				</div>
+				<div style="width: 27%;">
+					<div class="RecommendsImg xinkouzi"></div>
+				</div>
+			</div>
+			<div class="Recommends-rightsend" @click="borrow()">
+				<div   style="width: 80%;">
+					<div class="RecommendsTitlt" style="">一定借到钱</div>
+					<div class="Recommendstext" style="">为你量身定制</div>
+				</div>
+				<div  style="width: 27%;">
+					<div class="RecommendsImg yiding"></div>
+				</div>
+			</div>
+			<div class="Recommends-rightstree" @click="SmallAM()">
+				<div style="width: 80%;">
+					<div class="RecommendsTitlt">小额极速贷</div>
+					<div class="Recommendstext">1万以下额度</div>
+				</div>
+				<div style="width: 27%;">
+					<div class="RecommendsImg xiaoe"></div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="hot_title">
 		<div style="width: 100px;">精选借款</div>
-		<div style="width: 100%;font-size: 15px;color: #FF5201; padding-top: 7px;">一次性申请5-10个产品，成功贷款率可高达95%</div>
+		<div style="width: 100%;font-size: 15px;color: #FF5201; padding-top: 7px;">一次性申请3-5个产品，成功贷款率可高达95%</div>
 	</div>
 	<div class="hot">
 		<div id="list-container">
-			<div class="item" @click="detailsClick(item.id,item.applyCount)" v-for="item in daikuanList">
+			<!--<div class="item" @click="detailsClick(item.id,item.applyCount)" v-for="item in daikuanList">
 				<div class="item-top">
 					<div  class="item-logo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
 					<div class="item-Con">
@@ -70,8 +121,35 @@
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div>	-->
+			<div class="itemBoders" v-for="item in daikuanList">
+			  <div class="item" @click="detailsClick(item.id,item.applyCount)" >
+				<div class="item-top">
+					<div class="item-logo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
+					<div class="item-loanName" v-text="item.loanName"></div>
+					<div class="item-Labels">
+						<div v-if="Labelstip">一标签</div>
+						<div v-if="Labelstip">二标签</div>						
+					</div>
+					<div class="apples" id="translates" @click="detailsClicks(item.id,item.applyCount)">立即申请</div>
+				</div>
+				<div class="item-Con">
+					<div v-text="item.maxQuota"></div>
+					<!--<div v-text="item.monthRate+'/'+item.minTerm"></div>-->
+					<div v-text="item.introduce"></div>
+				</div>
+				<div  class="item-bottom">
+					<!--<div>最高可提</div>-->
+					<div style="color: #9c9b9a;">日利率:{{item.monthRate+'%'}}/还款日期:{{item.maxTerm+'(月)'}}</div>
+					<div class="item-applyCount">
+						已有<span class="item-applyCount-Number">{{item.applyCount}}</span>人申请成功
+					</div>
+				</div>
+			  </div>	
+			</div>
+			<div class="mores" @click="Complete()">查看更多>></div>
 		</div>
+		
 	</div>
 	
 </div>
@@ -84,6 +162,10 @@
 	<a class="tab-item external" href="invitation.html" id="Invitations">
 		<span class="icon icon-message"></span>
 		<span class="tab-label">邀请</span>
+	</a>
+	<a class="tab-item external" href="daikuan.html" >
+		<span class="icon icon-message"></span>
+		<span class="tab-label">贷款</span>
 	</a>
 	<a class="tab-item external" href="wode.html" >
 		<span class="icon icon-me"></span>

@@ -14,20 +14,24 @@
 
 <body>
 <div class="wrapper" id="detailsPage">
+	
     <div class="header">
-        <a href="home.html" class="first-bar"></a>
+        <a href="javascript:history.go(-1)" class="first-bar"></a>
         <span class="second-bar" v-text="dataObj.loanName"></span>
         <img>
     </div>
-    <div class="title-sign">
+    <div  style="height: 11.1rem;">
+    	<div class="detailsPageBm"></div>
+    <div>
+      <!--<div class="title-sign">
         <img :src="dataObj.logo" alt="" class="first-bar">
         <div class="second-bar">
             <span class="first-text" v-text="dataObj.loanName">></span>
             <span class="second-text">已成功申请<span class="third-text" v-text="dataObj.applyCount"></span>人</span>
         </div>
-    </div>
+      </div>
 
-    <div class="banner">
+      <div class="banner">
         <div class="banner-bar first-bar">
             <span class="first-text" style="margin-left: 2rem">最高额度</span>
             <span class="second-text" style="margin-left: 2rem" v-text="dataObj.maxQuota"></span>
@@ -36,16 +40,44 @@
             <span class="first-text">最高月利率</span>
             <span class="second-text" v-text="dataObj.monthRate+'%'"></span>
         </div>
+      </div>-->
+      <div class="business">
+      	<div class="title-sign">
+        	<!--<img :src="dataObj.logo" alt="" class="first-bar">
+        	<div class="second-bar">
+            	<span class="first-text" v-text="dataObj.loanName">></span>
+            	<span class="second-text">已成功申请<span class="third-text" v-text="dataObj.applyCount"></span>人</span>
+        	</div>-->
+        	<img :src="dataObj.logo" alt="" class="first-bar">
+        	<div style="margin-right: auto;margin-left: 10px;width: 49%;">
+        		<div v-text="dataObj.loanName" style="font-size: 20px;"></div>
+        		<div v-text="dataObj.introduce" style="color: lightslategrey;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"></div>
+        	</div>
+        	<div style="padding-right: 26px;text-align: center;">成功申请
+        	<div v-text="dataObj.applyCount" style="font-size: 15px;color: #FF5201;"></div>
+        	</div>
+      	</div>
+      	<div class="banner">
+        <div class="banner-bar first-bar" style="margin-left: -30px;">
+            <span class="first-text" style="margin-left: 2rem">可申请额度</span>
+            <span class="second-text" style="margin-left: 2rem;">{{dataObj.minQuota}}-{{dataObj.maxQuota}}</span>
+           
+        </div>
+        <div class="banner-bar" style="text-align: right;padding-right: 16px;">
+            <span class="first-text">最高月利率</span>
+            <span class="second-text" v-text="dataObj.monthRate+'%'"></span>
+        </div>
+      </div>
+      </div>
+     </div>
     </div>
     <div class="line-gray"></div>
-
-
     <div class="tab-change">
         <span class="tab-bar" @click="slectBtn(0)">
-            <span  :style="{borderBottom:iconShow?'':'0.15rem solid #E8B342'}">产品详情</span>
+            <span  :style="{borderBottom:iconShow?'':'0.15rem solid #FF5201'}">产品详情</span>
         </span>
         <span class="tab-bar" @click="slectBtn(1)">
-            <span :style="{borderBottom:iconShow?'0.15rem solid #E8B342':''}">产品评价</span>
+            <span :style="{borderBottom:iconShow?'0.15rem solid #FF5201':''}">产品评价</span>
         </span>
     </div>
 
@@ -101,7 +133,7 @@
             </div>
             <div class="second-bar  process">
                 <div class="renzheng_item" v-for="item in dataObj.certifiedList">               	
-                	<img src="../img/lljl.png" />
+                	<img src="../img/daik.png" />
                     <span v-text="item.loan_key"></span>
                     
                 </div>    
@@ -110,7 +142,7 @@
         <div class="box" style="height: auto;">
             <div class="first-bar">
                 <span class="first-text"></span>
-                <span class="second-text">申请条件及资料</span>
+                <span class="second-text">申请条件</span>
             </div>
             <div class="second-bar" v-text="dataObj.applyCondition"></div>
         </div>

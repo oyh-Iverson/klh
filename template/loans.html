@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/sm.min.css" />
+    <link rel="stylesheet" href="../mescroll/mescroll.min.css" />
+    <link rel="stylesheet" href="../css/mui.css">
+    <link rel="stylesheet" href="../css/swiper-4.1.0.min.css" />
+    <link rel="stylesheet" href="../css/weui.min.css"/> 
+    <link rel="stylesheet" href="../css/loans.css"/> 
+	</head>
+	
+	<body>
+	<div id="mescroll" class="content mescroll">
+		<div id="shehzhi-top" class="shehzhi-top">
+				<a href="home.html"></a>
+				<span v-text="tiptext"></span>
+		</div>
+		<div class="AdvertisementTip">一次性申请3-5个产品，成功贷款率可高达95%</div>
+		<div id="list-container" style=" margin-top: 76px;">
+			
+			<div class="itemBoders" v-for="item in daikuanList">
+				<div class="item" @click="detailsClick(item.id,item.applyCount)">
+					<div class="item-top">
+						<div class="item-logo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
+						<div class="item-loanName" v-text="item.loanName"></div>
+						<div class="item-Labels">
+							<div v-show="Labelstip">一标签</div>
+							<div v-show="Labelstip">二标签</div>						
+						</div>
+						<div class="apples" id="translates" @click="detailsClicks(item.id,item.applyCount)">立即申请</div>
+					</div>
+					<div class="item-Con">
+						<div v-text="item.maxQuota"></div>
+						<!--<div v-text="item.monthRate+'/'+item.minTerm"></div>-->
+						<div v-text="item.introduce"></div>
+					</div>
+					<div  class="item-bottom">
+					<!--<div>最高可提</div>-->
+					<div style="color: #9c9b9a;">日利率:{{item.monthRate+'%'}}/还款日期:{{item.maxTerm+'(月)'}}</div>
+					<div class="item-applyCount">
+						已有<span class="item-applyCount-Number">{{item.applyCount}}</span>人申请成功
+					</div>
+				</div>
+				</div>
+			</div>
+			<div style="text-align: center; color: lightgrey;" v-show="ToEnd" id="mores">没有更多的数据了</div>
+		</div>
+	</div>
+	</body>
+	<script type='text/javascript' src='../js/mui.js' ></script>
+    <script type='text/javascript' src='../js/zepto.min.js' ></script>
+	<script type='text/javascript' src='../js/sm.min.js' ></script>
+	<script type="text/javascript" src="../js/swiper-4.1.0.min.js" ></script>
+	<!--<script type="text/javascript" src="../js/md5.js"></script>-->
+	<script type="text/javascript" src="../js/md5.min.js"></script>
+	<script type="text/javascript" src="../js/swiper-4.1.0.min.js" ></script>
+	<script type="text/javascript" src="../js/util.js" ></script>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" src="../mescroll/mescroll.min.js" ></script>
+	<script type="text/javascript" src="../js/weui.min.js" async></script>
+	<script type="text/javascript" src="../js/loans.js"></script>
+	
+</html>

@@ -8,6 +8,7 @@
         el: '#mescroll',
         data: {
             daikuanList: [],
+            Labelstip:false,
             // daikuanType :0,
             classify: [
                 {
@@ -117,13 +118,13 @@
             });
             if(this.getQueryString('referee')!=null && this.getQueryString('referee') != ""){
             	localStorage.setItem('referee',this.getQueryString('referee') || '');
-            }
+            };
             if(this.getQueryString('userType')!=null && this.getQueryString('userType') != ""){
             	localStorage.setItem('userType',this.getQueryString('userType') || '');
-            }
+            };
             if(this.getQueryString('refereeCode')!=null && this.getQueryString('refereeCode') != ""){
             	localStorage.setItem('refereeCode',this.getQueryString('refereeCode') || '');
-            }
+            };
             /*if(localStorage.getItem('referee') == null || localStorage.getItem('referee') == ""){
             	localStorage.setItem('referee',this.getQueryString('referee') || '');
             }*/
@@ -305,10 +306,7 @@
             classifyClick:  function(id){
                 window.location.href = 'daikuan2.html?id=' + id;
             },
-            // 火热点击事件
-            classify2Click: function(id){
-                window.location.href = 'dkdetail.html?id=' + id;
-            },
+           
             // 获取 火热 列表数据源
             getData2: function(){            
                 var self = this;
@@ -439,6 +437,23 @@
             
         }
     });
+    
+     function Newmouth(){ 	
+    	window.location.href= "loans.html?newLoan=0";
+    };
+    function borrow(){ 	
+    	window.location.href= "loans.html?confirmLoan=0";
+    };
+    function Complete(){ 	
+    	window.location.href= "daikuan.html?";
+    };
+    function SmallAM(){
+    	window.location.href= "loans.html?shortTerm=0";
+    };
+    function large(){
+    	window.location.href= "loans.html?largeLoan=0";
+    };
+
 
     var banners = [];
     //广告轮播

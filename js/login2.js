@@ -1,8 +1,4 @@
- function getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return decodeURI(r[2]); return null;
-    }
+ 
 
     /* $(function(){
         if(getQueryString('referee') != null && getQueryString('referee') != ""){
@@ -100,9 +96,13 @@
         },
         mounted: function() {
         	this.horn();
+        	this.Statistics();
             this.isLogin();
             if(localStorage.getItem('refereeCode') != null && localStorage.getItem('refereeCode')!=undefined &&localStorage.getItem('refereeCode') != "null"){
                 this.inviteCodeFirst = localStorage.getItem('refereeCode');//推荐码  url中有字段则自动填充
+            };
+            if(this.getQueryString('referee')!=null && this.getQueryString('referee') != ""){
+            	localStorage.setItem('referee',this.getQueryString('referee') || '');
             };
             this.bodyHeight=document.documentElement.clientHeight;
             console.log(this.bodyHeight);
@@ -153,6 +153,37 @@
                 	$.toast('网路请求失败，请稍后重试');
             	}
         		});
+        	},
+        	Statistics(){
+        		var urlStr = Util.baseUrl + '/DuG/api/user/user/saveUserView.do';
+        		var md5Str = Util.basekey;
+        		var referee= window.localStorage.getItem("referee");
+        		var referee1 = "";
+        		if(referee){
+        			referee1 = referee;
+        		}else{
+        			referee1= null;
+        		}
+        		console.log(referee1);
+        		$.ajax({
+            		type:"get",
+            		url: urlStr,
+            		async:true,
+            			//dataType:'json',
+            		data: {
+                		key: Util.basekey,
+                		auth: Util.base32Encode('key'),
+                		token: md5(md5Str),
+                		referee: referee1,
+            		},
+            		success: function(res){
+            			console.log(res);              			
+            		},
+            		error: function(res){
+                		$.toast('网路请求失败，请稍后重试');
+            		}
+        		});
+        		
         	},
             getQueryString(name) {
 				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
