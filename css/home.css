@@ -9,7 +9,7 @@ body{
 }
 .swiper-slide img{
 	width: 100%;
-	height: 100%;
+	height: auto;
 }
 .swiper-pagination-bullet {
 	background-color: white !important;
@@ -45,10 +45,20 @@ body{
 	font-size: 0.65rem;
 	color: #5B5B5B;
 	margin-top: 0.2rem;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 #swiper2 .swiper-wrapper{
 	height: 1rem;
+	
 }
+.swiper-slide{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .div_title {
 	background-color: white;
 	padding-left: 0.6rem;
@@ -164,11 +174,13 @@ body{
 	line-height: 0.9rem;
 	padding: 0.6rem 0 0 0.6rem;
 	padding-bottom: 5px;
-	margin-top: 5px;
+	margin-top: 7px;
+	margin-bottom: 7px;
 	font-size: 0.9rem;
 	font-weight: 700;
 	color: #343434;
 	background: white;
+	/*display: flex;*/
 
 }
 .box-item img{
@@ -203,32 +215,31 @@ body{
     padding-top: 0.3rem;
 }
 .Recommends-left{
-	width: 47%;
-	margin-left: 5px;   
+	width: 46%;
+    margin-left: 6px;
 }
 .Recommends-right{
-	width: 47%;
-	margin-right: 5px;
-   
+    width: 46%;
+    margin-right: 6px;
 }
 .Recommends-right>div{
 	width: 100%;
-    height: 58.5px;
+    height: 56.5px;
     border-radius: 5px;
     display: flex;
     font-size: 12px;
 }
 .Recommends-right>div:nth-child(2){
-	margin-top: 5px;
+	margin-top: 9px;
 }
 .Recommends-right>div:last-child{
-	margin-top: 5px;
+	margin-top: 9px;
 }
 .Recommends-left-top{
 	width: 100%;
-    height: 120px;
-    /*background: url(../img/daikuanBm.png);*/
-    background: rgba(255,228,219,1);
+    height: 121px;
+    background: url(../img/daikuanBm.png);
+    /*background: rgba(255,228,219,1);*/
     background-size: 100% 100%;
     border-radius: 5px;
     font-size: 12px;
@@ -238,7 +249,7 @@ body{
 	font-size: 19px;
     font-weight: bold;
     padding-left: 12px;
-    padding-top: 1px;
+    padding-top: 13px;;
 }
 .Recommends-left-top>div:nth-child(2){
 	padding-left: 12px;
@@ -246,20 +257,20 @@ body{
 }
 .Recommends-left-top>div:last-child{
 	position: absolute;
-    width: 30px;
-    height: 30px;
-    background: url(../img/daik.png);
+    width: 40px;
+    height: 40px;
+   /* background: url(../img/daik.png);*/
     background-size: 100% 100%;
     bottom: 11px;
-    right: 19px;
+    right: 10px;
 }
 .Recommends-left-bottom{
 	width: 100%;
-    height: 60px;
+    height: 56.5px;
     /*background: url(../img/daeBm.jpg);*/
     background: rgba(254,244,243,1);
     background-size: 100% 100%;
-    margin-top: 6px;
+    margin-top: 9px;
     border-radius: 5px;
     display: flex;
     font-size: 12px;
@@ -281,7 +292,7 @@ body{
     background-size: 100% 100%;
 }
 .Recommends-left-bottom>div>div:first-child{
-	font-size: 19px;
+	font-size: 15px;
     font-weight: bold;
     padding-left: 12px;
     padding-top: 1px;
@@ -291,13 +302,14 @@ body{
 	color: lightslategray;
 }
 .Recommends-left-bottom>div:last-child>div{
-	width: 30px;
-	height: 30px; 
+	width: 40px;
+	height: 40px; 
 	border-radius: 50%;
 	/*background: url(../img/checkbox_pressed.png) no-repeat; */
-	background: url(../img/dae.png) no-repeat;
+	background: url(../img/yiding.png) no-repeat;
 	background-size: 100% 100%;
-	margin-top: 14px;
+	margin-top: 9px;
+	margin-right: 9px;
 }
 .item{
 	width: 95%;
@@ -305,11 +317,12 @@ body{
 	background: white;
     border-radius: 5px;
     margin-top: 0.05rem;
-    padding: 0 0.6rem;
+    padding: 0 0.5rem;
 }
 .itemBoders{
-	border-bottom: 2px solid rgba(236,236,236,1);
+	border-bottom: 1px solid rgba(236,236,236,1);
     padding-bottom: 8px;
+    padding-top: 8px;
 }
 .itemBoders:last-child{
 	border-bottom: none;
@@ -340,18 +353,17 @@ body{
 	margin-right: auto;
 }
 .item-Labels>div{
-	border: 1px darkcyan solid;
+	border: 1px rgb(114,174,253) solid;
     padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 8px;
+    padding-right: 6px;
+    border-radius: 10px;
+    padding-left: 6px;
+	margin-left: 5px;
+    color: rgb(114,174,253);
 }
 .item-Labels>div:first-child{
 	padding-left: 5px;
 	margin: 0;
-}
-.item-Labels>div{
-	padding-left: 5px;
-	margin-left: 5px;
 }
 .item-Con{
 	width: 100%;
@@ -369,7 +381,7 @@ body{
     
 }
 .RecommendsTitlt{
-	font-size: 19px;
+	font-size: 15px;
     font-weight: bold;
     padding-left: 12px;
     padding-top: 1px;
@@ -379,15 +391,16 @@ body{
     color: lightslategray;
 }
 .RecommendsImg{
-	width: 30px;
-    height: 30px;
+	width: 40px;
+    height: 40px;
     border-radius: 50%;
     /*background: url(../img/checkbox_pressed.png) no-repeat;*/
    /*background: url(../img/xinkouzi.png) no-repeat;*/
-    margin-top: 14px;
+    margin-top: 9px;
+    margin-right: 12px;
 }
 .xinkouzi{	 
-	  background: url(../img/yiding.png) no-repeat;
+	  background: url(../img/daik.png) no-repeat;
 	 background-size: 100% 100%;
 }
 .yiding{

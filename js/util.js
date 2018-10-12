@@ -1,6 +1,6 @@
 var Util = {
 //	baseUrl: 'http://112.74.29.75:8900',
-	baseUrl: 'http://192.168.1.217:8081',
+	baseUrl: 'http://192.168.1.3:8081',
 	//baseUrl: 'http://klh.ijiakj.com:8080',//正式
 	//baseUrl: 'http://klh.ijiakj.com:8081',
 	basekey: 'KLHD9C55684F10C46B293C275B1D7E1D7F3',

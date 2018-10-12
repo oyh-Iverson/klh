@@ -8,21 +8,26 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="../css/sm.css" />
     <link rel="stylesheet" href="../css/detailsPage.css">
-    <link rel="stylesheet" href="../css/invitation.css">
-    
+    <link rel="stylesheet" href="../css/invitation.css">  
+    <style>
+    	[v-cloak]{
+		display: none;
+		}	
+    </style>
 </head>
+
 
 <body>
 <div class="wrapper" id="detailsPage">
 	
-    <div class="header">
+    <div class="header" v-cloak>
         <a href="javascript:history.go(-1)" class="first-bar"></a>
         <span class="second-bar" v-text="dataObj.loanName"></span>
         <img>
     </div>
-    <div  style="height: 11.1rem;">
+    <div  style="height: 12.1rem;">
     	<div class="detailsPageBm"></div>
-    <div>
+    
       <!--<div class="title-sign">
         <img :src="dataObj.logo" alt="" class="first-bar">
         <div class="second-bar">
@@ -42,37 +47,55 @@
         </div>
       </div>-->
       <div class="business">
-      	<div class="title-sign">
+      	<div class="title-sign" v-cloak>
         	<!--<img :src="dataObj.logo" alt="" class="first-bar">
         	<div class="second-bar">
             	<span class="first-text" v-text="dataObj.loanName">></span>
             	<span class="second-text">已成功申请<span class="third-text" v-text="dataObj.applyCount"></span>人</span>
         	</div>-->
-        	<img :src="dataObj.logo" alt="" class="first-bar">
+        	<img :src="dataObj.logo" alt="" class="first-bar" v-cloak>
         	<div style="margin-right: auto;margin-left: 10px;width: 49%;">
-        		<div v-text="dataObj.loanName" style="font-size: 20px;"></div>
-        		<div v-text="dataObj.introduce" style="color: lightslategrey;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"></div>
+        		<div v-text="dataObj.loanName" style="font-size: 20px;color: black;"></div>
+        		<div v-text="dataObj.introduce" style="color: darkgray;;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"></div>
         	</div>
-        	<div style="padding-right: 26px;text-align: center;">成功申请
-        	<div v-text="dataObj.applyCount" style="font-size: 15px;color: #FF5201;"></div>
-        	</div>
+        	
       	</div>
-      	<div class="banner">
+      <div class="banner" v-cloak>
         <div class="banner-bar first-bar" style="margin-left: -30px;">
-            <span class="first-text" style="margin-left: 2rem">可申请额度</span>
-            <span class="second-text" style="margin-left: 2rem;">{{dataObj.minQuota}}-{{dataObj.maxQuota}}</span>
+            <span class="first-text" style="margin-left: 2rem" v-cloak>可申请额度</span>
+            <span class="second-text" style="margin-left: 2rem;" v-text="dataObj.minQuota+'-'+dataObj.maxQuota" v-cloak></span>
            
         </div>
         <div class="banner-bar" style="text-align: right;padding-right: 16px;">
-            <span class="first-text">最高月利率</span>
-            <span class="second-text" v-text="dataObj.monthRate+'%'"></span>
+            <span class="first-text" v-cloak>平均额度</span>
+            <span class="second-text" v-text="dataObj.avgQuota" v-cloak></span>
         </div>
       </div>
+      <div class="banner" style="margin-bottom: 0;margin-top: -34px;" v-cloak>
+        <div class="banner-bar first-bar" style="margin-left: -30px;">
+            <span class="first-text" style="margin-left: 2rem" v-text="dataObj.unitMonthRate+'利率'" v-cloak></span>
+            <span class="second-text" style="margin-left: 2rem;font-size: 25px;" v-text="dataObj.monthRate+'%'" v-cloak></span>
+           
+        </div>   
+        <div class="banner-bar" style="text-align: right;padding-right: 16px;">
+            <span class="first-text" >成功率</span>
+            <span class="second-text" style="font-size: 25px;" v-text="dataObj.successRate+'%'" v-cloak></span>
+        </div>
+        <!--<div style="text-align: center;">
+        	<span style="color: darkgray;font-size: 14px;">成功率</span>
+        	<div v-text="dataObj.successRate" style="font-size: 15px;color: #FF5201;"></div>
+        	</div>-->
+        <div class="banner-bar" style="text-align: right;padding-right: 16px;">
+            <span class="first-text">期限</span>
+            <span class="second-text" style="font-size: 25px;" v-text="dataObj.minTerm+'-'+dataObj.maxTerm+dataObj.unitTerm" v-cloak></span>
+        </div>
+        
       </div>
-     </div>
+      </div>
+     
     </div>
     <div class="line-gray"></div>
-    <div class="tab-change">
+    <div class="tab-change" v-cloak>
         <span class="tab-bar" @click="slectBtn(0)">
             <span  :style="{borderBottom:iconShow?'':'0.15rem solid #FF5201'}">产品详情</span>
         </span>
@@ -81,7 +104,7 @@
         </span>
     </div>
 
-    <div class="main" v-show="iconShow">
+    <div class="main" v-show="iconShow" v-cloak>
         <div class="box-evaluation" style="border-bottom: none;">
             <div class="first-bar">
                 <span class="first-text"></span>
@@ -125,7 +148,7 @@
             </div>
         </div>-->
     </div>
-    <div class="main" v-show="!iconShow">
+    <div class="main" v-show="!iconShow" v-cloak>
         <div class="box" style="height: auto;">
             <div class="first-bar">
                 <span class="first-text"></span>
@@ -144,14 +167,14 @@
                 <span class="first-text"></span>
                 <span class="second-text">申请条件</span>
             </div>
-            <div class="second-bar" v-text="dataObj.applyCondition"></div>
+            <div class="second-bar" v-text="dataObj.applyCondition" v-cloak></div>
         </div>
         <div class="box introduces" style="height: auto; border-bottom: none;">
             <div class="first-bar">
                 <span class="first-text"></span>
                 <span class="second-text">产品介绍</span>
             </div>
-            <div class="second-bar" v-text="dataObj.introduce"></div>
+            <div class="second-bar" v-text="dataObj.loanInfo" v-cloak></div>
         </div>
     </div>
     <div class="line-gray"></div>
@@ -160,7 +183,12 @@
         <div class="footer-title">Copyright@2015爱加空间(深圳)科技有限公司版权所有</div>
     </div>
     <div  class="Loans">
-        <div class="footer-btn" @click="moneyApply">申请借款</div>
+        <!--<div class="footer-btn" @click="moneyApply">申请借款</div>
+        <div class="footer-btn" @click="moneyApply">申请借款</div>-->
+         <div class="footer-btn" @click="moneyApply">
+         	<div style="height: 35px;line-height: 35px;font-size: 19px;">申请借款</div>
+         	<div style="font-size: 12px;height: 14px;line-height: 14px;margin-top: -4px;" v-cloak>已成功申请  {{dataObj.applyCount}} 人</div>
+         </div>
     </div>
     <div class="copyright"></div>
 </div>

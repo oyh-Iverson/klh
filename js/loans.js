@@ -7,7 +7,7 @@
              pageNumber:1,
              totalPages:"",
              ToEnd:false,
-             Labelstip:false,
+             Labelstip:true,
         },
         mounted: function() {
         	
@@ -133,6 +133,7 @@
                         	console.log(res);
                             // 请求成功
                             if (res.ret_code == '0') {
+                          
 //                              if(self.dataObj.loanUrl){
 //                              	console.log(self.dataObj.loanUrl);
 //                                  //window.location.href = self.dataObj.loanUrl;
@@ -220,6 +221,17 @@
                         // 获取成功
                         console.log(res);
                         if (res.code == '0' && res.data) {
+                        	 var data = res.data;
+                            for(var i = 0;i<data.length;i++){
+                         	var keywords = data[i].keyword;
+                         	keywords = keywords.slice('',keywords.length-1); 	
+                         	data[i].keyword = keywords.split("|");
+                         	console.log(data[i].keyword);
+                         }
+                        	if(res.data == ""){
+                        		
+                        		self.ToEnd = true;
+                        	}
                           //self.daikuanList = res.data;
                           self.totalPages = Math.ceil(res.count / 10);
                           console.log(self.totalPages);

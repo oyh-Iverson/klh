@@ -84,7 +84,7 @@
 </div>
 
 <nav class="bar bar-tab">
-	<a class="tab-item external" href="home.html">
+	<a class="tab-item external" href="javascript:void(0)" onclick=" homed()">
 		<span class="icon icon-home"></span>
 		<span class="tab-label">首页</span>
 	</a>
@@ -92,11 +92,11 @@
 		<span class="icon icon-message"></span>
 		<span class="tab-label">邀请</span>
 	</a>
-	<a class="tab-item external" href="daikuan.html" >
-		<span class="icon icon-me"></span>
+	<a class="tab-item external" href="javascript:void(0)" onclick=" dakuai()">
+		<span class="icon icon-message"></span>
 		<span class="tab-label">贷款</span>
 	</a>
-	<a class="tab-item external active" href="wode.html">
+	<a class="tab-item external active" href="javascript:void(0)" onclick=" woded()">
 		<span class="icon icon-me"></span>
 		<span class="tab-label">我的</span>
 	</a>
@@ -133,6 +133,17 @@
 	if(userType == 3){
 		mui("#Invitations")[0].style.display="none";
 		mui("#Mycommissions")[0].style.display="none";
-	}		
+	};
+	function dakuai(){
+		window.location.href="daikuan2.html";
+		//window.location.href="http://baidu.com";
+	};
+	function homed(){
+		window.location.href="home.html";
+	};
+	function woded(){
+		window.location.href="wode.html";
+	}
 </script>
+
 </html>

@@ -17,8 +17,23 @@ var app = new Vue({
             phoneArr: [
                 {phone: '****', number: '0'}
             ],
-            showArr: [],
-            dataObj: {},
+            showArr: [
+            	
+            ],
+            dataObj: 
+               {
+               	minQuota:"",
+               	maxQuota:"",
+               	avgQuota:"",
+               	unitMonthRate:"",
+               	monthRate:"",
+               	successRate:"",
+               	minTerm:"",
+               	maxTerm:"",
+               	unitTerm:"",
+               	applyCount:""
+               },
+            
             //showMsg: false,
             numbers: 0,
             iconShow: false,
@@ -27,6 +42,7 @@ var app = new Vue({
             },
             commentInfo:[] //用户评论
         },
+        
         mounted(){
            /* this.numbers = this.getQueryString('number');
             var data = JSON.parse(localStorage.getItem("indexListData"));
@@ -35,7 +51,7 @@ var app = new Vue({
                     this.dataObj = data[i];
                 }
             }*/
-            this.queryDetails();
+           this.queryDetails();
         },
         methods:{
             queryDetails(){
@@ -62,6 +78,7 @@ var app = new Vue({
                             // 请求成功
                             if (res.ret_code == '0') {
                                 self.dataObj = res.ret_data;
+                               
                                 self.rating =  Number(self.dataObj.rating);
                             } else{
                                 $.toast(res.ret_msg);

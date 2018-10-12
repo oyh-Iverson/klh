@@ -1,3 +1,4 @@
+  
   Vue.use(VueLazyload,{
         preLoad: 1.3,
         error: '../img/dai.png',
@@ -8,7 +9,7 @@
         el: '#mescroll',
         data: {
             daikuanList: [],
-            Labelstip:false,
+            Labelstip:true,
             // daikuanType :0,
             classify: [
                 {
@@ -161,7 +162,8 @@
                     //window.location = "login.html?refereeCode="+this.getQueryString('refereeCode')+'&referee='+this.getQueryString('referee');
                     window.location.href= "login.html";
                 }else{     
-                   window.location.href = 'detailsPage.html?id='+ id+'&number='+n;                    
+                   //window.location.href = 'detailsPage.html?id='+ id+'&number='+n; 
+                   window.location.href = 'detailsPage.html?id='+ id;   
 								}
 
 						},
@@ -420,9 +422,16 @@
                     },
                     success: function(res){
                         // 请求成功
-                        console.log(res);
+                        console.log(res);                    
+                        var data = res.ret_data;
+                         for(var i = 0;i<data.length;i++){
+                         	var keywords = data[i].keyword;
+                         	keywords = keywords.slice('',keywords.length-1); 	
+                         	data[i].keyword = keywords.split("|");
+                         	
+                         }
                         if (res.ret_code == '0') {               
-                            self.daikuanList = res.ret_data;   
+                            self.daikuanList = res.ret_data;     
                             //localStorage.setItem("indexListData",dataList);                            
                             var len = self.dataList.length;
                         } else{
@@ -445,7 +454,8 @@
     	window.location.href= "loans.html?confirmLoan=0";
     };
     function Complete(){ 	
-    	window.location.href= "daikuan.html?";
+    	window.location.href="daikuan.html";
+    	window.event.returnValue=false;
     };
     function SmallAM(){
     	window.location.href= "loans.html?shortTerm=0";
@@ -506,6 +516,7 @@
                             loadPrevNext: true,
                             loadPrevNextAmount: 1,
                         },
+                        
                         direction : 'horizontal',
                         speed: 2000,
                         loop: true,
@@ -516,6 +527,11 @@
                         observer:true,//修改swiper自己或子元素时，自动初始化swiper
                         observeParents:true,//修改swiper的父元素时，自动初始化swiper
                     });
+                    //当图片是一张的时候  禁止轮播
+                    if(banners.length < 2){
+                    	swiper1.destroy(false);
+                    }
+                   
                     
 //                var userId = localStorage.getItem('userId');
 //            if(userId == "" || userId == null || userId == undefined) { 

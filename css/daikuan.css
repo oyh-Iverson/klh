@@ -286,8 +286,9 @@ input {
 		bottom: 4rem;
 }
 .itemBoders{
-	border-bottom: 2px solid rgba(236,236,236,1);
+	border-bottom: 1px solid rgba(236,236,236,1);
     padding-bottom: 8px;
+    padding-top: 8px;
     background: white;
 }
 .item{
@@ -295,7 +296,6 @@ input {
     margin: 0 auto;
     background: white;
     border-radius: 5px;
-    margin-top: 0.05rem;
     padding: 0 0.6rem;
 }
 .item-top {
@@ -318,6 +318,7 @@ input {
     line-height: 1.8rem;
     font-size: 15px;
     font-weight: bold;
+    color: black;
 }
 .item-Labels {
     display: flex;
@@ -327,10 +328,11 @@ input {
     margin-right: auto;
 }
 .item-Labels>div {
-    border: 1px darkcyan solid;
+    border: 1px rgb(114,174,253) solid;
+    color: rgb(114,174,253);
     padding-left: 5px;
     padding-right: 5px;
-    border-radius: 8px;
+    border-radius: 10px;
     padding-left: 5px;
     margin-left: 5px;
 }
@@ -360,13 +362,14 @@ input {
 }
 .item-Con>div:first-child {
     font-size: 25px;
-    color: red;
+    color: #FF5201;
 }
 .item-Con>div:last-child {
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: black;
 }
 .item-bottom {
     /* border-top: 1px solid rgb(240,240,240); */

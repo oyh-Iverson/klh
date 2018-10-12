@@ -20,7 +20,7 @@
 }
 .page .pageBGI{
 	background: url(../img/BG.png)no-repeat;
-	background-size: 100% 100%;
+	background-size: 100% auto;
 	/*box-shadow: -4px 5px 33px #d0bfb2 inset;*/
 	width: 100%;height: 100%; 
 	position: absolute;

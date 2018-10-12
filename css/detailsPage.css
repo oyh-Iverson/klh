@@ -83,7 +83,7 @@
 .banner{
     margin: 0.5rem 0.6rem;
     margin-top: 0;
-    height: 5.5rem;
+    height: 4.5rem;
     border-radius: 0.2rem;
     display: flex;
     flex-direction: row;
@@ -107,14 +107,16 @@
 .banner .banner-bar .first-text{
     font-size: 14px;
     line-height: 0.8rem;
-    margin-top: 1.2rem;
+    margin-top: 0.5rem;
     color: darkgray;
     
 }
 .banner .banner-bar .second-text{
-    font-size: 1.4rem;
+    /*font-size: 1.4rem;*/
+    font-size: 25px;
     line-height: 1.4rem;
     margin-bottom: 1.2rem;
+    color: black;
 }
 
 
@@ -143,6 +145,7 @@
 	font-weight:normal;
 	padding: 0.2rem 0.5rem;
 	line-height: 0.8rem;
+	color: black;
 }
 .tab-change .icon-bar{
     /*width: 100%;*/
@@ -202,6 +205,8 @@
 }
 .main .box .first-bar .second-text,.main .box-evaluation .second-text{
     font-size: 0.8rem;
+    font-weight: bold;
+    
 }
 .main .box .second-bar{
     width: 100%;
@@ -209,8 +214,8 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     text-indent: 1rem;
-    color: #666666;
-    font-size: 0.7rem;
+    color: darkgray;
+    font-size: 0.8rem;
  }
 
 .main .box-evaluation{
@@ -347,7 +352,7 @@
 }
 .renzheng_item span {
     font-size: 0.7rem;
-    color: #737373;
+    color: darkgray;
     text-overflow:ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -452,7 +457,7 @@
 }
 .Loans{
 	width: 100%;
-	height: 2rem;
+	height: 2.5rem;
 	/*background-color: #ffffff; */
 	position: fixed;
 	left: 3%;
@@ -466,13 +471,14 @@
 .detailsPageBm{
 	background: #FF5201;
     width: 100%;
-    height: 6.7rem; position:absolute;
+    height: 8.7rem; 
+    position:absolute;
 }
 
 .business{
 	width: 92%;
     margin: 0px auto;
-    height: 9rem;
+    height: 11rem;
     background: white;
     position: relative;
     border-radius: 5px;

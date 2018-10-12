@@ -11,7 +11,7 @@ Vue.use(VueLazyload,{
 				mescroll: null,
 				pageNumber:1,	
 				ToEnd: false,
-				Labelstip:false,
+				Labelstip:true,
 				totalPages:"",
 				Cols: 'red !important',
 				daikTitle: {
@@ -320,6 +320,10 @@ Vue.use(VueLazyload,{
 				}
 
 			},
+			H(){
+				console.log("12345");
+			},
+			
 			detailsClicks(id,n){
                 event.stopPropagation();
                 var userId = localStorage.getItem('userPhone');
@@ -509,7 +513,15 @@ Vue.use(VueLazyload,{
 						success: function(res){
 							// 请求成功
 							console.log(res);
-							if (res.code == '0') {								
+							if (res.code == '0') {	
+								var data = res.data;								
+                         		for(var i = 0;i<data.length;i++){
+                         			var keywords = data[i].keyword;
+                         			keywords = keywords.slice('',keywords.length-1);//先去掉最后的|	
+                         			data[i].keyword = keywords.split("|"); //然后分割
+                         			
+                         			
+                         		}
 								//self.totalPages = res.count;
 								self.totalPages = Math.ceil(res.count / 10);	
 								if(self.totalPages == 1){
