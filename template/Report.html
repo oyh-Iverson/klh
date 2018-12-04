@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>诊断报告</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--<link rel="stylesheet" href="../css/sm.css" />-->
+	<link rel="stylesheet" href="../css/sm.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/Report.css" />
+	<style>
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+</head>
+	<body style="overflow-y: scroll;-webkit-overflow-scrolling: touch;">
+		<div class="Report" id="Reports">
+			<div class="parentContent1">
+				<div class="app1" style="background: rgb(255, 255, 255);">
+					<div class="theReportSample"></div>
+					<div style=" position: absolute;top: 12px;left: 7px;font-size: 13px;color: rgb(255, 255, 255)">
+						报告<br />样本
+					</div>
+					<div class="rejectedBox"  :style="{background: 'url('+ imgs +')'}" v-cloak>
+						<h3><span v-text="HName"></span>,您的网黑命中检测如下：</h3>
+						<div class="state" v-if="ming">未命中</div>
+						<div class="state" v-if="ming1" >可能命中</div>
+						<div class="state" v-if="ming2" >命中</div>
+					</div>
+					<div class="projectExplain">本项检测用户在信贷机构的贷款申请被拒率</div>
+					
+					
+					
+					
+					<div class="resultproject" style="margin-top: 0px;" @click="jujue"  >
+						<img src="../img/wang.png"/>
+						<div class="reportDescribe">
+							<div style="font-size: 17px; color: rgb(51, 51, 51);">
+								<div style="float: left;">网贷被拒率</div>
+								<div class="transform1" v-bind:class="{ transform1P: isActive }" style=" float: left; margin-left: 10px;margin-top: -3px;" id="transform1" v-cloak>
+									<i class="mintui mintui-back"> > </i>
+								</div>
+								<div>
+									<img src="../img/bzzx.png"  class="popIcon" @click="Hint1" @click.stop/>
+								</div>
+							</div>
+						</div>
+						<div class="conditionIcon conditionIcon-normal" v-if="wangdaiAQ" v-cloak>安全</div>
+						<div class="conditionIcon conditionIcon-warning" v-if="wangdaiJT" v-cloak>警惕</div>
+						<div class="conditionIcon conditionIcon-danger"  v-if="wangdaiWX" v-cloak>危险</div>
+					</div>
+					<div class="testDescription" v-show="testDescription1" style="display: block;padding-bottom: 10px;position: relative;">
+						<div class="echarts" id="EChart" style="-webkit-tap-highlight-color: transparent;user-select: none;position: relative;background: transparent;">
+							
+						</div>
+						<div style="color: rgb(51, 51, 51); font-size: 14px; margin: 20px auto 0px; text-align: center;">6%的概率会被网贷机构拒绝贷款</div>
+					</div>
+					<div style="background: rgb(245, 245, 245); height: 10px;"></div>
+					<div class="projectExplain">本项检测用户身份证和手机号是否命中法院失信名单，执行名单，以及用户是否有违章、欠款、信贷逾期等行为。</div>
+					
+					
+					
+					
+					<div>
+						<div v-for="item in conList" v-cloak>
+					<div class="resultproject" style="margin-top: 0px;" @click="behavior">
+						<img src="../img/duotou.png"/>
+						<div class="reportDescribe" style="overflow: hidden;">
+							<div style="font-size: 17px; color: rgb(51, 51, 51);">
+								<div style="float: left;" v-text="item.risk_name">日常行为危险检测</div>
+								<div class="transform2" v-bind:class="{ transform2P: transform2P }" style="float: left; margin-left: 10px;margin-top: -3px;" id="transform2" v-cloak>
+									<i class="mintui mintui-back"> > </i>
+								</div>
+								<div>
+									<img src="../img/bzzx.png"  class="popIcon"  @click="Hint2" @click.stop/>
+								</div>
+							</div>
+						</div>
+						<div v-if="ricAQ" class="conditionIcon conditionIcon-normal" v-cloak>安全</div>
+						<div v-if="ricJT" class="conditionIcon conditionIcon-warning" v-cloak>警惕</div>
+						<div v-if="ricWX" class="conditionIcon conditionIcon-danger" v-cloak>危险</div>
+					</div>
+					<div class="testDescription" v-if="testDescription2">
+						<div v-for="items in item.risk_detail">							
+								<!--第一个-->
+								<div v-show="items.type == 'suspected_team'?true:false">
+									<div v-for="item1 in items.suspect_team_detail_list"   v-cloak>
+										<div v-text="item1.dim_type"></div>
+										<div v-text="item1.dim_value"></div>
+										<div v-text="item1.group_id"></div>
+										<div v-text="item1.total_cnt"></div>
+										<div v-text="item1.black_cnt"></div>
+										<div v-text="item1.grey_cnt"></div>
+										<div v-text="item1.node_dist"></div>
+										<div v-text="item1.fraud_dist"></div>
+										<div v-text="item1.black_rat"></div>
+										<div v-text="item1.grey_rat"></div>
+										<div v-text="item1.degree"></div>
+										<div v-text="item1.total_cnt_two"></div>
+										<div v-text="item1.black_cnt_one"></div>
+										<div v-text="item1.fraud_dist_one"></div>
+										<div v-text="item1.black_cnt_two"></div>
+										<div v-text="item1.fraud_dist_two"></div>
+										<div v-text="item1.black_dst"></div>
+										<div v-text="item1.core_dst"></div>
+										<div v-text="item1.node_score"></div>
+									</div>
+									
+								</div>
+								<!--第二个-->
+								<div v-show="items.type == 'grey_list'?true:false">
+									<div v-text="items.description"></div>
+									<div v-text="items.hit_type_display_name"></div>
+									<div v-text="items.fraud_type_display_name"></div>
+									<div v-for="item1 in items.grey_list_details"   v-cloak>
+										<div v-text="item1.value"></div>
+										<div v-text="item1.fraud_type_display_name"></div>
+										<div v-text="item1.risk_level"></div>
+										<div v-text="item1.fraud_type"></div>
+										<div v-text="item1.evidence_time"></div>
+										
+									</div>
+									
+								</div>
+								<!--第三个-->
+								<div v-show="items.type == 'fuzzy_black_list'?true:false">
+									<div v-text="items.description"></div>
+									<div v-text="items.fraud_type_display_name"></div>
+									<div v-for="item1 in items.fuzzy_list_details"  v-cloak>
+										<div v-text="item1.fraud_type_display_name"></div>
+										<div v-text="item1.fuzzy_id_number"></div>
+										<div v-text="item1.fuzzy_name"></div>
+										<div v-text="item1.fraud_type"></div>
+									</div>
+									
+								</div>	
+								<!--第四个-->
+								<!--<div v-show="items.type == 'frequency_detail'?true:false">
+									<p v-for="item1 in items.frequency_detail_list" v-cloak>
+										<span v-text="item1.detail"></span>
+										<span v-for=" tiemPH in item1.data" >
+											<span>{{tiemPH}}<br/></span>
+										</span>
+									</p>
+									
+								</div>	-->
+								<div v-show="items.type == 'frequency_detail'?true:false">
+									<div v-for="item1 in items.frequency_detail_list" v-cloak>
+										<div v-text="item1.detail"></div>
+										<div v-for=" tiemPH in item1.data">
+											<div v-text="tiemPH"></div>
+											
+										</div>
+									</div>
+									
+								</div>
+								
+								<!--第五个-->
+								<div v-show="items.type == 'cross_frequency_detail'?true:false">
+									<div v-for="item1 in items.cross_frequency_detail_list"  v-cloak>
+										<div v-text="item1.detail"></div>
+										<div v-for=" tiemPH in item1.data" >
+											<div v-text="tiemPH"></div>
+										</div>
+									</div>
+									
+								</div>	
+								<!--第六个-->
+								<div v-show="items.type == 'cross_event_detail'?true:false">
+									<div v-for="item1 in items.cross_event_detail_list"   v-cloak>
+										<div v-text="item1.detail"></div>
+										
+									</div>
+									
+								</div>	
+								<!--第七个-->
+								<div v-show="items.type == 'discredit_count'?true:false">
+									<div v-text="items.description"></div>
+									<div v-text="items.discredit_times"></div>
+									<div v-text="items.platform_count"></div>
+									<div v-for="item1 in items.overdue_details"  v-cloak>
+										<div v-text="item1.overdue_amount_range"></div>
+										<div v-text="item1.overdue_count"></div>
+										<div v-text="item1.overdue_day_range"></div>
+										<div v-text="item1.overdue_time"></div>
+									</div>
+									
+								</div>	
+								<!--第八个-->
+								<div v-show="items.type == 'custom_list'?true:false">
+									<div v-text="items.description"></div>
+									<div v-for="itemH in items.high_risk_areas"   v-cloak>
+										<div v-text="itemH"></div>	
+									</div>
+									<div v-for="item1 in items.hit_list_datas"   v-cloak>
+										<div v-text="item1"></div>	
+									</div>
+									
+								</div>	
+								<!--第九个-->
+								<div v-show="items.type == 'platform_detail'?true:false">
+									<div v-text="items.description"></div>
+									<div v-text="items.platform_count"></div>
+									<div v-for="itemD in items.platform_detail_dimension"   v-cloak>
+										<!--<div v-text="itemD.count"></div>-->
+										<div v-text="itemD.dimension"></div>
+										<div v-for=" tiemDd in itemD.detail" >
+											<!--<div v-text="tiemDd.count"></div>-->
+											<div v-text="tiemDd.industry_display_name"></div>
+										</div>
+									</div>
+									<div v-for="item1 in items.platform_detail"   v-cloak>
+										<!--<div v-text="item1.count"></div>-->
+										<div v-text="item1.industry_display_name"></div>
+									</div>
+									
+								</div>	
+								<!--第十个-->
+								<div v-show="items.type == 'black_list'?true:false">
+									<div v-text="items.description"></div>
+									<div v-text="items.fraud_type_display_name"></div>
+									<div v-text="items.hit_type_display_name"></div>
+									<div v-for="item1 in items.court_details"   v-cloak>
+										<div v-text="item1.case_code"></div>
+										<div v-text="item1.execute_court"></div>
+										<div v-text="item1.case_date"></div>
+										<div v-text="item1.gender"></div>
+										<div v-text="item1.carry_out"></div>
+										<div v-text="item1.executed_name"></div>
+										<div v-text="item1.fraud_type"></div>
+										<div v-text="item1.specific_circumstances"></div>
+										<div v-text="item1.execute_subject"></div>
+										<div v-text="item1.execute_status"></div>
+										<div v-text="item1.evidence_court"></div>
+										<div v-text="item1.term_duty"></div>
+										<div v-text="item1.province"></div>
+										<div v-text="item1.execute_code"></div>
+										<div v-text="item1.value"></div>
+										<div v-text="item1.age"></div>
+										<div v-text="item1.evidence_time"></div>
+										<div v-text="item1.fraud_type_display_name"></div>
+										
+									</div>
+									
+								</div>	
+								<!--第十一个-->
+								<div v-show="items.type == 'device_status_abnormal'?true:false">
+									<div v-for="item1 in items.abnormal_tags"  v-cloak>
+										<div v-text="item1.suspected_of_wipng_phone"></div>										
+										<div v-text="item1.short_uptime"></div>	
+										<div v-text="item1.abnormal_time"></div>										
+										<div v-text="item1.device_first_seen"></div>										
+										<div v-text="item1.abnormal_carrier_info"></div>										
+										<div v-text="item1.abnormal_network_connection"></div>										
+										<div v-text="item1.illegal_clientid"></div>										
+										<div v-text="item1.android_emulator"></div>										
+										<div v-text="item1.multiple_running"></div>										
+										<div v-text="item1.debugger_detected"></div>										
+										<div v-text="item1.hook_tool_detected"></div>										
+										<div v-text="item1.device_info_tampered"></div>										
+										<div v-text="item1.suspected_of_faking_location"></div>										
+										<div v-text="item1.suspected_of_faking_wifi"></div>
+									</div>
+									
+								</div>	
+								<!--第十二个-->
+								<div v-show="items.type == 'fp_exception'?true:false">
+									<div v-text="items.code" v-cloak></div>	
+									<div v-text="items.code_display_name" v-cloak></div>	
+								</div>	
+								<!--第十三个-->
+								<div v-show="items.type == 'android_emulator'?true:false">
+									<div v-text="items.emulator_type" v-cloak></div>	
+									
+								</div>	
+								<!--第十四个-->
+								<div v-show="items.type == 'android_cheat_app'?true:false">
+									<div v-text="items.hook_method" v-cloak></div>	
+									<div v-text="items.hook_inline" v-cloak></div>	
+									<div v-text="items.hook_address" v-cloak></div>	
+									
+									
+								</div>	
+								<!--第十五个-->
+								<div v-show="items.type == 'function_kit'?true:false">
+									<div v-text="items.result" v-cloak></div>										
+								</div>
+								<!--第十六个-->
+								<div v-show="items.type == 'creditList_index_detail'?true:false">
+									<div v-text="items.dim_type" v-cloak></div>
+									<div v-text="items.result" v-cloak></div>
+									<div v-for="item1 in items.hits"  v-cloak>
+										<div v-text="item1.risk_type"></div>
+										<div v-text="item1.evidence_time"></div>
+										<div v-text="item1.overdue_amount"></div>
+										<div v-text="item1.overdue_counts"></div>
+										<div v-text="item1.overdue_days"></div>
+										<div v-text="item1.industry"></div>
+										<div v-text="item1.subject_type"></div>
+										<div v-text="item1.role"></div>
+										<div v-text="item1.name"></div>
+										<div v-text="item1.sex"></div>
+										<div v-text="item1.province"></div>
+										<div v-text="item1.case_no"></div>
+										<div v-text="item1.case_create_date"></div>
+										<div v-text="item1.case_status"></div>
+										<div v-text="item1.court_name"></div>
+										<div v-text="item1.gist_id"></div>
+										<div v-text="item1.judgment_duty"></div>
+										<div v-text="item1.gist_unit"></div>
+										<div v-text="item1.disrupt_type_name"></div>
+										<div v-text="item1.performance"></div>
+										<div v-text="item1.judgment_doc"></div>
+										<div v-text="item1.exec_amount"></div>
+										<div v-text="item1.case_type"></div>
+										<div v-text="item1.case_character"></div>
+										<div v-text="item1.owe_tax_amount"></div>
+										<div v-text="item1.tax_type"></div>
+										<div v-text="item1.risk_reject_counts"></div>
+										<div v-text="item1.related_risk_type"></div>
+										<div v-text="item1.related_chain_score"></div>										
+									</div>									
+								</div>
+					
+							<!--<div v-for="items.type=frequency_detail ">-->
+								<!--电话号码-->
+								<!--<p v-text="items.type" v-cloak></p>-->
+								
+							<!--</div>-->
+							
+							<p v-if="richangIPnameText1" style="color: rgb(153, 153, 153);font-size: 14px;margin-bottom: 30px;" v-cloak>近期内， 身份证未发现逾期行为</p>
+							<p v-if="richangIPnameText2" class="redFont" style="margin-bottom: 30px;" v-cloak>近期内， 身份证发现逾期行为</p>
+						</div>
+					</div>
+						
+					</div>
+						</div>
+					
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<!--<div style="background: rgb(245, 245, 245); height: 10px;"></div>
+					<div class="projectExplain">注意：6个月内建议不超过35个，超过后谨慎申请！本项检测用户6个月内申请平台数次数，既包括成功的也包含了申请不成功的贷款。</div>-->
+					<!--<div class="resultproject" style="margin-top: 0px;" @click="Debit">
+						<img src="../img/ric.png"/>
+						<div class="reportDescribe">
+							<div style="font-size: 17px; color: rgb(51, 51, 51);">
+								<div style="float: left;">多头借贷检测</div>
+								<div v-cloak class="transform3" v-bind:class="{ transform3P: transform3P }" style="float: left; margin-left: 10px;margin-top: -3px;" id="transform3">
+									<i class="mintui mintui-back"> > </i>
+								</div>
+								<div>
+									<img src="../img/bzzx.png"  class="popIcon" @click="Hint3" @click.stop/>
+								</div>
+							</div>
+						</div>
+						<div v-if="duotouZC" class="conditionIcon conditionIcon-normal"  v-cloak>正常</div>
+						<div v-if="duotouJT" class="conditionIcon conditionIcon-warning" v-cloak>警惕</div>
+						<div v-if="duotouWX" class="conditionIcon conditionIcon-danger" v-cloak>危险</div>
+					</div>-->
+					<!--<div v-if="testDescription3">
+						<div class="testDescription">
+							<p style="padding-bottom: 10px; text-align: center; font-size: 18px; color: rgb(51, 51, 51);">
+								总计：<span class="redFont" style="font-size: 30px;">80</span>家
+							</p>
+						</div>
+						<div class="register">
+							<div class="info-left">
+								<div style="margin-top: 16px; color: rgb(51, 51, 51);">10</div>
+								<div class="loanFrequency">P2P网贷</div>
+							</div>
+							<div class="info-right">
+								<div style="margin-top: 16px; color: rgb(51, 51, 51);">20</div>
+								<div class="loanFrequency">一般消费分期平台</div>
+							</div>
+						</div>
+						<div class="register">
+							<div class="info-left">
+								<div style="margin-top: 16px; color: rgb(51, 51, 51);">10</div>
+								<div class="loanFrequency">小额贷款公司</div>
+							</div>
+							<div class="info-right">
+								<div style="margin-top: 16px; color: rgb(51, 51, 51);">20</div>
+								<div class="loanFrequency">银行消费金融公司</div>
+							</div>
+						</div>
+						<div class="register">
+							<div class="info-left">
+								<div style="margin-top: 16px; color: rgb(51, 51, 51);">10</div>
+								<div class="loanFrequency">互联网金融门户</div>
+							</div>
+							<div class="info-right">
+								<div style="margin-top: 16px; color: rgb(51, 51, 51);">20</div>
+								<div class="loanFrequency">信用卡中心</div>
+							</div>
+						</div>
+						<div class="register">
+							<div class="info-left">
+								<div style="margin-top: 16px; color: rgb(51, 51, 51);">10</div>
+								<div class="loanFrequency">大型消费金融公司</div>
+							</div>
+							<div class="info-right">
+								<div style="margin-top: 16px; color: rgb(51, 51, 51);">20</div>
+								<div class="loanFrequency">其他</div>
+							</div>
+						</div>
+					</div>-->
+					<!--<div style="background: rgb(245, 245, 245); height: 10px;"></div>
+					<div class="projectExplain">该项决定信贷机构会直接认为用户是否在信用不良黑名单内？贷款有过逾期或者被贷款驳回次数过多等都会被列入行业风险名单。</div>-->
+					<!--<div class="resultproject" style="margin-top: 0px;" @click="Bad">
+						<img src="../img/jigou.png"/>
+						<div class="reportDescribe">
+							<div style="font-size: 17px; color: rgb(51, 51, 51);">
+								<div style="float: left;">机构还款不良名单</div>
+								<div class="transform4" v-bind:class="{ transform4P: transform4P }" style="float: left; margin-left: 10px;margin-top: -3px;" id="transform4">
+									<i class="mintui mintui-back"> > </i>
+								</div>
+								<div>
+									<img src="../img/bzzx.png"  class="popIcon" @click="Hint4" @click.stop/>
+								</div>
+							</div>
+						</div>
+						<div v-if="jigouZC" class="conditionIcon conditionIcon-normal">正常</div>
+						<div v-if="jigouJT" class="conditionIcon conditionIcon-warning" >警惕</div>
+						<div v-if="jigouWX" class="conditionIcon conditionIcon-danger" >危险</div>						
+					</div>-->
+					<!--<div class="testDescription" v-if="testDescription4">
+						<p v-text="huankuanIPname"></p>
+						<p style="color: rgb(153, 153, 153);font-size: 14px;margin-bottom: 30px;display: none;">未命中，请按时还款并保持合理贷款频率</p>
+						<p class="redFont" style="margin-bottom: 30px;">命中，请按时还款或注意申请贷款频率</p>
+					</div>-->
+					<div style="background: rgb(245, 245, 245); height: 10px;"></div>
+					<div class="projectExplain">该项决定信贷机构会从侧面认为用户资料滥用与否。本项检测用户申请贷款时是否使用专一的材料，是否存在1个贷款人使用多个手机号申请，或多个贷款人使用同一个手机号申请。</div>
+					<!--<div class="resultproject" style="margin-top: 0px;" @click="material">
+						<img src="../img/cl.png"/>
+						<div class="reportDescribe">
+							<div style="font-size: 17px; color: rgb(51, 51, 51);">
+								<div style="float: left;">申请材料异常检测</div>
+								<div class="transform5" v-bind:class="{ transform5P: transform5P }" style="float: left; margin-left: 10px;margin-top: -3px;" id="transform5">
+									<i class="mintui mintui-back"> > </i>
+								</div>
+								<div>
+									<img src="../img/bzzx.png"  class="popIcon" @click="Hint5" @click.stop/>
+								</div>
+							</div>
+						</div>
+						<div v-if="shengqingZC" class="conditionIcon conditionIcon-normal" >正常</div>
+						<div v-if="shengqingJT" class="conditionIcon conditionIcon-warning" >警惕</div>
+						<div v-if="shengqingWX" class="conditionIcon conditionIcon-danger" >危险</div>						
+					</div>-->
+					<!--<div class="testDescription" v-if="testDescription5">
+						<p v-text="cailiaoIPname">124487454744588</p>
+						<p style="color: rgb(153, 153, 153);font-size: 14px;margin-bottom: 30px;display: none;">未发现申请材料异常情况，请继续保持</p>
+						<p class="redFont" style="margin-bottom: 30px;">3个月内，身份证或通讯设备关联多个申请信息</p>
+					</div>-->
+					<div style="background: rgb(245, 245, 245); height: 10px;"></div>
+					<div class="margin">
+						<div class="dataDescription">
+							<p style="text-align: center; color: rgb(51, 51, 51);">
+								<b>报告数据说明</b>
+							</p>
+							<p class="loanFrequency" style="margin-top: 15px; text-align: justify; line-height: 20px;text-indent:2em;">
+								信用牛牛网黑命中检测查询报告由本人授权查询，数据来源包括芝
+				麻信用，各大运营商，各类征信平台，各大网贷平台，信用牛牛
+				只做大数据信息的获取及分析，不对原始数据做任何修改，报告
+				仅供参考使用。如果您对报告由异议，出于对合作平台隐私的保
+				护，信用牛牛不做任何解释。
+							</p>
+							<p class="loanFrequency" style="text-align: justify; line-height: 20px;text-indent:2em;">
+								由于报表的生产需要处理大量数据，受网络波动等因素的影
+				响，可能会造成部分数据获取不完善的情况，对此我们深表歉意，
+				同时感谢您的理解和支持。
+							</p>
+						</div>
+						<div class="info-bottom">
+							<div class="bottom-left">
+								<div class="bottom-title">
+									<div style="color: rgb(66, 169, 254);">网贷信用，办卡，贷款</div>
+									<div>一网打尽</div>
+								</div>
+								<img src="../img/Acrown.png" class="kelhua"/>
+								<div class="bottom-text">
+									<div>可乐花——专治贷款被拒</div>
+									<div>1000个网贷新产品</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="creditBottom" >
+						<div class="creditBottomButton">返回</div>
+					</div>
+				</div>
+			</div>
+			<div class="tipc" v-if="Hint" v-cloak>
+				<div class="tipcBM">
+					<div class="tipCon" v-if="HintOne">
+						<div style="text-align: justify;">本项检测用户在信贷机构的贷款申请被拒率</div>
+						<div class="tipConBtn" @click="HintOneBtn">知道了</div>
+					</div>
+					<div class="tipCon" v-if="HintTwo">
+						<div style="text-align: justify;">本项检测用户身份证和手机号是否命中法院失信名单，执行名单，以及用户是否有违章、欠款、信贷逾期等行为。</div>
+						<div class="tipConBtn" @click="HintTwoBtn">我不知道了</div>
+					</div>
+					<div class="tipCon" v-if="HintThree">
+						<div style="text-align: justify;">注意：6个月内建议不超过35个，超过后谨慎申请！本项检测用户6个月内申请平台数次数，既包括成功的也包含了申请不成功的贷款。</div>
+						<div class="tipConBtn" @click="HintThreeBtn">我不知道了</div>
+					</div>
+					<div class="tipCon" v-if="HintFour">
+						<div style="text-align: justify;">该项决定信贷机构会直接认为用户是否在信用不良黑名单内？贷款有过逾期或者被贷款驳回次数过多等都会被列入行业风险名单。</div>
+						<div class="tipConBtn" @click="HintFourBtn">我不知道了</div>
+					</div>
+					<div class="tipCon" v-if="HintFive">
+						<div style="text-align: justify;">该项决定信贷机构会从侧面认为用户资料滥用与否。本项检测用户申请贷款时是否使用专一的材料，是否存在1个贷款人使用多个手机号申请，或多个贷款人使用同一个手机号申请。</div>
+						<div class="tipConBtn" @click="HintFiveBtn">我不知道了</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+<script type="text/javascript" src="../js/md5.min.js"></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8'></script> 
+<script type='text/javascript' src='../js/sm.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/echarts.min.js"></script>
+<script type="text/javascript" src="../js/Report.js"></script>
+<script>
+	
+</script>
+</html>

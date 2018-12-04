@@ -2,19 +2,19 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>登录</title>
+	<title>点点有借</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="stylesheet" href="../css/sm.css" />
-	<link rel="stylesheet" href="../css/login.css" />
+	<link rel="stylesheet" href="../css/login.css?v=1.0" />
 	<link rel="stylesheet" href="../css/adnimations.css">
 	<link rel="stylesheet" href="../css/swiper-4.1.0.min.css" />
 </head>
-<body class="page" style="height: 100%;background: rgb(253,138,101);">	
-	<div class="pageBGI" :style="{ height: bodyHeight + 'px' }"></div>
+<body class="page" style="height: 100%;">	
+	<div class="pageBGI" :style="{ height: bodyHeight + 'px' }" ></div>
  	<!--<div id="app" style="background: url(../img/jiade.png);background-size: 100% 100%;">-->
- 	<div id="app" style="position: relative;top: 275px;">
+ 	<div id="app" style="width: 100%;height: 100%; overflow-y: scroll;-webkit-overflow-scrolling: touch;background: url(../img/backgrounfDD.png) no-repeat; background-size: 100% 100%;">
 	<!-- 首页 注册 -->
 	<div class="top_title" style="display: none;">
 		<!--<div @click="goHomeClick" class="home" style="display: none;"> < </div>-->
@@ -24,23 +24,28 @@
 	<!-- 贷 字 -->
 	<!--<div class="logo"></div>-->
 	<!-- 登录 切换 -->
-	<div class="login_type">
-		<!--<div @click="is_tel = true" id="kuaijie" class="left">快捷登录</div>
-        <div class="middle">|</div>
-        <div @click="is_tel = false"   id="zhanghao" class="right">账号登录</div>-->
+	<div class="klhTopBM">
+		<img src="../img/beiTOP.png" width="100%"height="auto"/>
+	</div>
+	<div class="login_type" style="display: none;">
+		
        <div class="laba"></div>
+       <div style="width: 2rem;height: 1rem;background: url(../img/labaKlh.png) no-repeat;background-size: 100% 100%;"></div>
 	   <div class="swiper-container" id="swiper2"></div>
 	</div>
+	<!--<div @click="is_tel = true" id="kuaijie" class="left">快捷登录</div>
+        <div class="middle">|</div>
+        <div @click="is_tel = false"   id="zhanghao" class="right">账号登录</div>-->
 	<!-- 快捷登录输入框 -->
 	<div class="HBimg">
 		
 	<div id="tel_input" v-if="is_tel == true">
 		<div class="login_input" >
-			<input v-model="telVal" type="tel" placeholder="请输入手机号" maxlength="11" id="telVal" style="width: 100%;"/>
-			<div @click="telVal = ''" v-if="showTelClear" class="clear" style="right: 0;"></div>
+			<input v-model="telVal" type="tel" placeholder="请输入手机号" maxlength="11" id="telVal" style="width: 93%;margin-left: 0.9rem;"/>
+			<div @click="telVal = ''" v-if="showTelClear" class="clear" style="right: 0.5rem;"></div>
 		</div>
-		<div class="login_input">
-			<input v-model="yzmVal" type="tel" placeholder="请输入短信验证码" maxlength="4" />
+		<div class="login_input" >
+			<input v-model="yzmVal" type="tel" placeholder="请输入短信验证码" maxlength="4" style="width: 10rem;"/>
 			<div @click="yzmVal = ''" v-if="showYzmClear" class="clear" style="right: 4.5rem;"></div>
 			<div v-on:click="sendYzmClick" class="timer" v-bind:style="{color: yzmColor}" v-text="yzmTime2"></div>
 			
@@ -67,11 +72,145 @@
 		</div>
 	</div>
 	<!-- 登录按钮 -->
-	<div @click="loginClick" v-bind:class="loginClass">登录</div>
+	<div @click="loginClick" v-bind:class="loginClass">立即借钱</div>
+	<!--协议-->
+	<div style="width: 100%;height: auto;display: flex;align-items: center;justify-content: center; margin-top: 0.5rem;">
+		<div class="xieyi"  v-bind:class="{ actives: isActive }" @click="yuedu" style="display: none;"></div>
+		<div style="font-size: 0.55rem; color: white;">验证代表您已同意<span style="color: #fdcb01;" @click="zhucexianyi"> 《 点点有借用户注册协议 》</span></div>
 	</div>
-	<div style="width: 100%;height: auto;position: relative;margin: 0 auto;font-size: 12px;color: lightgrey;margin-top: 43px;">
-		<div style="text-align: center;">可乐花</div>
-		<div style="text-align: center;">Copyright@2015爱加空间(深圳)科技有限公司版权所有</div>
+	</div>
+	
+	<!--案例-->
+	<div class="cases" style="display: none;">
+		<div class="casesText">
+			<span class="casesTextL"></span>
+			<span >成功案例</span>
+			<span class="casesTextR"></span>
+		</div>
+		<div class="casesItem">
+			<div class="casesItemBM">
+				<div style="display: flex;align-items: center;">
+					<div class="casesItemIMG"></div>
+					<div class="casesItemText" >
+						<div class="casesItemtips" style="color: #333;">
+							令狐先生<span style="padding-left: 1.05rem;"><span style="font-size: 0.6rem;color: #bbaeaa;">月收入</span ><span style="font-size: 0.6rem;color: #f8531b;">￥5000</span></span>
+						</div>
+						
+					</div>
+				</div>
+				<div style="display: flex;font-size: 14px;justify-content: space-around;width: 90%; margin: 0 auto; align-items: center;margin-top: 0.25rem;">
+								<div style="width: 1.2rem;height: 1.1rem;background: url(../img/luodiJB.png) no-repeat;background-size: cover; margin-left: 11px;">
+									
+								</div>
+								<div>
+									<div style="color: #666;">贷款头数</div>
+									<div class="loanNumbs" style="color: #fcc841;">8头</div>
+								</div>
+								<div>
+									<div style="color: #666;">贷款金额</div>
+									<div class="loanNumbs" style="color: #fcc841;">2000元</div>
+								</div>
+								<div>
+									<div style="color: #666;">贷款时间</div>
+									<div class="loanNumbs" style="color: #fcc841;">5分钟</div>
+								</div>
+								<div>
+									<div style="color: #666;">贷款公司</div>
+									<div class="loanNumbs" style="color: #fcc841;">6家</div>
+								</div>
+							
+							
+				</div>
+				<div class="casesContext" style="color: #666;">
+					令狐先生月入5000元。上班一年，有信用卡，无逾期，6家公司为他放款
+				</div>
+			</div>			
+		</div>
+		
+		<div class="casesItem">
+			<div class="casesItemBM">
+				<div style="display: flex;align-items: center;">
+					<div class="casesItemIMG"></div>
+					<div class="casesItemText" >
+						<div class="casesItemtips" style="color: #333;">
+							李先生<span style="padding-left: 1.05rem;"><span style="font-size: 0.6rem;color: #bbaeaa;">月收入</span ><span style="font-size: 0.6rem;color: #f8531b;">￥8000</span></span>
+						</div>
+						
+					</div>
+				</div>
+				<div style="display: flex;font-size: 14px;justify-content: space-around;width: 90%; margin: 0 auto; align-items: center;margin-top: 0.25rem;">
+								<div style="width: 1.2rem;height: 1.1rem;background: url(../img/luodiJB.png) no-repeat;background-size: cover; margin-left: 11px;">
+									
+								</div>
+								<div>
+									<div style="color: #666;">贷款头数</div>
+									<div class="loanNumbs" style="color: #fcc841;">5头</div>
+								</div>
+								<div>
+									<div style="color: #666;">贷款金额</div>
+									<div class="loanNumbs" style="color: #fcc841;">5000元</div>
+								</div>
+								<div>
+									<div style="color: #666;">贷款时间</div>
+									<div class="loanNumbs" style="color: #fcc841;">5分钟</div>
+								</div>
+								<div>
+									<div style="color: #666;">贷款公司</div>
+									<div class="loanNumbs" style="color: #fcc841;">4家</div>
+								</div>
+							
+							
+				</div>
+				<div class="casesContext" style="color: #666;">
+					李先生月入8000元。上班一年，有信用卡，无逾期，4家公司为他放款
+				</div>
+			</div>			
+		</div>
+		
+		<div class="casesItem">
+			<div class="casesItemBM">
+				<div style="display: flex;align-items: center;">
+					<div class="casesItemIMG"></div>
+					<div class="casesItemText" >
+						<div class="casesItemtips" style="color: #333;">
+							王先生<span style="padding-left: 1.05rem;"><span style="font-size: 0.6rem;color: #bbaeaa;">月收入</span ><span style="font-size: 0.6rem;color: #f8531b;">￥4000</span></span>
+						</div>
+						
+					</div>
+				</div>
+				<div style="display: flex;font-size: 14px;justify-content: space-around;width: 90%; margin: 0 auto; align-items: center;margin-top: 0.25rem;">
+								<div style="width: 1.2rem;height: 1.1rem;background: url(../img/luodiJB.png) no-repeat;background-size: cover; margin-left: 11px;">
+									
+								</div>
+								<div>
+									<div style="color: #666;">贷款头数</div>
+									<div class="loanNumbs" style="color: #fcc841;">6头</div>
+								</div>
+								<div>
+									<div style="color: #666;">贷款金额</div>
+									<div class="loanNumbs" style="color: #fcc841;">3000元</div>
+								</div>
+								<div>
+									<div style="color: #666;">贷款时间</div>
+									<div class="loanNumbs" style="color: #fcc841;">5分钟</div>
+								</div>
+								<div>
+									<div style="color: #666;">贷款公司</div>
+									<div class="loanNumbs" style="color: #fcc841;">4家</div>
+								</div>
+							
+							
+				</div>
+				<div class="casesContext" style="color: #666;">
+					王先生月入4000元。上班一年，有信用卡，无逾期，4家公司为他放款
+				</div>
+			</div>			
+		</div>
+	</div>
+	<div class="klhCopyright">
+		
+		<div style="text-align: center;">放款机构：平安普惠、中腾信、阳光保险、友信</div>
+		<div style="text-align: center;height: 2rem;display: none;">Copyright@2015爱加空间(深圳)科技有限公司版权所有</div>
 	</div>
 	
 	<!-- 语音验证码 -->
@@ -88,7 +227,7 @@
 <script type="text/javascript" src="../js/md5.js"></script>
 <script type="text/javascript" src="../js/util.js" ></script>
 
-<script type="text/javascript" src="../js/login2.js"></script>
+<script type="text/javascript" src="../js/login2.js?v=1.0"></script>
 <script type="text/javascript">
 	var userType = localStorage.getItem("userType");
 	if(userType == 3){

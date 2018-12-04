@@ -22,6 +22,11 @@
 		
 		
 	</head>
+	<style>
+		[v-cloak]{
+			display: none;
+		}
+	</style>
 	<body class="page" style="background-color: #F6F6F6;">
 		
 		<div id="mescroll" class="content mescroll" >	
@@ -35,10 +40,10 @@
 				<div @click="daikClick(2)" class="nav_item">{{daikTitle.daikuanType}}<span class="icon icon-down"></span><span class="nav_span">|</span></div>
 				<div @click="daikClick(3)" class="nav_item">{{daikTitle.daikuanDate}}<span class="icon icon-down"></span></div>
 			</div>
-			<div id="list-container">
+			<div id="list-container" v-cloak>
 				<div class="itemBoders" v-for="item in daikuanList">
 				<div class="item" @click="detailsClick(item.id,item.applyCount)">
-					<div class="item-top">
+					<div class="item-top" v-cloak>
 						<div class="item-logo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
 						<div class="item-loanName" v-text="item.loanName"></div>
 						<div class="item-Labels">
@@ -48,27 +53,29 @@
 						<!--<div class="apples" id="translates" @click="detailsClicks(item.id,item.applyCount)" style="visibility: hidden;">立即申请</div>-->
 					</div>
 					<div class="item-Con">
-						<div v-text="item.avgQuota"></div>
+						<div v-cloak>
+							{{item.minQuota}}-{{item.maxQuota}}
+						</div>
 						<!--<div v-text="item.monthRate+'/'+item.minTerm"></div>-->
-						<div v-text="item.introduce" style="font-size: 15px;"></div>
+						<div v-text="item.introduce" style="font-size: 15px;" v-cloak></div>
 					</div>
 					<div  class="item-bottom">
 					<!--<div>最高可提</div>-->
-					<div style="color: #9c9b9a;">{{item.unitMonthRate}}利率: {{item.monthRate+'%'}} | 期限: {{item.minTerm+'-'+item.maxTerm}}{{item.unitTerm}}</div>
-					<div class="item-applyCount">
+					<div style="color: #9c9b9a;" v-cloak>{{item.unitMonthRate}}利率: {{item.monthRate+'%'}} | 期限: {{item.minTerm+'-'+item.maxTerm}}{{item.unitTerm}}</div>
+					<div class="item-applyCount" v-cloak>
 						成功率<span class="item-applyCount-Number">{{item.successRate}}%</span>
 					</div>
 				</div>
 				</div>
 				
 			</div>
-			<div style="text-align: center; color: lightgrey;" v-show="ToEnd">没有更多的数据了</div>
+			<div style="text-align: center; color: lightgrey;" v-show="ToEnd" >没有更多的数据了</div>
 			
 			</div>
 
 			<!-- 贷款金额 -->
 		<div id="modalPop" v-bind:class="modalClass" @click="bgclosePopup">
-			<div class="conblock">
+			<div class="conblock" v-cloak>
 				<div v-bind:class="item.claName" @click="closePopup(item.id,item.name)" v-for="item in popList" v-text="item.name"></div>
 			</div>
 		</div>				

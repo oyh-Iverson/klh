@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../css/sm.min.css" />
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/mui.css"/>
+    <link rel="stylesheet" href="../css/Verification.css" />
+    <style>
+    
+    </style>
+</head>
+	<body>
+		<div id="Verification" class="Verification">
+			<div class="parentContent1">
+				<div class="programme">
+					<div class="notAproved">
+						<div class="CABox">
+							
+							<div class="CABoxHead">
+								<div class="CABoxHead-top">
+									<div @click="Returns" style="margin-left: 10px; width: 1rem;height: 1rem;background: url(../img/VerificationRetun.png) no-repeat;background-size: 100% 100%;">
+										<!--<a href="home.html" style="color: white;">返回</a>-->
+										<!--<a href="home.html"></a>-->
+									</div>
+									<div class="CABoxHead-title">专属网贷额度认证</div>
+									<div class="CABoxHead-topRight" @click="reloads">刷新认证</div>
+								</div>
+								<div class="CABoxHead-subTitle">我的贷款额度</div>
+								<div class="CABoxHead-myAmount">
+									<span class="amount" v-text="VerificationMonny"></span>元
+								</div>
+								<div class="CABoxHead-processBox">
+									<div class="process">
+										<div class="mt-progress">
+											<div class="mt-progress-content">
+												<div class="mt-progress-runway" style="height: 15px;"></div>
+												<div class="mt-progress-progress" :style="'width:'+ widthData +'%;'" id="mt-progress-progress"></div>
+											</div>
+										</div>
+									</div>
+									<ul class="numberBar">
+										<li>0元</li>
+										<li>10000元</li>
+										<li>30000元</li>
+										<li>60000元</li>
+										<li>100000元</li>
+									</ul>
+								</div>
+							</div>
+							<div class="CABoxList">
+								<ul>
+									<li>
+										<div class="left">
+											<div class="CAimg">
+												<img src="../img/dae.png"/>
+											</div>
+											<div class="label">+30000元</div>
+										</div>
+										<div class="center">
+											<p class="CAName">身份证认证</p>
+											<p class="CAResult" id="AuthenticationText">未认证</p>
+										</div>
+										<div class="right" @click="Authentication" id="Authentication">
+											<div class="toApprove">去认证</div>
+										</div>
+										
+									</li>
+									<li>
+										<div class="left">
+											<div class="CAimg">
+												<img src="../img/dae.png"/>
+											</div>
+											<div class="label">+30000元</div>
+										</div>
+										<div class="center">
+											<p class="CAName">职业认证</p>
+											<p class="CAResult" id="phoneApproveText">未认证</p>
+										</div>
+										<div class="right" @click="phoneApprove" id="phoneApprove">
+											<div class="toApprove"  >去认证</div>
+										</div>
+										
+									</li>
+									<li>
+										<div class="left">
+											<div class="CAimg">
+												<img src="../img/dae.png"/>
+											</div>
+											<div class="label">+40000元</div>
+										</div>
+										<div class="center">
+											<p class="CAName">芝麻分授权认证</p>
+											<p class="CAResult" id="sesameApproveText">未认证</p>
+										</div>
+										<div class="right" @click="sesameApprove" id="sesameApprove">
+											<div class="toApprove" >去认证</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="CABoxFoot">
+								<div class="finish" v-if="nofinish">请完成认证，获取专属额度</div>
+								<div class="finishs" @click="fanhuiqu" v-else >前往我的专属贷款</div>
+								<p class="tips">银行级数据加密，信息安全保护</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8' ></script>
+<script type="text/javascript" src="../js/md5.min.js"></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type="text/javascript" src="../js/mui.js"></script>
+<script type='text/javascript' src='../js/sm.min.js' charset='utf-8' ></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/Verification.js?v=1.0"></script>
+</html>

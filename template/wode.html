@@ -12,13 +12,106 @@
 	<link rel="stylesheet" href="../css/wode.css" />
 	<link rel="stylesheet" href="../css/mui.css" />
 	<link rel="stylesheet" href="../css/weui.min.css"/>
+	<style>
+				.youhui{
+	animation: youhui infinite 1.5s;
+	animation-fill-mode:forwards
+}
+
+@keyframes youhui
+{
+	0%{
+		transform:translateY(0);
+	}
+	50%{
+		transform:translateY(8px);
+	}
+	100{
+		transform:translateY(0);
+	}
+}
+.page{
+	overflow-y: scroll;
+}
+.content{
+	overflow-y: scroll;
+	padding-bottom: 150px;
+}
+	</style>
 </head>
-<body class="page" style="background-color: white;">
+
+<body class="page" style="background-color: #f7f3f2;">
 <div id="app" class="content">
-	<div class="user_info">
+	<div class="wodeTOP">
+		<div class="wodeTOP_L" @click="youjian" style="visibility: hidden;"></div>
+		<div class="wodeTOP_R" @click="shezhi"></div>
+	</div>
+	<div style="width: 100%;height: 12rem;">
+		<div class="wodeBM"></div>
+		<div class="Wcon">
+				<img src="../img/wodeTX.png" class="Wlogo"/>							
+			<div class="Wsheet">
+				<div class="WsheetTX">
+					<div class="WsheetTXIMG"></div>
+					<div class="WsheetIPhone" id="userInfo"></div>
+				</div>
+				<div  style="position: relative;bottom: -4.4rem;" id="guanzuwx" @click="gzh">
+					<div class="WsheetErweima" ></div>
+					<div class="WsheetGZtext" >关注公众号</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="Wcon2">
+		
+		<div class="Wcon2T">
+			<div class="Wcon2L"  @click="heihu">
+				<div class="Wcon2L_BM"></div>
+				<div class="Wcon2Ttxt">黑户查询</div>
+			</div>
+			<div class="Wcon2ConT" style="display: none;">限时五折</div>
+		</div>
+		<div class="Wcon2T" @click="remendaikuan">
+			<div class="Wcon2R">
+				<div class="Wcon2R_BM" ></div>
+				<div class="Wcon2Ttxt">我的额度</div>
+			</div>
+			<div class="Wcon2ConT">火爆贷款</div>
+		</div>
+		
+	</div>
+	<div class="Wcon3">
+		<div class="wodeBMD" @click="chahei">
+			<div class="Wcon3CH"></div>
+			<div class="Wcon3text">查黑记录</div>
+		</div>
+		<div class="wodeBMD" @click="kefuzhong">
+			<div class="Wcon3KF"></div>
+			<div class="Wcon3text">客服中心</div>
+		</div>
+		<div class="wodeBMD" @click="wodefankui">
+			<div class="Wcon3FK"></div>
+			<div class="Wcon3text">反馈意见</div>
+		</div>
+	</div>
+	<div class="Wcon4">
+		<div class="wodeBMD" @click="wodeBZ">
+			<div class="Wcon3BZ"></div>
+			<div class="Wcon3text">帮助中心</div>
+		</div>
+		<div class="wodeBMD" @click="shouc">
+			<div class="Wcon3SC"></div>
+			<div class="Wcon3text">我的收藏</div>
+		</div>
+		<div class="wodeBMD">
+			<!--<div style="width: 1.5rem;height: 2rem;background: url(../img/wodeFK.png) no-repeat;background-size: 100% 100%;margin: 0 auto;margin-top: 0.8rem;"></div>
+			<div class="Wcon3text">反馈意见</div>-->
+		</div>
+	</div>
+	<!--<div class="user_info">
 		<img class="bg_img" src="../img/user_bg.png" />
 		<span class="Member"></span>
-		<a class="info_ui">可乐花</a>
+		<a class="info_ui">点点有借</a>
 		<div class="info" id="userInfo"></div>
 	</div>
 	<div class="line" @click="enterMy" id="Mycommissions">
@@ -79,10 +172,11 @@
 			<img src="../img/sz.png" />
 			<div class="line_title">设置</div>
 		</a>
-	</div>
+	</div>-->
 
 </div>
-
+<div class="youhui" onclick="youhui()" style="display: none;"></div>	
+<!--
 <nav class="bar bar-tab">
 	<a class="tab-item external" href="javascript:void(0)" onclick=" homed()">
 		<span class="icon icon-home"></span>
@@ -96,13 +190,36 @@
 		<span class="icon icon-message"></span>
 		<span class="tab-label">贷款</span>
 	</a>
+	<a class="tab-item external" href="javascript:void(0)" onclick=" cha()">
+		<span class="icon icon-computer"></span>
+		<span class="tab-label">查信用</span>
+	</a>
 	<a class="tab-item external active" href="javascript:void(0)" onclick=" woded()">
 		<span class="icon icon-me"></span>
 		<span class="tab-label">我的</span>
 	</a>
+</nav>-->
+
+<nav class="navB">
+	<div  class="navList" onclick=" homed()">
+		<div class="navList_OneIMG"></div>
+		<div class="navList_Text">首页</div>
+	</div>
+	<div class="navList" onclick=" dakuai()">
+		<div class="navList_TwoIMG"></div>
+		<div class="navList_Text">贷款</div>
+	</div>
+	<div class="navList" onclick=" cha()">
+		<div class="navList_StreeIMG"></div>
+		<div class="navList_Text">查信用</div>
+	</div>
+	<div class="navList" onclick=" woded()">
+		<div class="navList_FrouIMG"></div>
+		<div class="navList_Text actives">我的</div>
+	</div>
 </nav>
 
-<div class="popup popup-about">
+<!--<div class="popup popup-about">
 	<div class="content-block">
 		<div class="popup_title">
 			<ul>
@@ -110,12 +227,12 @@
 				<li class="dow">来这里↓↓让你的手机吐出钱来！</li>
 			</ul>
 		</div>
-		<img src="../img/gzgzh.png" />
+		<img src="../img/gzhWEIMA.png" />
 		<div class="popup_btn close-popup">
 			<a href="#">确定</a>
 		</div>
 	</div>
-</div>
+</div>-->
 
 
 </body>
@@ -125,25 +242,157 @@
 <script type="text/javascript" src="../js/md5.js"></script>
 <script type="text/javascript" src="../js/util.js" ></script>
 <script type="text/javascript" src="../js/vue.js"></script>
-<script type="text/javascript" src="../js/weui.min.js" async></script>
+<script type="text/javascript" src="../js/weui.min.js" ></script>
 <script type="text/javascript" src="../js/wode.js"></script>
 <script type="text/javascript" src="../js/IOSReturn.js"></script>
 <script>
 	var userType = localStorage.getItem("userType");
 	if(userType == 3){
-		mui("#Invitations")[0].style.display="none";
-		mui("#Mycommissions")[0].style.display="none";
+		//mui("#Invitations")[0].style.display="none";
+		//mui("#Mycommissions")[0].style.display="none";
 	};
 	function dakuai(){
-		window.location.href="daikuan2.html";
+		
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="贷款";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href="daikuan2.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
 		//window.location.href="http://baidu.com";
 	};
 	function homed(){
-		window.location.href="home.html";
+		
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="首页";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href="home.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
 	};
 	function woded(){
-		window.location.href="wode.html";
-	}
+		
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href="wode.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+		
+	};
+	function cha(){
+		
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="查信用";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href="NetBlack.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+	};
 </script>
 
 </html>

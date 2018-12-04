@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>帮助中心</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/sm.css" />
+		<link rel="stylesheet" href="../css/help.css" />	
+	</head>
+	<body class="page">
+	<div id="help-top" class="help-top" style="display: none;">
+		<a href="wode.html">  </a>
+		<span>帮助中心</span>
+	</div>
+		<div id="mescroll" class="contentd">
+			<div class="help" v-for="(help,index) in dataList">
+				<div class="help_title" v-html="help.title"></div>
+				<div class="help_list" v-for="(item,ind) in help.items">
+					<div @click="itemClick(index,ind)" class="help_list_title" v-html="item.title"></div>
+					<div class="line"></div>
+					<div v-if="item.isShow" class="help_list_content" v-html="item.detail"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript" src="../js/sm.min.js"></script>
+	<script type="text/javascript" src="../js/util.js" ></script>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" src="../js/help.js"></script>
+</html>

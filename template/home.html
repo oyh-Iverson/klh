@@ -2,14 +2,14 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>可乐花</title>
+	<title>点点有借</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!--<link rel="stylesheet" href="../css/sm.css" />-->
 	<link rel="stylesheet" href="../css/sm.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
-	<link rel="stylesheet" href="../css/home.css" />
+	<link rel="stylesheet" href="../css/home.css?v=4.0" />
 	<link rel="stylesheet" href="../css/swiper-4.1.0.min.css" />
 	<link rel="stylesheet" href="../mescroll/mescroll.min.css" />
 	<link rel="stylesheet" href="../css/mui.css" />
@@ -21,207 +21,297 @@
  		width: 2.5rem;
  		height: 2.5rem;
  	}
+ 	[v-cloak]{
+ 		display: none;
+ 	}
+ 	.mescroll-upwarp{
+ 		padding-bottom: 2.25rem;	
+ 	}
  </style>
-<body class="page" onload="javaScript:func()" style="background: white;">
+<body class="page" onload="javaScript:func()" style="overflow-y: scroll;background: #f5f5f5; -webkit-overflow-scrolling: touch;">
 <div id="mescroll" class="content mescroll">
 	<!-- 广告轮播图 -->
-	<div class="swiper-container " id="swiper1"></div>
+	<!--<div class="swiper-container " id="swiper1"></div>-->
+	<div id="swiper1" @click="bannersc()"></div>
 	<!-- 喇叭消息 -->
-	<div class="message" style="display: block;">
+	<!--<div class="message" style="display: block;">
 			<div class="laba"></div>
 			<div class="swiper-container" id="swiper2">	
 			</div>
-		</div>
-	<!--<div class="message">
-		<div class="laba"></div>
-		<div class="swiper-container" id="swiper2"></div>
 	</div>-->
-	<!-- 贷款分类2 -->
-	<div class="Recommends">
-		<!--<div class="div_title">为您推荐</div>
-		<div class="classify2">
-			<div class="classify_item2" @click="detailsClick(item.id,item.applyCount)" v-for="item in dataList" v-bind:style="{backgroundImage: item.backImg}"style="background-size: 100% 100%;">
-				<div class="classify2_title" v-text="item.loanName" v-bind:style="{color: item.titleColor}" style="font-weight: bold;"></div>
-				<div class="classify2_tip" v-text="item.introduce" v-bind:style="{color: item.tipColor}"></div>
-				<div class="classify2_top"></div>
-			</div>
-		</div>-->
-		<div class="Recommends-left">
-			<div class="Recommends-left-top" @click="Complete()">
-				<div>贷款大全</div>
-				<div>海量产品任你选</div>
-				<div></div>
-			</div>
-			<div class="Recommends-left-bottom" @click="large()">
-				<div style="width: 80%;">
-					<div>大额低息贷</div>
-					<div>1-20万额度</div>
-				</div>
-				<div style="width: 27%;">
-					<div></div>
-				</div>
-			</div>
+	<div class="huoreCon">
+		<div class="huoreCon_item" @click="borrow()" >
+			<div class="huoreCon_itemIMG huoreCon_itemIMG1"></div>
+			<div class="huoreCon_itemTxt">一定借到钱</div>
+			<span class="huoreCon_itemTip1"></span>
 		</div>
-		<div class="Recommends-right">
-			<div class="Recommends-rightone" @click="Newmouth()">
-				<div style="width: 72%;">
-					<div class="RecommendsTitlt">新口子</div>
-					<div class="Recommendstext">优惠多多,降息大</div>
+		<div class="huoreCon_item" @click="Newmouth()">
+			<div class="huoreCon_itemIMG huoreCon_itemIMG2"></div>
+			<div class="huoreCon_itemTxt ">秒下1500</div>
+			
+		</div>
+		<div class="huoreCon_item" @click="large()">
+			<div class="huoreCon_itemIMG huoreCon_itemIMG3"></div>
+			<div class="huoreCon_itemTxt">大额低息</div>
+		</div>
+		<div class="huoreCon_item" @click="jianc()" >
+			<div class="huoreCon_itemIMG huoreCon_itemIMG4"></div>
+			<div class="huoreCon_itemTxt">黑户检测</div>
+			<span class="huoreCon_itemTipY" style="display: none;">五折</span>
+		</div>
+	</div>
+	<div class="jingxJK">
+		<div class="jingxJKCon">
+			<div class="jingxJKConT">精选借款</div>
+			
+		</div>	
+		<div class="jingxLB">	
+				<div class="swiper-container" id="swiper3">	
+					<div class="swiper-wrapper">
+            			<div class="swiper-slide" v-for="item in jxList" @click="jxClick(item.id,item.applyCount,item.loanName)">
+            				<div class="swiper-slideT">
+            					<div class="swiper-slideTIMG" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }" v-cloak></div>
+            					<div class="swiper-slideTt" v-text="item.loanName" v-cloak></div>
+            				</div>
+            				<div class="swiper-slideN">{{item.minQuota}}-{{item.maxQuota}}</div>
+            				<div class="swiper-slideText"  v-text="item.introduce"></div>
+            			</div>
+            			
+        			</div>
 				</div>
-				<div style="width: 27%;">
-					<div class="RecommendsImg xinkouzi"></div>
-				</div>
-			</div>
-			<div class="Recommends-rightsend" @click="borrow()">
-				<div   style="width: 72%;">
-					<div class="RecommendsTitlt" style="">一定借到钱</div>
-					<div class="Recommendstext" style="">为你量身定制</div>
-				</div>
-				<div  style="width: 27%;">
-					<div class="RecommendsImg yiding"></div>
-				</div>
-			</div>
-			<div class="Recommends-rightstree" @click="SmallAM()">
-				<div style="width: 72%;">
-					<div class="RecommendsTitlt">小额极速贷</div>
-					<div class="Recommendstext">1万以下额度</div>
-				</div>
-				<div style="width: 27%;">
-					<div class="RecommendsImg xiaoe"></div>
-				</div>
-			</div>
 		</div>
 	</div>
 	<div class="hot_title">
-		<div style="width: 110px;padding-top: 3px;padding-left: 7px;color: black;">精选借款</div>
+		<div style="width: 110px;padding-left: 7px;color: black;">热门借款</div>
 		
-		<!--<div style="width: 100%;font-size: 15px;color: #FF5201; padding-top: 7px;">一次性申请3-5个产品，成功贷款率可高达95%</div>-->
 	</div>
 	<div class="hot">
-		<div id="list-container">
-			<!--<div class="item" @click="detailsClick(item.id,item.applyCount)" v-for="item in daikuanList">
-				<div class="item-top">
-					<div  class="item-logo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
-					<div class="item-Con">
-						<div class="item-loanName" v-text="item.loanName"></div>
-						<div>
-							<div class="item-tit">
-								<span>额度范围</span>
-								<span>月利率</span>
-								<span>借款期限</span>
-							</div>
-							<div class="item-titome">
-								<span v-text="item.maxQuota">11</span>
-								<span v-text="item.monthRate+'%/月'">22</span>
-								<span v-text="item.minTerm+'/'+item.maxTerm">33</span>
-							</div>
-						</div>				
+		<div id="list-container">			
+			<div class="list-container_item" style="overflow-y: scroll; -webkit-overflow-scrolling: touch;">
+				<div class="list_item" v-for=" item in daikuanList" @click="detailsClick(item.id,item.applyCount,item.loanName)">
+					<div class="list_itemTop">
+						<div class="list_itemTopIMG" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }" v-cloak></div>
+						<div class="list_itemTopName" v-text="item.loanName" v-cloak></div>
+						<div class="list_itemTopTip" v-show="item.loanName.length<5||item.keyword.length>0" v-text="item.keyword[0]"></div>
 					</div>
-					<div class="apples" id="translates" @click="detailsClicks(item.id,item.applyCount)">立即申请</div>
-				</div>
-				<div  class="item-bottom">
-					<div class="item-bottom-Con">
-						<div class="item-keyword">{{item.introduce}}</div>
-						<div class="item-applyCount">
-						已有<span class="item-applyCount-Number">{{item.applyCount}}</span>人申请成功
-						</div>
+					<div class="list_itemBottom">
+						<div class="list_itemL" style="font-size: 0.5rem;color: #9f8484;">{{item.introduce}}</div>						
+					</div>
+					<div class="list_itemBottom">
+						<div class="list_itemL">{{item.minQuota}}-{{item.maxQuota}}</div>
 					</div>
 				</div>
-			</div>	-->
-			<div class="itemBoders" v-for="item in daikuanList">
-			  <div class="item" @click="detailsClick(item.id,item.applyCount)" >
-				<div class="item-top">
-					<div class="item-logo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
-					<div class="item-loanName" v-text="item.loanName"></div>
-					<div class="item-Labels">
-						<div v-if="Labelstip" v-for="tip in item.keyword">{{tip}}</div>						
-					</div>
-					<!--<div class="apples" id="translates" @click="detailsClicks(item.id,item.applyCount)" style="display: none;">立即申请</div>-->
-				</div>
-				<div class="item-Con">
-					<div v-text="item.avgQuota"></div>
-					<!--<div v-text="item.monthRate+'/'+item.minTerm"></div>-->
-					<div v-text="item.introduce" style="font-size: 15px;"></div>
-				</div>
-				<div  class="item-bottom">
-					<!--<div>最高可提</div>-->
-					<div style="color: #9c9b9a;">{{item.unitMonthRate}}利率: {{item.monthRate+'%'}} | 期限: {{item.minTerm+'-'+item.maxTerm}}{{item.unitTerm}}</div>
-					<div class="item-applyCount">
-						成功率<span class="item-applyCount-Number">{{item.successRate}}%</span>
-					</div>
-				</div>
-			  </div>	
 			</div>
-			<div class="mores" @click="Complete()">查看更多>></div>
+			<div class="mores" @click="Complete2">
+				查看更多
+			</div>
 		</div>
 		
 	</div>
-	
 </div>
 
-<nav class="bar bar-tab">
-	<!--<a class="tab-item external active" href='home.html'>
-		<span class="icon icon-home"></span>
-		<span class="tab-label">首页</span>
-	</a>
-	<a class="tab-item external" href="invitation.html" id="Invitations">
-		<span class="icon icon-message"></span>
-		<span class="tab-label">邀请</span>
-	</a>
-	<a class="tab-item external" href="daikuan2.html">
-		<span class="icon icon-message"></span>
-		<span class="tab-label">贷款</span>
-	</a>
-	<a class="tab-item external" href="wode.html" >
-		<span class="icon icon-me"></span>
-		<span class="tab-label">我的</span>
-	</a>-->
-	<a class="tab-item external active"  href="javascript:void(0)" onclick=" homed()">
-		<span class="icon icon-home"></span>
-		<span class="tab-label">首页</span>
-	</a>
-	<a class="tab-item external" href="invitation.html" id="Invitations">
-		<span class="icon icon-message"></span>
-		<span class="tab-label">邀请</span>
-	</a>
-	<a class="tab-item external" href="javascript:void(0)" onclick=" dakuai()">
-		<span class="icon icon-message"></span>
-		<span class="tab-label">贷款</span>
-	</a>
-	<a class="tab-item external" href="javascript:void(0)" onclick=" woded()">
-		<span class="icon icon-me"></span>
-		<span class="tab-label">我的</span>
-	</a>
+<div class="youhui" onclick="youhui()" style="display: none;"></div>
+<nav class="navB">
+	<div  class="navList" onclick=" homed()">
+		<div class="navList_OneIMG"></div>
+		<div class="navList_Text actives">首页</div>
+	</div>
+	<div class="navList" onclick=" dakuai()">
+		<div class="navList_TwoIMG"></div>
+		<div class="navList_Text">贷款</div>
+	</div>
+	<div class="navList" onclick=" cha()">
+		<div class="navList_StreeIMG"></div>
+		<div class="navList_Text">查信用</div>
+	</div>
+	<div class="navList" onclick=" woded()">
+		<div class="navList_FrouIMG"></div>
+		<div class="navList_Text ">我的</div>
+	</div>
 </nav>
 </body>
 <!--<script type="text/javascript" src="../js/md5.js"></script>-->
 <script type="text/javascript" src="../js/md5.min.js"></script>
-<script type="text/javascript" src="../js/weui.min.js" async></script>
+<script type="text/javascript" src="../js/weui.min.js" ></script>
 <script type="text/javascript" src="../js/swiper-4.1.0.min.js"></script>
 <script type="text/javascript" src="../js/util.js"></script>
 <script src="../js/vue-lazyload.js"></script>
 <script type="text/javascript" src="../js/mui.js"></script>
-<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8' async></script> 
-<script type='text/javascript' src='../js/sm.min.js' charset='utf-8' async></script>
+<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8'></script> 
+<script type='text/javascript' src='../js/sm.min.js' charset='utf-8' ></script>
 <script type="text/javascript" src="../mescroll/mescroll.min.js"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
 <script type="text/javascript" src="../js/vue.js"></script>
-<script type="text/javascript" src="../js/home.js"></script>
+<script type="text/javascript" src="../js/home.js?v=4.0"></script>
 <script>
 	var userType = localStorage.getItem("userType");
 	if(userType == 3){
-		mui("#Invitations")[0].style.display="none";
+		//mui("#Invitations")[0].style.display="none";
 	};
+	//监听滚动条
+	var mescroll = document.getElementById("mescroll");
+	var n = 0;
+	var mescrollss = mescroll.addEventListener('scroll', function () {
+		var scrollHeight = document.getElementById("mescroll").scrollHeight;
+		var scrollTop = document.getElementById("mescroll").scrollTop; //0-18;
+		var clientHeight = document.getElementById("mescroll").clientHeight;
+		if (scrollHeight - clientHeight == scrollTop) {
+			n++;
+			if(n==2){
+				setTimeout(function(){
+					window.location.href="daikuan2.html";
+				},1500)
+				
+			}
+			console.log(n);
+		}
+				
+	})
 	function dakuai(){
-		window.location.href="daikuan2.html";
+		
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="贷款";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href="daikuan2.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
 		//window.location.href="http://baidu.com";
 	};
 	function homed(){
-		window.location.href="home.html";
+		
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="首页";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href="home.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
 	};
 	function woded(){
-		window.location.href="wode.html";
+		
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href="wode.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+		
 	};
+	function cha(){
+		
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="查信用";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                            
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href="NetBlack.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+	};
+
+	
 </script>
 
 </html>

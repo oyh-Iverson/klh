@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../css/sm.min.css" />
+    <link rel="stylesheet" href="../css/common.css"/>
+   	<link rel="stylesheet" href="../css/Authentication.css"/>
+   	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.3/weui.min.js"></script>
+</head>
+<style>
+	[v-cloak] {
+  		display: none;
+	}
+</style>
+	<body>
+		<div id="Authentication" class="Authentication">
+			<div class="CAHome">
+				<div class="idCardBox">
+					<div class="CAHomeHead">
+						<div class="top">
+							<div class="topLeft" style="z-index: 999;" @click="goback"></div>
+							<div class="title">身份认证</div>
+						</div>
+					</div>
+					<p class="noted">身份信息提交后无法修改，请仔细确认后提交</p>
+					<div class="CAHomeInfoInsert">
+						<ul class="baseInfo">	
+							
+							<li>
+								<img src="../img/senFu.png" class="logoIcon"/>
+								<div class="paramBox">
+									<input type="text" name="uerName" placeholder="请输入您的真实姓名"  class="inputTxt" v-model="names"/>
+								</div>
+							</li>
+							<li>
+								<img src="../img/senFc.png" class="logoIcon"/>
+								<div class="paramBox">
+									<input type="text" name="userIdCard" placeholder="请输入你的对应身份证号"  class="inputTxt" v-model="ipNumber" maxlength="18"/>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="shengriClick">
+									<div class="line_title">生日</div>
+									<div v-bind:class="userInfo.birthday.classNa" v-cloak>{{userInfo.birthday.value}}<span class="icon icon-right" style="margin-top: -0.15rem;"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="telSmClick">
+									<div class="line_title">手机号码实名</div>
+									<div v-bind:class="userInfo.phoneRealName.classNa" v-cloak>{{userInfo.phoneRealName.label}}<span class="icon icon-right" style="margin-top: -0.15rem;"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="SexClick">
+									<div class="line_title">性别</div>
+									<div v-bind:class="userInfo.Sex.classNa" v-cloak>{{userInfo.Sex.label}}<span class="icon icon-right" style="margin-top: -0.15rem;"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="shengqingEduClick">
+									<div class="line_title">申请额度</div>
+									<div v-bind:class="userInfo.shengqingEdu.classNa" v-cloak>{{userInfo.shengqingEdu.label}}<span class="icon icon-right" style="margin-top: -0.15rem;"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="shengqingQixianClick">
+									<div class="line_title">申请期限</div>
+									<div v-bind:class="userInfo.shengqingQixian.classNa" v-cloak>{{userInfo.shengqingQixian.label}}<span class="icon icon-right" style="margin-top: -0.15rem;"></span></div>
+								</div>
+							</li>
+							
+							<!--<li>
+								<img src="../img/wode.png" class="logoIcon"/>
+								<div class="paramBox">
+									<div placeholder="请输入你的手机号"  class="inputTxt" v-text="userPhone"></div>
+								</div>
+							</li>-->
+							
+						</ul>
+						
+					</div>
+					<div class="CAHomeFoot" @click="getTo">
+						<div class="finish">提交身份认证信息</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+<script type="text/javascript" src="../js/md5.min.js"></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8' ></script> 
+<script type='text/javascript' src='../js/sm.min.js' charset='utf-8' ></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/Authentication.js"></script>
+</html>

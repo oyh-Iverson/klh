@@ -13,7 +13,11 @@
     <link rel="stylesheet" href="../css/weui.min.css"/> 
     <link rel="stylesheet" href="../css/loans.css"/> 
 	</head>
-	
+	<style>
+		[v-cloak] {
+    		display: none;
+		}
+	</style>
 	<body>
 	<div id="mescroll" class="content mescroll">
 		<div id="shehzhi-top" class="shehzhi-top">
@@ -26,23 +30,25 @@
 			<div class="itemBoders" v-for="item in daikuanList">
 				<div class="item" @click="detailsClick(item.id,item.applyCount)">
 					<div class="item-top">
-						<div class="item-logo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
-						<div class="item-loanName" v-text="item.loanName"></div>
-						<div class="item-Labels">
+						<div v-cloak class="item-logo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
+						<div v-cloak class="item-loanName" v-text="item.loanName"></div>
+						<div v-cloak class="item-Labels">
 							<div v-show="Labelstip" v-for="tip in item.keyword">{{tip}}</div>
 													
 						</div>
 						<!--<div class="apples" id="translates" @click="detailsClicks(item.id,item.applyCount)" style="visibility: hidden;">立即申请</div>-->
 					</div>
 					<div class="item-Con">
-						<div v-text="item.avgQuota"></div>
+						<div v-cloak>
+							{{item.minQuota}}-{{item.maxQuota}}
+						</div>
 						<!--<div v-text="item.monthRate+'/'+item.minTerm"></div>-->
-						<div v-text="item.introduce" style="font-size: 15px;"></div>
+						<div  v-cloak v-text="item.introduce" style="font-size: 15px;"></div>
 					</div>
 					<div  class="item-bottom">
 					<!--<div>最高可提</div>-->
-					<div style="color: #9c9b9a;">{{item.unitMonthRate}}利率: {{item.monthRate+'%'}} | 期限: {{item.minTerm+'-'+item.maxTerm}}{{item.unitTerm}}</div>
-					<div class="item-applyCount">
+					<div v-cloak style="color: #9c9b9a;">{{item.unitMonthRate}}利率: {{item.monthRate+'%'}} | 期限: {{item.minTerm+'-'+item.maxTerm}}{{item.unitTerm}}</div>
+					<div v-cloak class="item-applyCount">
 						成功率<span class="item-applyCount-Number">{{item.successRate}}%</span>
 					</div>
 				</div>
@@ -63,7 +69,7 @@
 	<script type="text/javascript" src="../js/util.js" ></script>
 	<script type="text/javascript" src="../js/vue.js"></script>
 	<script type="text/javascript" src="../mescroll/mescroll.min.js" ></script>
-	<script type="text/javascript" src="../js/weui.min.js" async></script>
+	<script type="text/javascript" src="../js/weui.min.js" ></script>
 	<script type="text/javascript" src="../js/loans.js"></script>
 	
 </html>

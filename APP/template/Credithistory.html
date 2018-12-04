@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>历史记录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/sm.css" />
+		<link rel="stylesheet" href="../css/wode.css" />
+		<link rel="stylesheet" href="../css/Credithistory.css" />
+	</head>
+	<body class="page" style="overflow-y: scroll;">
+		<div id="Credithistory" style="padding-bottom: 0.5rem;">
+			<div id="fb-top" class="fb-top" >
+				<a href="javascript:history.back(-1)">  </a>
+				<span>查信用历史</span>
+			</div>
+			<div class="LishiList">
+				<div class="LishiTemp" v-for="item in conList" @click="detailsClick(item.riskInfoApplyID,item.prepay_id)">	
+					<div class="LishiTempOne">
+						<div class="LishiTempOneL"></div>
+						<div class="LishiTempOneC" v-text="item.idName"></div>
+						<div class="LishiTempOneR">
+							<div class="LishiTempOneRYes" v-if="item.payState=='1'">支付成功</div>
+							<div class="LishiTempOneRWeiter" v-else="item.payState=='0'">待确认</div>
+						</div>
+					</div>
+					<div class="LishiTempTwo">报告编号：{{item.idNumber}}</div>
+					<div class="LishiTempTwo">查询时间：{{item.createTime}}</div>
+					<div class="LishiTempTwo">支付方式：<span v-text="item.payType=='0'?'微信支付':item.payType=='1'?'支付宝支付':''"></span></div>
+					<div class="LishiTempTwo">支付金额：￥{{item.beforePay/100}}</div>
+					<!--<div class="LishiTempToux"></div>
+					<div class="LishiTempText">
+						<div style="font-size: 1.25rem;">{{item.idName}}</div>
+						<div>报告编号：{{item.idNumber}}</div>
+						<div>查询时间：{{item.createTime}}</div>
+					</div>-->
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	
+		
+	</body>
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript" src="../js/sm.min.js"></script>
+	<script type="text/javascript" src="../js/md5.js"></script>
+	<script type="text/javascript" src="../js/util.js" ></script>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" src="../js/Credithistory.js"></script>
+</html>

@@ -40,7 +40,8 @@
 //          yzmColor: '#1184FF',
             //yzmColor: '#ff6600',
             yzmColor: '#FF5201',
-            clearinviteCodeFirst:false 
+            clearinviteCodeFirst:false,
+            isActive:true,
         },
         watch: {
             // 快捷登录   账号密码登录  切换
@@ -95,7 +96,7 @@
             },
         },
         mounted: function() {
-        	this.horn();
+        	//this.horn();
         	this.Statistics();
             this.isLogin();
             if(localStorage.getItem('refereeCode') != null && localStorage.getItem('refereeCode')!=undefined &&localStorage.getItem('refereeCode') != "null"){
@@ -110,49 +111,60 @@
 	 		console.log(a)
         },
         methods: {
-        	horn(){
-        		var messages = [];
-        		var urlStr = Util.baseUrl + '/DuG/api/basics/advertOperation/findLoanSucce.do';
-        		var md5Str = Util.basekey;
-        		console.log(md5Str);
-        		$.ajax({
-            		type:"get",
-            		url: urlStr,
-            		async:true,
-            			//dataType:'json',
-            		data: {
-                		key: Util.basekey,
-                		auth: Util.base32Encode('key'),
-                		token: md5(md5Str)
-            		},
-            		success: function(res){
-            			console.log(res);
-               			 // 获取成功
-                		if (res.ret_code == '0') {
-                    		messages = res.ret_data;
-                    		var tempHtml = '';
-                    		$.each(messages, function(index,item) {
-                        		tempHtml = tempHtml + '<div class="swiper-slide">' + item + '</div>'
-                    		});
-                    		var html = '<div class="swiper-wrapper">' + tempHtml + '</div>';
-                    		$('#swiper2').html(html);
-                    		var swiper2 = new Swiper('#swiper2',{
-//                      		direction : 'vertical',
-                        		speed: 2000,
-                        		loop: true,
-                        		spaceBetween: 0,
-                        		autoplay:true,
-                        		observer:true,//修改swiper自己或子元素时，自动初始化swiper
-                        		observeParents:true,//修改swiper的父元素时，自动初始化swiper
-                    		});
-                		} else{
-                    		$.toast(res.ret_msg);
-                		}
-            	},
-            	error: function(res){
-                	$.toast('网路请求失败，请稍后重试');
-            	}
-        		});
+//      	horn(){
+//      		var messages = [];
+//      		var urlStr = Util.baseUrl + '/DuG/api/basics/advertOperation/findLoanSucce.do';
+//      		var md5Str = Util.basekey;
+//      		console.log(md5Str);
+//      		$.ajax({
+//          		type:"get",
+//          		url: urlStr,
+//          		async:true,
+//          			//dataType:'json',
+//          		data: {
+//              		key: Util.basekey,
+//              		auth: Util.base32Encode('key'),
+//              		token: md5(md5Str)
+//          		},
+//          		success: function(res){
+//          			console.log(res);
+//             			 // 获取成功
+//              		if (res.ret_code == '0') {
+//                  		messages = res.ret_data;
+//                  		var tempHtml = '';
+//                  		$.each(messages, function(index,item) {
+//                      		tempHtml = tempHtml + '<div class="swiper-slide">' + item + '</div>'
+//                  		});
+//                  		var html = '<div class="swiper-wrapper">' + tempHtml + '</div>';
+//                  		$('#swiper2').html(html);
+//                  		var swiper2 = new Swiper('#swiper2',{
+////                      		direction : 'vertical',
+//                      		speed: 2000,
+//                      		loop: true,
+//                      		spaceBetween: 0,
+//                      		autoplay:true,
+//                      		observer:true,//修改swiper自己或子元素时，自动初始化swiper
+//                      		observeParents:true,//修改swiper的父元素时，自动初始化swiper
+//                  		});
+//              		} else{
+//                  		$.toast(res.ret_msg);
+//              		}
+//          	},
+//          	error: function(res){
+//              	$.toast('网路请求失败，请稍后重试');
+//          	}
+//      		});
+//      	},
+        	//阅读协议图标
+        	yuedu:function(){
+        		var self= this;
+        		self.isActive = !self.isActive;
+        		//console.log("11111");
+        	},
+        	//注册协议
+        	zhucexianyi:function(){
+        		var self= this;
+        		window.location.href = 'zhuceXieyi.html';
         	},
         	Statistics(){
         		var urlStr = Util.baseUrl + '/DuG/api/user/user/saveUserView.do';
@@ -348,6 +360,8 @@
                                 $.toast('网路请求失败，请稍后重试');
                             }
                         })
+                    }else{
+                    	 $.toast("请正确输入");
                     }
                 } else{ // 账号密码登录
                     if (this.isActive2() == true) {
@@ -390,6 +404,8 @@
                                 $.toast('网路请求失败，请稍后重试');
                             }
                         });
+                    }else{
+                    	$.toast("请正确输入");
                     }
                 }
             },
@@ -404,7 +420,7 @@
             
             // 是否激活登录按钮
             isActive1: function(){
-                if (this.telVal.length == 11 && this.yzmVal.length > 0) {
+                if (this.telVal.length == 11 && this.yzmVal.length > 0 && this.isActive == true) {
                     this.loginClass = 'login_btn_active';
                     return true;
                 } else{
@@ -414,7 +430,7 @@
             },
             // 是否激活登录按钮
             isActive2: function(){
-                if (this.zhanghao.length > 0 && this.passwd.length > 0) {
+                if (this.zhanghao.length > 0 && this.passwd.length > 0 && this.isActive == true) {
                     this.loginClass = 'login_btn_active';
                     return true;
                 } else{

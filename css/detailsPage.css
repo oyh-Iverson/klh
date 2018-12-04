@@ -1,9 +1,10 @@
 .wrapper{
     width: 100%;
     height: 100%;
-    background-color: #ffffff;
+    background-color: #f7f3f2;
     position: relative;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .header{
@@ -15,13 +16,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background: white;
 }
 .header .first-bar{
     font-size: 1.5rem;
     color: darkgrey;
     margin-left: 0.8rem;
-	width: 2rem;
-	height: 2rem;
+	width: 1.3rem;
+	height: 1.3rem;
     background: url(../img/fanhui.png);
     background-size: 100% 100%;
 }
@@ -485,4 +487,304 @@
     top: 15px;
     box-shadow: 0px 2px 2px lightgrey;
     border-radius: 5px;
+}
+.detailCon{
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	position: relative;
+}
+.detailConBM{
+	width: 100%;
+	height: 8.5rem;
+	background: url(../img/detailConBM.png)no-repeat;
+	background-size: 100% 100%;
+}
+.detailC{
+	width: 90%;
+	height: auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	margin: 0 auto;
+	padding-bottom: 6rem;
+}
+.detailCTop{
+	width: 100%;
+	height: 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.detailCTopL{
+	width: 75%;
+	height: 4rem;
+}
+.detailCTopR{
+	width: 25%;
+	height: 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: -0.65rem;
+	/*visibility: hidden;*/
+}
+.detailCTopL_Name{
+	font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    padding-top: 0.85rem;
+    padding-bottom: 0.15rem;
+    letter-spacing: 3px;
+}
+.detailCTopL_tip{
+	font-size: 0.65rem;
+	color: white;
+	letter-spacing: 3px;
+	
+}
+.detailCTopRXX{
+	width: 1.2rem;
+	height: 1.2rem;
+	background: url(../img/xiaoxiIMG.png) no-repeat;
+	background-size: 100% 100%;
+}
+.detailCTopRSC{
+	width: 1.2rem;
+	height: 1.2rem;
+	background: url(../img/shouc.png) no-repeat;
+	background-size: 100% 100%;
+}
+.detailCxinxi{
+	width: 100%;
+	height: auto;
+	border-radius: 0.25rem;
+	background: white;
+	padding-bottom: 0.75rem;
+}
+.detailCxinxiOne{
+	width: 88%;
+	height: 3.5rem;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+}
+.detailCxinxiLogo{
+	width: 2rem;
+	height: 2rem;
+	border-radius: 0.25rem;
+}
+.detailCxinxiN{
+	font-size: 0.75rem;
+	color: black;
+	margin-right: auto;
+	margin-left: 0.65rem;
+}
+.detailCPf{
+	font-size: 0.6rem;
+	color: #888888;
+	text-align: right;
+}
+.detailCxingxing{
+	display: flex;
+	align-items: center;
+}
+.detailCxingxing_img{
+	width: 0.5rem;
+	height: 0.5rem;
+	background: url(../img/start36.png) no-repeat;
+	background-size: 100% 100%;
+	margin-right: 0.15rem
+}
+.detailCxinxiTwo{
+	width: 88%;
+	margin: 0 auto;
+	margin-top: 0.5rem;
+}
+.detailCxinxiTwoText{
+	font-size: 0.6rem;
+	color: #888888;
+}
+.detailCxinxiTwoED{
+	font-size: 1.5rem;
+	color: #ec6e42;
+}
+.detailCxinxiSrtee{
+	width: 88%;
+	margin: 0 auto;
+	margin-top: 0.15rem;
+	
+}
+.detailCxinxiFrou{
+	width: 93%;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 0.5rem;
+	background: #fdf3f0;
+}
+.detailCxinxiFrou1{
+	height: 2.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.detailCxinxiFrou1T{
+	display: flex;
+	align-items: center;
+	margin-left: 0.6rem;
+}
+.detailCxinxiFrou1B{
+	display: flex;
+	align-items: center;
+	margin-right: 0.6rem;
+}
+.detailCxinxiFrou1IMG{
+	width: 0.6rem;
+	height: 0.6rem;
+	background: url(../img/gou.png) no-repeat;
+	background-size: 100% 100%;
+}
+.detailCxinxiFrou1Text{
+	font-size: 0.6rem;
+	color: #888888;
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+}
+.detailCxinxiFrou1TIP{
+	font-size: 0.6rem;
+	color: black;
+}
+.detailCxinxiFrou2{
+	height: 2.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: -1.05rem;
+}
+.detailCtiaojian{
+	width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+    background: white;
+    padding-bottom: 0.75rem;
+    margin-top: 0.75rem;
+}
+.detailCtiaojianTxt{
+	font-size: 0.75rem;
+	color: black;
+	margin-right: auto;
+}
+.detailCtiaojianER{
+	width: 88%;
+    height: 1rem;
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+.detailCtiaojianYuan{
+	width: 0.8rem;
+	height: 0.8rem;
+	background: #888888;
+	line-height: 0.8rem;
+	text-align: center;
+	border-radius: 50%;
+	font-size: 0.7rem;
+	color: white;
+}
+.detailCtiaojiantip{
+	font-size: 0.65rem;
+	color: #5c6471;
+	margin-left: 0.5rem;
+}
+.canpjieshao{
+	width: 88%;
+    margin: 0 auto;
+    margin-top: 0.25rem;
+	font-size: 0.65rem;
+	color: #5c6471;
+}
+.jingxuan{
+	width: 100%;
+    height: 2rem;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.jingxuanCanpin{
+	width: 100%;
+    height: auto;
+   /* margin-top: 0.75rem;*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: wrap;
+}
+.jingxuanCanpinS{
+	width: 48.5%;
+	height: 5rem;
+	background: white;
+	border-radius: 0.25rem;
+	margin-top: 0.4rem;
+}
+.lijishengq{
+	width: 100%;
+	height: 4.5rem;
+	background: white;
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.lijishengqCon{
+	width: 88%;
+	height: 2.8rem;
+	background: #f8531b;
+	border-radius: 0.25rem;
+}
+.lijishengqConTxt{
+	text-align: center;
+	font-size: 1rem;
+	color: white;
+	margin-top: 0.25rem;
+	
+}
+.lijishengqConRenshu{
+	text-align: center;
+	font-size: 0.6rem;
+	color: #f7ded5;
+}
+.actives{
+  	background: url(../img/yishouc.png) no-repeat !important;
+  	background-size: 100% 100% !important;
+    
+}
+.jingxuanCanpintop{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.5rem;
+	margin-bottom: 0.65rem;
+}
+.jingxuanCanpinT{
+	width: 1.4rem;
+	height: 1.4rem;
+	border-radius: 0.25rem;
+}
+.jingxuanCanpinB{
+	font-size: 0.6rem;
+	color: #ff5541;
+	margin-left: 0.4rem;
+	padding: 0.2rem 0.2rem;
+	background: #f7f3f2;
+	border-radius: 0.25rem;
+}
+.jingxuanCanpintext{
+	font-size: 0.6rem; 
+	color: #888888;
+	text-align: center;
 }

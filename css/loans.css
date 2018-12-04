@@ -1,5 +1,5 @@
 .itemBoders{
-	border-bottom: 2px solid rgba(236,236,236,1);
+	border-bottom: 1px solid rgba(236,236,236,1);
     padding-bottom: 8px;
     background: white;
 }
@@ -8,7 +8,7 @@
     margin: 0 auto;
     background: white;
     border-radius: 5px;
-    margin-top: 0.05rem;
+    /*margin-top: 0.05rem;*/
     padding: 0 0.6rem;
 }
 .item-top {
@@ -114,11 +114,11 @@
     font-size: 1.6rem;
     padding-left: 0.6rem;
     color: darkgray;
-    width: 2rem;
-    height: 2rem;
+    width: 1.3rem;
+    height: 1.3rem;
     background: url(../img/fanhui.png);
     background-size: 100% 100%;
-    /* margin-top: 5px; */
+    margin-top: 0.35rem; 
     margin-left: 11px;
 }
 .shehzhi-top > span {

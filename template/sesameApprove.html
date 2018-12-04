@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../css/sm.min.css" />
+    <link rel="stylesheet" href="../css/common.css"/>
+   	<link rel="stylesheet" href="../css/sesameApprove.css"/>
+   	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+	<!--<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.3/weui.min.js"></script>-->
+	
+</head>
+<style>
+	[v-cloak]{
+		display: none;
+	}
+</style>
+	<body>
+		<div id="sesameApprove" class="Authentication">
+			<div class="CAHome">
+				<div class="idCardBox">
+					<div class="CAHomeHead">
+						<div class="top">
+							<div class="topLeft" @click="goback" style="z-index: 999;"></div>
+							<div class="title">芝麻分授信认证</div>
+						</div>
+					</div>
+					<p class="noted">系统会向支付宝申请授信，会打开芝麻分的相关界面</p>
+					<div class="CAHomeInfoInsert">
+						<ul class="baseInfo">
+							<li>
+								<div class="line" @click="zhimaClick">
+									<div class="line_title">芝麻分</div>
+									<div v-bind:class="userInfo.zhima.classNa" v-cloak>{{userInfo.zhima.label}}<span class="icon icon-right"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="weilidaiClick">
+									<div class="line_title">是否有微粒贷</div>
+									<div v-bind:class="userInfo.weilidai.classNa" v-cloak>{{userInfo.weilidai.label}}<span class="icon icon-right"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="xinyongkaClick">
+									<div class="line_title">是否有信用卡</div>
+									<div v-bind:class="userInfo.xinyongka.classNa" v-cloak>{{userInfo.xinyongka.label}}<span class="icon icon-right"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="xinyongeduClick">
+									<div class="line_title">信用额度</div>
+									<div v-bind:class="userInfo.xinyongedu.classNa" v-cloak>{{userInfo.xinyongedu.label}}<span class="icon icon-right"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="xinyongyuqiClick">
+									<div class="line_title">信用逾期</div>
+									<div v-bind:class="userInfo.xinyongyuqi.classNa" v-cloak>{{userInfo.xinyongyuqi.label}}<span class="icon icon-right"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="houseClick">
+									<div class="line_title">房产</div>
+									<div v-bind:class="userInfo.house.classNa" v-cloak>{{userInfo.house.label}}<span class="icon icon-right"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="carClick">
+									<div class="line_title">车产</div>
+									<div v-bind:class="userInfo.car.classNa" v-cloak>{{userInfo.car.label}}<span class="icon icon-right"></span></div>
+								</div>
+							</li>
+							<!--<li>
+								<img src="../img/wode.png" class="logoIcon"/>
+								<div class="paramBox">
+									<input type="text" name="userIdCard" placeholder="请输入你的对应身份证号"  class="inputTxt"/>
+								</div>
+							</li>
+							<li>
+								<img src="../img/wode.png" class="logoIcon"/>
+								<div class="paramBox">
+									<input type="number" name="userPhone" placeholder="请输入你的手机号"  class="inputTxt"/>
+								</div>
+							</li>
+							<li>
+								<div class="paramBox" style="padding-left: 0.6rem;">
+									<input type="tel" maxlength="6" placeholder="请输入短信验证码" class="inputTxt"/>
+								</div>
+								<a href="javascript:void(0);" class="passwordBtn">获取验证码？</a>
+							</li>-->
+						</ul>
+					
+						
+					</div>
+					<div class="CAHomeFoot" @click="getTo">
+						<div class="finish">提交芝麻分授信认证</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+<script type="text/javascript" src="../js/md5.min.js"></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8' ></script> 
+<script type='text/javascript' src='../js/sm.min.js' charset='utf-8' ></script>
+<script type="text/javascript" src="../js/weui.min.js"></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/sesameApprove.js"></script>
+</html>

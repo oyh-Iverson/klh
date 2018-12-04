@@ -1,0 +1,154 @@
+*{
+	margin: 0;
+	padding: 0;
+	touch-action: none;
+}
+.Authentication{
+	height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    min-height: 41.6875rem;
+}
+.CAHome{
+	position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+.idCardBox{
+	height: 41.6875rem;
+}
+.CAHomeHead{
+	background: #fff;
+}
+.CAHomeHead .top{
+	position: relative;
+    height: 50px;
+    line-height: 50px;
+    color: #666;
+}
+.CAHomeHead .top .topLeft{
+	position: absolute;
+    top: 0.55rem;
+    left: 0.65rem;
+    font-size: 14px;
+    background: url(../img/fanhui.png);
+    background-size: 100% 100%;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.CAHomeHead .top .title{
+	text-align: center;
+    font-size: 18px;
+}
+.CAHomeInfoInsert .baseInfo{
+	border-radius: 4px;
+    margin: 0 .9375rem;
+    box-shadow: 0 1px 8px 0 rgba(80,80,80,.2);
+    padding-bottom: 15px;
+}
+.CAHomeInfoInsert ul{
+	background: #fff;
+}
+li{
+	list-style: none;
+}
+.CAHomeInfoInsert ul li{
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid #e5e5e5;
+    margin: 0 .9375rem;
+}
+.CAHomeInfoInsert .baseInfo li{
+	position: relative;
+}
+.logoIcon{
+	position: absolute;
+    left: .625rem;
+    width: 1rem;
+}
+.paramBox{
+	padding-left: 2.5rem;
+	flex: 4;
+	-webkit-box-flex: 4;
+}
+.paramBox .inputTxt{
+	width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 15px;
+}
+.passwordBtn{
+	color: #fda90a;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.noted{
+    line-height: 35px;
+    color: #fea11e;
+    background: #ffedcc;
+    font-size: 0.6rem;
+    margin-top: 0;
+    text-align: center;
+}
+.CAHomeFoot{
+	margin-top: 4.5rem;
+    text-align: center
+}
+.CAHomeFoot .finish{
+	width: 70%;
+    height: 2.5rem;
+    line-height: 2.2rem;
+    margin: 0 auto;
+    background: #f8531b;
+    padding: 2px 5px;
+    border: 1px solid #f8531b;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 0.25rem;
+    letter-spacing: 0.1rem;
+}
+.line_select {
+	height: 2.4rem;
+	line-height: 2.4rem;
+	text-align: right;
+	color:#9a9a9a;
+	font-size: 0.8rem;
+	float: right;
+	margin-right: 0.5rem;
+}
+.line_select_active {
+	height: 2.4rem;
+	line-height: 2.4rem;
+	text-align: right;
+	color: #343434;
+	font-size: 0.8rem;
+	float: right;
+	margin-right: 0.5rem;
+}
+.line {
+	width: 100%;
+	background-color: white;
+	height: 2rem;	
+}
+.line_title {
+	height: 2.4rem;
+	line-height: 2.4rem;
+	text-align: left;
+	color: #343434;
+	font-size: 0.8rem;
+	float: left;
+	margin-left: 0.5rem;
+}
+

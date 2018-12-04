@@ -1,0 +1,140 @@
+
+.quota{
+	width: 100%;
+	height: 11rem;
+	background: url(../img/quotaimg.png) no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+.fanhuis{
+	width: 92%;
+	height: 1.1rem;
+	position: absolute;
+    top: 0.5rem;
+    left: 0;
+    right: 0;
+	margin: 0 auto;
+}
+.fanhuisimg{
+	width: 1.1rem;
+	height: 1.1rem;
+	background: url(../img/Myquotafh.png) no-repeat;
+	background-size: 100% 100%;
+}
+.monny{
+	width: 92%;
+    height: 4rem;
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.monnyCon{
+	text-align: center;
+	color: white;
+	font-size: 0.6rem;
+}
+.monnytext{
+	font-size: 3rem;
+	letter-spacing: 0.1rem;
+}
+.monnyTip{
+	font-size: 0.7rem; 
+	color: white;
+	text-align: center;
+	margin-top: -0.7rem;
+}
+.quotaCenter{
+	width: 92%;
+	margin: 0 auto;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+.quotaCenterT1{
+	font-size: 1rem;
+	color: #f67347;
+}
+.quotaCenterT2{
+	font-size: 0.6rem;
+	color: #999999;
+}
+.quotaList{
+	width: 92%;
+	margin: 0 auto;
+	margin-top: 0.5rem;
+	height: auto;
+	padding-bottom: 1rem;
+	
+}
+.quotaListItem{
+	width: 100%;
+	height: 4.3rem;
+	background: #f7f3f2;
+	margin-top: 0.5rem;
+	position: relative;
+	border-radius: 0.2rem;
+}
+.quotaListItem:first-child{
+	margin-top: 1rem;
+}
+.quotaListItemCon{
+	width: 90%;
+	height: 4.3rem;
+	margin: 0 auto;
+	display: flex;
+}
+.quotaListItemL{
+	width: 70%;
+}
+.quotaListItemR{
+	width: 30%;
+	text-align: right;
+    line-height: 4.3rem;
+    font-size: 1.4rem;
+    color: #ec6e42;
+}
+.quotaListItemLTop{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-top: 1rem;
+	margin-bottom: 0.1rem;
+	
+}
+.quotaListItemLText{
+	width: 100%;
+	height: 1rem;
+	color: #999999;
+	font-size: 0.65rem;
+}
+.quotaListItemLToplogo{
+	width: 0.8rem;
+	height: 0.8rem;
+}
+.quotaListItemLTopname{
+	font-size: 0.8rem;
+	font-weight: bold;
+	color: #333333;
+	margin-left: 0.5rem;
+}
+.tips{
+	width: 1.1rem;
+	height: 1.1rem;
+	position: absolute;
+	top: 0;
+	right: 0;
+	
+}
+.quotaList>div:nth-child(1)>div:nth-child(2){
+	background: url(../img/tips1.png)no-repeat;
+	background-size: 100% 100%;
+}
+.quotaList>div:nth-child(2)>div:nth-child(2){
+	background: url(../img/tips2.png)no-repeat;
+	background-size: 100% 100%;
+}
+.quotaList>div:nth-child(3)>div:nth-child(2){
+	background: url(../img/tips3.png)no-repeat;
+	background-size: 100% 100%;
+}

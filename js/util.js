@@ -1,7 +1,12 @@
 var Util = {
 //	baseUrl: 'http://112.74.29.75:8900',
-	baseUrl: 'http://192.168.1.3:8081',
+	baseUrl: 'http://192.168.1.29:8081',//开发
+	//baseUrl:'http://test.ijiakj.com:8080', //测试
+	baseUrl1:'http://test.ijiakj.com', //支付测试
+	//baseUrl1:'http://192.168.1.3:8081', //支付测试
+	
 	//baseUrl: 'http://klh.ijiakj.com:8080',//正式
+	//baseUrl1:'http://klh.ijiakj.com', //正式支付
 	//baseUrl: 'http://klh.ijiakj.com:8081',
 	basekey: 'KLHD9C55684F10C46B293C275B1D7E1D7F3',
 	// base32  加密

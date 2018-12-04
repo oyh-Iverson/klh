@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../css/sm.min.css" />
+    <link rel="stylesheet" href="../css/common.css"/>
+   	<link rel="stylesheet" href="../css/Authentication.css"/>
+   	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.3/weui.min.js"></script>  	
+	
+	
+</head>
+<style>
+	[v-cloak]{
+		display: none;
+	}
+	.picker-items{
+		-webkit-mask-box-image:none;
+		background: white;
+	}
+	
+</style>
+	<body>
+		<div id="phoneApprove" class="Authentication">
+			<div class="CAHome">
+				<div class="idCardBox">
+					<div class="CAHomeHead">
+						<div class="top">
+							<div class="topLeft" style="z-index: 999;" @click="goback"></div>
+							<div class="title">职业认证</div>
+						</div>
+					</div>
+					<p class="noted">稍后您可能会收到多条运营商的提示信息，属于正常现象</p>
+					<div class="CAHomeInfoInsert">
+						<ul class="baseInfo">							
+							<li>
+								<div class="line" @click="zhiyeClick">
+									<div class="line_title">职业</div>
+									<div v-bind:class="userInfo.proFession.classNa" v-cloak>{{userInfo.proFession.label}}<span class="icon icon-right" style="margin-top: -0.15rem;"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="monnyClick">
+									<div class="line_title">薪资</div>
+									<div v-bind:class="userInfo.realWage.classNa" v-cloak>{{userInfo.realWage.label}}<span class="icon icon-right" style="margin-top: -0.15rem;"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="shebaoClick">
+									<div class="line_title">社保</div>
+									<div v-bind:class="userInfo.shebao.classNa" v-cloak>{{userInfo.shebao.label}}<span class="icon icon-right" style="margin-top: -0.15rem;"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="gongjijinClick">
+									<div class="line_title">公积金</div>
+									<div v-bind:class="userInfo.gongjijin.classNa" v-cloak>{{userInfo.gongjijin.label}}<span class="icon icon-right" style="margin-top: -0.15rem;"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line" @click="shouxianClick">
+									<div class="line_title">是否有寿险保单</div>
+									<div v-bind:class="userInfo.shouxian.classNa" v-cloak>{{userInfo.shouxian.label}}<span class="icon icon-right" style="margin-top: -0.15rem;"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="line_title">城市</div>
+								<div class="paramBox">
+									<input type="text" class="inputTxt"  id="home-city"/>
+								</div>
+							</li>
+							<!--<li>
+								<img src="../img/wode.png" class="logoIcon"/>
+								<div class="paramBox">
+									<input type="text" name="userIdCard" placeholder="请输入你的对应身份证号"  class="inputTxt"/>
+								</div>
+							</li>
+							<li>
+								<img src="../img/wode.png" class="logoIcon"/>
+								<div class="paramBox">
+									<input type="number" name="userPhone" placeholder="请输入你的手机号"  class="inputTxt"/>
+								</div>
+							</li>
+							<li>
+								<div class="paramBox" style="padding-left: 0.6rem;">
+									<input type="password" name="servicePsd" placeholder="请输入服务密码" class="inputTxt"/>
+								</div>
+								<div class="passwordBtn">忘记服务密码？</div>
+							</li>
+							<li>
+								<div class="paramBox" style="padding-left: 0.6rem;">
+									<input type="tel" maxlength="6" placeholder="请输入短信验证码" class="inputTxt"/>
+								</div>
+								<a href="javascript:void(0);" class="passwordBtn">获取验证码？</a>
+							</li>-->
+						</ul>
+					
+						
+					</div>
+					<div class="CAHomeFoot" @click="getTo">
+						<div class="finish">提交职业认证信息</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+<script type="text/javascript" src="../js/md5.min.js"></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8' ></script> 
+<script type='text/javascript' src='../js/sm.min.js' charset='utf-8' ></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/city-picker.js" charset='utf-8' ></script>
+<script type="text/javascript" src="../js/phoneApprove.js"></script>
+<script>
+	
+</script>
+</html>

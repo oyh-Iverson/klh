@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>贷款</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../css/sm.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<!--<link rel="stylesheet" href="../css/shoucang.css" />-->
+		<link rel="stylesheet" href="../css/daikuan.css" />
+		<script type='text/javascript' src='https://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+		<script type='text/javascript' src='https://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+		<!--<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>-->
+		<script type="text/javascript" src="../js/md5.min.js"></script>
+		<script type="text/javascript" src="../js/util.js" ></script>		
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<!--<link rel="stylesheet" href="../mescroll/mescroll1.min.css" />
+		<script type="text/javascript" src="../mescroll/mescroll1.min.js" ></script>		-->
+	</head>
+	<style>
+		[v-cloak]{
+			display: none;
+		}
+		.youhui{
+	animation: youhui infinite 1.5s;
+	animation-fill-mode:forwards
+}
+
+@keyframes youhui
+{
+	0%{
+		transform:translateY(0);
+	}
+	50%{
+		transform:translateY(8px);
+	}
+	100{
+		transform:translateY(0);
+	}
+}
+
+	</style>
+	<body class="page" style="background-color: #F6F6F6;" id="bodys">
+		
+		<div id="mescroll" class="content mescroll" >	
+			<div id="shehzhi-top" class="shehzhi-top" style="display: none;">
+				<a href="home.html"></a>
+				<span>贷款大全</span>
+			</div>
+			<div class="AdvertisementTip" style="top: 0; color: #f89146;display: flex;align-items: center;" @click="tuijieclick">
+				<div style="margin-right: auto;padding-left: 0.25rem;">
+					申请了<span style="color: #f44427;">{{tuijname}}</span>的用户还申请了 <span style="color: #f44427;" v-text="tuijieloanName"></span>
+				</div>
+				<div style="width: 0.7rem;height: 0.7rem;background: red;margin-right: 1.2rem; background: url(../img/daikuanR.png)no-repeat;background-size: 100% 100%;">
+					
+				</div>
+			</div>
+			<div class="AdvertisementTip" style="top: 0; color: #f89146;display: flex;align-items: center;" v-if="moreCP">
+				<div style="margin-right: auto;padding-left: 0.25rem;">
+					一次性申请3-5个产品，成功贷款率可高达95%
+				</div>
+				
+			</div>
+			<!--<div class="nav_tab" style="top: 30px;" v-cloak>
+				<div @click="daikClick(1)" class="nav_item">{{daikTitle.daikuanMoney}}<span class="icon icon-down"></span><span class="nav_span">|</span></div>
+				<div @click="daikClick(2)" class="nav_item">{{daikTitle.daikuanType}}<span class="icon icon-down"></span><span class="nav_span">|</span></div>
+				<div @click="daikClick(3)" class="nav_item">{{daikTitle.daikuanDate}}<span class="icon icon-down"></span></div>
+			</div>-->
+			<!--下拉组件-->
+			<div class="xiala">
+				<div class="xialaL">
+					<div class="xialaLItem" @click="biaotiCK(index)" v-bind:class="{ red:index==current}" v-for=" (name,index) in biaoti">{{name}}</div>
+				</div>
+				<div class="xialaR" @click="SXxiala">
+					<div class="xialaRSX"> 
+						<span><span style="color: #CCCCCC;">|</span> <span v-bind:class="{ sxColer: issxColer }">筛选</span></span>
+						<div class="xialaRSXTUb" v-bind:class="{ active: isActive }"></div>
+					</div>
+				</div>
+			</div>
+	
+			<div class="SXmoban" v-show="SXxialas">
+				
+			
+			
+			<div class="SXxiala" >
+				<div class="SXName">借款金额</div>
+				<div class="SXJelist">
+					<div class="SXJelist_text" @click="SXjineCK(index)" v-for="(tt,index) in jine" v-bind:class="{ reds:index==currentJE}">{{tt}}</div>
+				</div>
+				<div class="SXName">借款期限</div>
+				<div class="SXJelist">
+					<div class="SXJelist_text" @click="SXqxCK(index)" v-for="(tt,index) in qix" v-bind:class="{ redt:index==currentqx}">{{tt}}</div>
+				</div>
+				<div class="SXxialabtn">
+					<div class="SXxialabtnL" @click="chongzhi">关闭</div>
+					<div class="SXxialabtnR" @click="qurenshaix">确定</div>
+				</div>
+			</div>
+			</div>	
+			<div id="list-container" style="margin-bottom: 2.5rem;margin-top: 4.4rem;">
+				<div class="itemBoders" v-for="(item,index) in daikuanList">
+				<div class="item" @click="detailsClick(item.id,item.applyCount,index,item.loanName)">
+					<div class="itemL">
+						<div class="itemL_Top">
+							<div class="itemL_TopLogo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
+							<div class="itemL_TopName" v-text="item.loanName"></div>
+							<div class="itemL_TopTip">
+								<div class="itemL_TopTips" v-show="item.keyword.length>0" v-for="tip in item.keyword">{{tip}}</div>	
+								
+							</div>
+						</div>
+						<div class="itemL_cen">
+							<div class="itemL_cenEd">
+								<div class="itemL_cenEdNB">{{item.minQuota}}-{{item.maxQuota}}</div>
+								<div class="itemL_cenEdText">可贷额度(元)</div>
+							</div>
+							<div class="itemL_cenLl">
+								<div class="itemL_cenLlNB">{{item.monthRate+'%'}}</div>
+								<div class="itemL_cenLlText">综合利率/{{item.unitMonthRate}}</div>
+							</div>
+							<div class="itemR">
+						<div class="itemRbtn">申请贷款</div>
+						<div class="process">
+							<div class="mt-progress">
+								<div class="mt-progress-content">
+									<div class="mt-progress-runway" style="height: 0.3rem;"></div>
+									<div class="mt-progress-progress" :style="'width:'+ item.successRate +'%;'" id="mt-progress-progress"></div>
+								</div>
+							</div>
+						</div>
+						<div class="itemRSucess">
+							<div class="itemRSucessL"></div>
+							<div class="itemRSucessR">成功率{{item.successRate}}%</div>
+						</div>
+					</div>
+						</div>
+						
+						<div class="itemL_Bottom">
+							<div style="width: 1rem;height: 1rem;background: #fbf6f3;">
+								<div class="itemL_BottomIMG"></div>
+							</div>
+							
+							<span class="itemL_BottomText" v-text="item.introduce"></span>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div style="text-align: center; color: lightgrey;" v-show="ToEnd">没有更多的数据了</div>
+			
+			</div>
+			
+		</div>
+		<div class="youhui" onclick="youhui()" style="display: none;"></div>	
+	</body>
+	
+	<script src="../js/vue-lazyload.js"></script>   <!--//有问题-->
+	
+	<script type="text/javascript" src="../js/daikuan.js?v=2.0" ></script>
+	
+<!--	测试滚动条-->
+	<script>
+		window.onload = () => {
+			var  a = document.getElementById('mescroll')
+			a.addEventListener('scroll', () => {
+			sessionStorage.setItem('scrollTop', a.scrollTop);
+			})
+			a.scrollTop = sessionStorage.getItem("scrollTop");
+		}				
+	</script>
+		
+	<script>
+		var userType = localStorage.getItem("userType");
+	if(userType == 3){
+		var Invitations = document.getElementById("Invitations");
+		//Invitations.style.display="none";
+	};
+	</script>
+	
+
+</html>

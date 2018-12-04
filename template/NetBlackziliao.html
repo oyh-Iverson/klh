@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>网信用</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--<link rel="stylesheet" href="../css/sm.css" />-->
+	<link rel="stylesheet" href="../css/sm.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/NetBlackziliao.css" />
+	<style>
+		.actions-modal-button.color-danger, .actions-modal-label.color-danger{
+			color: green;
+		}
+	</style>
+</head>
+	<body style="overflow-y: scroll;">
+		
+		<div class="NetBlackziliao" id="NetBlackziliao">
+			<div class="parentContent1">
+				<div class="info">
+					<div class="tianxieBM">
+						<div class="tianxieQB"></div>
+					</div>
+					
+					<div class="tianxieCon">
+						<div style="width: 80%;height: auto;display: flex;padding-top: 1rem;margin:0 auto;align-items: center;justify-content: space-between;">
+							<div class="tianxieConTips">请输入查询对象身份信息</div>
+							<div class="lishi" @click="lishibaog" style="display: none;">诊断记录</div>
+						</div>
+						
+						<div class="infoShare">
+							<div class="relative">
+								<input type="text" placeholder="请输入您的真实姓名" class="infoName userId" v-model="uername" charset='utf-8'/>
+								<span class="iconfont infoShengfenIcon infoIcon" style="width: 19px">
+									<img  src="../img/YouName.png" style="max-width: 100%;"/>
+								</span>
+							</div>
+							<div class="relative">
+								<input type="text" placeholder="请输入对应身份证号" class="infoName userId" v-model="uerIpName" maxlength="18" charset='utf-8'/>
+								<span class="iconfont infoShengfenIcon infoIcon" style="width: 22px;">
+									<img  src="../img/YouIP.png" style="max-width: 100%;"/>
+								</span>
+							</div>
+							<div class="relative">
+								<input  type="tel" placeholder="请输入您的手机号" class="infoName userId" v-model="uerPhon" charset='utf-8' maxlength="11"/>
+								<span class="iconfont infoShengfenIcon infoIcon" style="width: 17px;margin-left: 3px;">
+									<img  src="../img/YouPhon.png" style="max-width: 100%;"/>
+								</span>
+							</div>
+						</div>
+						<div style="width: 100%;height: 2rem;margin-top: 1.5rem;position: relative;">
+							<div style="width: 80%;height: 2rem; background: #f8531b; border-radius: 0.25rem;margin: 0 auto;line-height: 2rem;text-align: center; color: white;"  @click="GoOk">支付18.8元，获取检测结果</div>
+							<div class="yuanjia" style="display: none;">原价19.8元</div>
+						</div>
+						<div class="readcontext" @click="actives">
+							<span class="mint-button-icon" v-bind:class="{ active: isActive }" ></span>
+							<i style="font-style: normal;" >我已阅读并同意<span style="color: #f8531b;" @click="Agreement">《点点有借网黑数据分析免责协议》</span></i>
+							
+						</div>
+						<div class="infoHint">注：检测不查询央行征信，填写信息仅用于检测</div>
+						<div class="jiedu" @click="yangbenbaogao" style="display: none;">诊断报告样式和解读</div>
+					</div>
+					<!--<div class="userinfo-box">
+						<div class="userinfoHeadBg">
+							<img  src="../img/stepOne.png" class="stepOne" @click="GoBack"/>
+							<img  src="../img/stepTow.png" class="stepTow"/>
+						</div>
+						<div class="top-logo-pannel">
+							<img src="../img/logos.png" class="logo" style="margin-top: 0;"/>
+							<div class="sheet">
+								<p class="fillIn">填写资料</p>
+								<div class="pannel-bottom">
+									<div class="infoShare">
+										<div class="relative">
+											<input type="text" placeholder="请输入您的真实姓名" class="infoName userId" v-model="uername" charset='utf-8'/>
+											<span class="iconfont infoShengfenIcon infoIcon">
+												<img  src="../img/YouName.png" style="max-width: 100%;"/>
+											</span>
+										</div>
+										<div class="relative">
+											<input type="text" placeholder="请输入对应身份证号" class="infoName userId" v-model="uerIpName" maxlength="18" charset='utf-8'/>
+											<span class="iconfont infoShengfenIcon infoIcon">
+												<img  src="../img/YouIP.png" style="max-width: 100%;"/>
+											</span>
+										</div>
+										<div class="relative">
+											<input  type="tel" placeholder="请输入您的手机号" class="infoName userId" v-model="uerPhon" charset='utf-8' maxlength="11"/>
+											<span class="iconfont infoShengfenIcon infoIcon">
+												<img  src="../img/YouPhon.png" style="max-width: 100%;"/>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="readcontext">
+							<span class="mint-button-icon" v-bind:class="{ active: isActive }" @click="actives"></span>
+							<i style="font-style: normal;">我已阅读并同意《信用牛牛网黑数据分析免责协议》</i>
+							<div class="infoHint">注：检测不查询央行征信，填写信息仅用于检测</div>
+						</div>
+					</div>-->
+					<!--<div class="infoBottom">
+						<div class="float left">
+							<div style="padding: 12px 15px;">
+								<p style="margin: 0;">检测成本：<span style="text-decoration: line-through;">25.5</span></p>
+								<p style="color: rgb(255, 172, 47); font-size: 18px;margin: 0;">18.8<span style="font-size: 14px;">元</span></p>
+							</div>
+						</div>
+						<div class="float right" @click="GoOk">支付，获取检测结果</div>
+					</div>-->
+				</div>
+			</div>
+<nav class="navB">
+	<div  class="navList" onclick=" homed()">
+		<div class="navList_OneIMG"></div>
+		<div class="navList_Text ">首页</div>
+	</div>
+	<div class="navList" onclick=" dakuai()">
+		<div class="navList_TwoIMG"></div>
+		<div class="navList_Text ">贷款</div>
+	</div>
+	<div class="navList" onclick=" cha()">
+		<div class="navList_StreeIMG"></div>
+		<div class="navList_Text actives">查信用</div>
+	</div>
+	<div class="navList" onclick=" woded()">
+		<div class="navList_FrouIMG"></div>
+		<div class="navList_Text ">我的</div>
+	</div>
+</nav>
+		</div>
+		
+	</body>
+
+
+
+
+
+
+<script type="text/javascript" src="../js/md5.min.js"></script>
+<script type="text/javascript" src="../js/util.js?v=2.0"></script>
+<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8'></script> 
+<script type='text/javascript' src='../js/sm.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/NetBlackziliao.js?v=7.0"></script>
+<script>
+	var userType = localStorage.getItem("userType");
+	if(userType == 3){
+		//mui("#Invitations")[0].style.display="none";
+	};
+	function dakuai(){
+		window.location.href="daikuan2.html";
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="贷款";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+		//window.location.href="http://baidu.com";
+	};
+	function homed(){
+		window.location.href="home.html";
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="首页";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+	};
+	function woded(){
+		window.location.href="wode.html";
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+		
+	};
+	function cha(){
+		window.location.href="NetBlack.html";
+		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="查信用";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+	};
+
+</script>
+</html>

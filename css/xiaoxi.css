@@ -83,10 +83,10 @@
     font-size: 1.6rem;
     /* padding-left: 0.6rem; */
     margin-left: 0.6rem;
-    /*margin-top: 4px;*/
+    margin-top: 0.35rem;
     color: darkgray;
-   	width: 2rem;
-	height: 2rem;
+   	width: 1.3rem;
+	height: 1.3rem;
     background: url(../img/fanhui.png);
     background-size: 100% 100%;
 }

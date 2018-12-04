@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>诊断报告</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--<link rel="stylesheet" href="../css/sm.css" />-->
+	<link rel="stylesheet" href="../css/sm.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	
+	<link rel="stylesheet" href="../css/Report2.css" />
+	  
+	<style>
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+</head>
+	<body>
+		<div style="width: 100%;height: 100%;overflow-y: scroll;-webkit-overflow-scrolling : touch;" id="Report2">
+			
+			<div>
+				<div class="RepBM">
+					<div class="yangben" >
+						<div class="yangbenL"></div>
+						<div style="font-size: 0.7rem;">诊断报告</div>
+					</div>
+				</div>
+				<div class="RenpCon">
+					
+					<div class="jiance" >
+						<div class="jianceText"><span v-text="idNname"></span>，您的网黑命中检测如下</div>
+						<div style="margin-top: -0.4rem;" v-cloak>
+							<div class="bazi" v-if="ming">
+								<div class="baziIMG" style="background: url(../img/mingz.png) no-repeat; background-size: 100% 100%;"></div>
+								<div style="color: #e32f05;">被命中</div>
+							</div>
+							<div class="bazi" v-if="kenengming">
+								<div class="baziIMG" style="background: url(../img/keneng.png) no-repeat; background-size: 100% 100%;"></div>
+								<div style="color: #fa8d0d;">可能命中</div>
+							</div>
+							<div class="bazi" v-if="NOming">
+								<div class="baziIMG" style="background: url(../img/weimingz.png) no-repeat; background-size: 100% 100%;"></div>
+								<div style="color: #55ae6b;">未命中</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="jianceMore">
+						<div class="jianceTop" @click="cheng">
+							<div class="jianceTopIMG"></div>
+							<div style="font-size: 0.8rem;">网贷成功率</div>
+							<div class="wenhao" @click="bangzhu1"></div>
+							<div class="shangxia" v-bind:class="{ transform1P: transform1P }"></div>
+							<div class="anquanTip" v-cloak>
+								<div class="anQ" v-if="anq">安全</div>
+								<div class="anJ" v-if="jingt">警惕</div>
+								<div class="anW" v-if="weix">危险</div>
+							</div>
+						</div>
+						
+						
+						<div style="display: block;padding-bottom: 10px;position: relative;" v-show="chengCon" v-cloak>
+							<div class="echarts" id="EChart" style="-webkit-tap-highlight-color: transparent;user-select: none;position: relative;background: transparent;">
+							
+							</div>
+							<div style="color: rgb(51, 51, 51); font-size: 14px; text-align: center;" v-cloak>您有{{successRate+'%'}}的概率成功贷款</div>
+						</div>
+					</div>
+					<!--日常行为数据-->
+					<div class="jianceMore">
+						<div class="jianceTop" @click="ric">
+							<div class="jianceTopIMG"></div>
+							<div style="font-size: 0.8rem;">日常行为危险检测</div>
+							<div class="wenhao" @click="bangzhu2"></div>
+							<div class="shangxia" v-bind:class="{ transform2P: transform2P }"></div>
+							<div class="anquanTip" v-cloak id="anquanTip">
+								<div class="anQ" v-if="anq2">安全</div>
+								<div class="anJ" v-if="jingt2">警惕</div>
+								<div class="anW" v-if="weix2">危险</div>
+							</div>
+						</div>
+						<div v-show="ricCon" style=" margin-top: 0.5rem;" >
+						<div v-for="item in conList">
+						  <div v-for="itemsR in item.risk_detail" >
+							<div v-if="itemsR.type == 'grey_list'?true:false" >
+								
+								<div v-text="itemsR.description" class="ricNub" ></div>
+								<div v-for="item1 in itemsR.grey_list_details" v-cloak>				
+									<div style="display: block;padding-bottom: 10px;position: relative;">
+										<div>
+											<div class="ricNub">{{item1.value}}</div>
+											<div class="ricNub" style="color: #fa8d0d;">{{item1.fraud_type_display_name}}</div>
+											<!--<div style="font-size: 0.8rem;padding-left: 2.35rem;">近期内未发现逾期行为</div>
+											<div style="font-size: 0.8rem;padding-left: 2.35rem;">近期内，手机号命中风险关注名单</div>-->
+										</div>
+										<!--<div style="color: rgb(51, 51, 51); font-size: 14px; text-align: center;">您的日常行为需要警惕，可能存在安全隐患</div>-->
+									</div>			
+								</div>
+								
+							</div>
+							
+						  </div>
+						</div>
+						<div v-show="ricNO" style="font-size: 0.75rem;text-align: center;padding-bottom: 0.5rem;">未检测到异常信息</div>
+						</div>
+					</div>
+					<!--多头-->
+					<div class="jianceMore">
+						<div class="jianceTop" @click="duotou">
+							<div class="jianceTopIMG"></div>
+							<div style="font-size: 0.8rem;">多头贷款检测</div>
+							<div class="wenhao" @click="bangzhu3"></div>
+							<div class="shangxia" v-bind:class="{ transform3P: transform3P }"></div>
+							<div class="anquanTip" v-cloak>
+								<div class="anQ" v-if="anq3">安全</div>
+								<div class="anJ" v-if="jingt3">警惕</div>
+								<div class="anW" v-if="weix3">危险</div>
+							</div>
+						</div>
+						<div v-show="duotouCon" style=" margin-top: 0.5rem;padding-bottom: 0.75rem;">
+						<div v-for="item in conList">
+						  <div v-for="items in item.risk_detail">
+						  	
+							<div v-show="items.type == 'platform_detail'?true:false" style="text-align: center;">
+								
+								<div>
+									<div style="width: 100%; padding-top: 0.5rem;padding-bottom: 0.5rem;font-size: 0.75rem;text-align: left;padding-left: 2.3rem;" v-text="items.description" ></div>								
+								</div>
+								<!--<div v-text="items.description" style="font-size: 0.6rem;"></div>-->
+									<!--<div v-text="items.platform_count" style="font-size: 0.6rem;"></div>-->
+									<!--<div v-for="itemD in items.platform_detail_dimension" v-cloak>
+										
+										<div style="display: flex;align-items: center;flex-wrap: wrap;">
+											<div v-for=" tiemDd in itemD.detail" style="width: 40%;text-align: right;">																						
+												<div style="font-size: 0.6rem;">{{tiemDd.industry_display_name}}:{{tiemDd.count}}</div>																						
+											</div>
+										</div>									
+									</div>-->
+									<div style="text-align: left;margin-left: 2.3rem;">
+										<div v-for="item1 in items.platform_detail"   v-cloak style="width: 40%;">
+										
+										<div style="font-size: 0.6rem;">{{item1.industry_display_name}}:<span style="color: red;padding-left: 0.25rem;">{{item1.count}}</span></div>
+									</div>	
+									</div>
+									<div  style="font-size: 0.6rem;"></div>
+									<div style="color: rgb(51, 51, 51); font-size: 14px; text-align: left;margin-top: 1rem;padding-left: 2.3rem;">
+										总计：<span style="font-size: 0.9rem;padding-right: 0.25rem;color: red;">{{items.platform_count}}</span>家
+									</div>
+							</div>
+							
+						  </div>
+						</div>
+						<div v-show="duotNO" style="font-size: 0.75rem;text-align: center;padding-bottom: 0.5rem;">未检测到异常信息</div>
+						</div>
+						
+						
+						
+						<!--<div style="display: block;padding-bottom: 10px;position: relative;">
+							<div style="width: 100%;font-size: 14px;display: flex;text-align: right;align-items: center;justify-content: space-between;">
+								<div style="margin-left: 1rem;">
+									<div>PSP网贷: 0</div>
+									<div>小额贷款公司：10</div>
+									<div>互联网金融门户：10</div>
+									<div>大型消费金融公司：0</div>
+								</div>
+								<div style="margin-right: 1rem;">
+									<div>一般消费平台: 0</div>
+									<div>银行消费金融公司：10</div>
+									<div>信用卡中心：10</div>
+									<div>其他：0</div>
+								</div>
+							</div>
+							<div style="color: rgb(51, 51, 51); font-size: 14px; text-align: center;margin-top: 1rem;">总计：30家</div>
+						</div>-->
+					</div>
+					<!--还款机构-->
+					<div class="jianceMore">
+						<div class="jianceTop" @click="huanqian">
+							<div class="jianceTopIMG"></div>
+							<div style="font-size: 0.8rem;">机构还款不良名单</div>
+							<div class="wenhao" @click="bangzhu4"></div>
+							<div class="shangxia" v-bind:class="{ transform4P: transform4P }"></div>
+							<div class="anquanTip" v-cloak>
+								<div class="anQ" v-if="anq4">安全</div>
+								<div class="anJ" v-if="jingt4">警惕</div>
+								<div class="anW" v-if="weix4">危险</div>
+							</div>
+						</div>
+						<div v-if="huanqianCon" style=" margin-top: 0.5rem;">
+						<div v-for="item in conList">
+						  <div v-for="items in item.risk_detail">
+							<div v-show="items.type == 'discredit_count'?true:false">						
+									<div v-text="items.description" style="text-align: left;font-size: 0.75rem; padding-left: 2.6rem;"></div>
+									<div v-text="items.discredit_times" style="text-align: left;font-size: 0.75rem;padding-left: 2.6rem;"></div>
+									<div v-text="items.platform_count" style="text-align: left;font-size: 0.75rem;padding-left: 2.6rem;"></div>
+									<div v-for="item1 in items.overdue_details"  v-cloak>
+										<div v-text="item1.overdue_amount_range" style="text-align: left;font-size: 0.75rem;padding-left: 2.6rem;"></div>
+										<div v-text="item1.overdue_count" style="text-align: left;font-size: 0.75rem;padding-left: 2.6rem;"></div>
+										<!--<div v-text="item1.overdue_day_range" style="text-align: center;font-size: 0.75rem;"></div>-->
+										<!--<div v-text="item1.overdue_time" style="text-align: center;font-size: 0.75rem;"></div>-->
+									</div>	
+									
+									
+									
+							</div>
+							
+							
+						  </div>
+						</div>
+						<div v-show="huanqNO" style="font-size: 0.75rem;text-align: center;padding-bottom: 0.5rem;">未检测到异常信息</div>
+						</div>
+						<!--<div style="display: block;padding-bottom: 10px;position: relative;">
+							<div>
+								<div class="ricNub">15471756452</div>
+								<div  style="font-size: 0.8rem;padding-left: 2.35rem;">近期内未发现逾期行为</div>
+								<div style="font-size: 0.8rem;padding-left: 2.35rem;">近期内，手机号命中风险关注名单</div>
+							</div>
+							<div style="color: rgb(51, 51, 51); font-size: 14px; text-align: center;">您的信用良好不存在，不存在安全隐患</div>
+						</div>-->
+					</div>
+					<!--申请异常检测-->
+					<div class="jianceMore">
+						<div class="jianceTop" @click="shengqing">
+							<div class="jianceTopIMG"></div>
+							<div style="font-size: 0.8rem;">申请材料异常检测</div>
+							<div class="wenhao" @click="bangzhu5"></div>
+							<div class="shangxia" v-bind:class="{ transform5P: transform5P }"></div>
+							<div class="anquanTip" v-cloak>
+								<div class="anQ" v-if="anq5">安全</div>
+								<div class="anJ" v-if="jingt5">警惕</div>
+								<div class="anW" v-if="weix5">危险</div>
+							</div>
+						</div>
+						<div v-if="shengqingCon" style=" margin-top: 0.5rem;padding-bottom: 0.6rem;">
+						<div v-for="item in conList">
+						  <div v-for="items in item.risk_detail">
+							<div v-if="items.type == 'frequency_detail'?true:false">
+									<div v-for="item1 in items.frequency_detail_list" v-cloak>
+										<div v-text="item1.detail" style="text-align: left;padding-left: 2.3rem;font-size: 0.75rem;padding-top: 0.2rem;padding-bottom: 0.2rem;"></div>
+										<!--<div style="display: flex;align-items: center;justify-content: space-between;flex-wrap: wrap;">
+											<div v-for=" tiemPH in item1.data" style="font-size: 0.6rem;text-align: center;width: 50%;">
+												<div v-text="tiemPH"></div>
+											</div>
+										</div>-->
+										
+									</div>
+									
+							</div>
+							
+						  </div>
+						</div>
+						<div v-show="shenqingNO" style="font-size: 0.75rem;text-align: center;padding-bottom: 0.5rem;">未检测到异常信息</div>
+						</div>
+						
+					</div>
+					<!--其他-->
+					<!--<div class="jianceMore">
+						<div class="jianceTop">
+							<div class="jianceTopIMG" style="background: url(../img/qita.png) no-repeat;background-size: 100% 100%;"></div>
+							<div>其他异常检测</div>
+							<div class="wenhao"></div>
+							<div class="shangxia"></div>
+							<div class="anquanTip" v-cloak>
+								<div class="anQ" v-if="anq6">安全</div>
+								<div class="anJ" v-if="jingt6">警惕</div>
+								<div class="anW" v-if="weix6">危险</div>
+							</div>
+						</div>
+						
+						<div>
+						<div v-for="item in conList">
+						  <div v-for="items in item.risk_detail">
+							<div v-show="items.type == 'cross_frequency_detail'?true:false">						
+							<div v-for="item1 in items.cross_frequency_detail_list"  v-cloak>
+										<div v-text="item1.detail" style="font-size: 12px;text-align: center;"></div>
+										<div v-for=" tiemPH in item1.data">
+											<div v-text="tiemPH"></div>
+										</div>
+									</div>								
+							</div>
+						  </div>
+						</div>
+						</div>
+						
+						
+						
+						<!--<div style="display: block;padding-bottom: 10px;position: relative;">
+							<div>
+								<div class="ricNub">15471756452</div>
+								<div  style="font-size: 0.8rem;padding-left: 2.35rem;">近期内未发现逾期行为</div>
+								<div style="font-size: 0.8rem;padding-left: 2.35rem;">近期内，手机号命中风险关注名单</div>
+							</div>
+							<div style="color: rgb(51, 51, 51); font-size: 14px; text-align: center;">您的申请材料不存在异常</div>
+						</div>-->
+					<!--</div>-->
+					<div class="jianceMore" style="display: none;">
+						<div style="display: flex;align-items: center;justify-content: center;"><span style="font-size: 1.15rem;color: #f9b4a1;">///</span><span style="padding-left: 0.25rem;padding-right: 0.25rem;font-size: 0.75rem;">信用可贷金额</span><span style="font-size: 1.15rem;color: #f9b4a1;">///</span></div>
+					</div>
+						<!--推荐产品-->
+					<div class="jianceMore">
+						<!--<div class="jianceTop" @click="tuijie">
+							<div class="jianceTopIMG"></div>
+							<div style="font-size: 0.9rem;">为您专属推荐</div>
+							<div class="wenhao" @click="bangzhu6"></div>
+							<div class="shangxia" v-bind:class="{ transform6P: transform6P }" style="margin-right: 0.9rem;"></div>
+							
+						</div>-->
+						<div style="display: flex;align-items: center;justify-content: center;height: 3.1rem;"><span style="font-size: 1.15rem;color: #f9b4a1;">///</span><span style="padding-left: 0.25rem;padding-right: 0.25rem;font-size: 0.8rem;">为您专属推荐</span><span style="font-size: 1.15rem;color: #f9b4a1;">///</span></div>
+						<div v-if="tuijianCon" style=" margin-top: 0.5rem;width: 100%;">
+							<div class="tuijianList" style="padding-bottom: 0.5rem;">
+								<div class="tuijianListItem" v-for="item in daikuanList" @click="detailsClick(item.id,item.applyCount,item.name)">
+									<div class="tuijianListItemLogo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
+									<div class="tuijianListItemR">
+										<div v-text="item.loanName" style="white-space: nowrap;overflow: hidden;"></div>
+										<div v-text="item.avgQuota" style="color: #f65050;"></div>
+										<div style="font-size: 0.6rem;color: #888888;">成功率：<span style="color: #333333;">{{item.successRate+'%'}}</span></div>
+									</div>
+								</div>
+							</div>
+							<!--<div class="itemBoders" v-for="item in daikuanList">
+			  					<div class="item" @click="detailsClick(item.id,item.applyCount)">
+									<div class="item-top">
+										<div class="item-logo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }" v-cloak></div>
+										<div class="item-loanName"  v-text="item.loanName" v-cloak></div>
+										<div class="item-Labels">
+											<div  v-for="tip in item.keyword" v-cloak>{{tip}}</div>						
+										</div>
+									</div>
+									<div class="item-Con">
+										<div  v-cloak>
+											{{item.minQuota}}-{{item.maxQuota}}
+										</div>
+										<div v-text="item.introduce" style="font-size: 15px;" v-cloak></div>
+									</div>
+									<div  class="item-bottom">
+					
+										<div v-cloak style="color: #9c9b9a;">{{item.unitMonthRate}}利率: {{item.monthRate+'%'}} | 期限: {{item.minTerm+'-'+item.maxTerm}}{{item.unitTerm}}</div>
+										<div class="item-applyCount" v-cloak>
+											成功率<span class="item-applyCount-Number">{{item.successRate}}%</span>
+										</div>
+									</div>
+			  					</div>	
+							</div>-->
+						</div>
+						<!--<div style="display: block;padding-bottom: 10px;position: relative;">
+							<div>
+								<div class="ricNub">15471756452</div>
+								<div  style="font-size: 0.8rem;padding-left: 2.35rem;">近期内未发现逾期行为</div>
+								<div style="font-size: 0.8rem;padding-left: 2.35rem;">近期内，手机号命中风险关注名单</div>
+							</div>
+							<div style="color: rgb(51, 51, 51); font-size: 14px; text-align: center;">您的信用良好不存在，不存在安全隐患</div>
+						</div>-->
+					</div>
+					
+					<div class="jianceMore" style=" margin-top: 0.5rem;padding-bottom: 0.5rem;">
+						<div style="display: flex;align-items: center;justify-content: center;height: 3.1rem;"><span style="font-size: 1.15rem;color: #f9b4a1;">///</span><span style="padding-left: 0.25rem;padding-right: 0.25rem;font-size: 0.8rem;">如何优化黑名单</span><span style="font-size: 1.15rem;color: #f9b4a1;">///</span></div>
+						<div style="width: 100%;display: flex;align-items: center;margin-bottom: 0.35rem;">
+							<div style="width: 1rem;height: 1rem;line-height: 1rem;text-align: center;color: white;border-radius: 50%;background: #55ae6b;margin-left: 1.2rem;margin-right: 0.5rem;">
+								1
+							</div>
+							<div style="font-size: 0.8rem;">优化网贷黑名单，降低被拒率</div>
+						</div>
+						<div style="width: 100%;display: flex;align-items: center;">
+							<div style="width: 1rem;height: 1rem;line-height: 1rem;text-align: center;color: white;border-radius: 50%;background: #55ae6b;margin-left: 1.2rem;margin-right: 0.5rem;">
+								2
+							</div>
+							<div style="font-size: 0.8rem;">优化网贷黑名单</div>
+						</div>
+						<div style="font-size: 0.6rem;width: 96%;margin: 0 auto; padding-left: 2.4rem;padding-right: 0.3rem;margin-top: 0.25rem;margin-bottom: 0.25rem;line-height: 1.15rem;color: dimgrey;">
+							命中网贷黑名单，理论上是无法清除数据的，命中黑名单，网贷被拒率会非常的高，
+							若未命中网贷黑名单，需要保持良好的还款习惯和借款频率，避免逾期；若命中黑名单，仍然想申请网贷，建议
+							多申请市场交心、风控制调整期的产品，或者使用其他自然人的身份贷款。
+							
+							
+						</div>
+						<div style="width: 100%;display: flex;align-items: center;">
+							<div style="width: 1rem;height: 1rem;line-height: 1rem;text-align: center;color: white;border-radius: 50%;background: #55ae6b;margin-left: 1.2rem;margin-right: 0.5rem;">
+								3
+							</div>
+							<div style="font-size: 0.8rem;">优化手机运营商数据</div>
+						</div>
+						<div style="font-size: 0.6rem;width: 96%;margin: 0 auto; padding-left: 2.4rem;padding-right: 0.3rem;margin-top: 0.25rem;margin-bottom: 0.25rem;line-height: 1.15rem;color: dimgrey;">
+							运营商数据，是网贷反欺诈最重要的数据依据；个人要位置和养成良好通话习惯，贷款
+							手机号要进行实名制认证；为实名制认证手机申请网贷，大多数机构不会批款；近6月内的话费
+							和通话次数，反应个人通话稳定性，会影响到贷款机构对您的评估；TOP10的通话人事反欺诈的重要指标，
+							频繁通话的人若命中黑名单，将非常不利于机构放款；通话地区若频繁而不稳定，
+							会提升欺诈的可能，不利于您的放款。
+							
+						</div>
+						<div style="width: 100%;display: flex;align-items: center;">
+							<div style="width: 1rem;height: 1rem;line-height: 1rem;text-align: center;color: white;border-radius: 50%;background: #55ae6b;margin-left: 1.2rem;margin-right: 0.5rem;">
+								4
+							</div>
+							<div style="font-size: 0.8rem;">优化紧急联系人</div>
+						</div>
+						<div style="font-size: 0.6rem;width: 96%;margin: 0 auto; padding-left: 2.4rem;padding-right: 0.3rem;margin-top: 0.25rem;margin-bottom: 0.25rem;line-height: 1.15rem;color: dimgrey;">
+							申请借贷时，机构会对申请人的紧急联系人进行信用评估，为了不影响通过率，建议不要选择命中风险项的联系人作为您的紧急联系人。
+							
+						</div>
+						<div style="width: 100%;display: flex;align-items: center;">
+							<div style="width: 1rem;height: 1rem;line-height: 1rem;text-align: center;color: white;border-radius: 50%;background: #55ae6b;margin-left: 1.2rem;margin-right: 0.5rem;">
+								5
+							</div>
+							<div style="font-size: 0.8rem;">优化手机通讯录</div>
+						</div>
+						<div style="font-size: 0.6rem;width: 96%;margin: 0 auto; padding-left: 2.4rem;padding-right: 0.3rem;margin-top: 0.25rem;margin-bottom: 0.25rem;line-height: 1.15rem;color: dimgrey;">
+							手机通讯录存在命中网贷黑名单、征信有问题的人，或存在大量申请网贷的手机号，将会提升欺诈的可能。不利于您的放款，您需要维护好通讯录。
+							
+						</div>
+						<div style="width: 100%;display: flex;align-items: center;">
+							<div style="width: 1rem;height: 1rem;line-height: 1rem;text-align: center;color: white;border-radius: 50%;background: #55ae6b;margin-left: 1.2rem;margin-right: 0.5rem;">
+								6
+							</div>
+							<div style="font-size: 0.8rem;">监测网贷黑名单</div>
+						</div>
+						<div style="font-size: 0.6rem;width: 96%;margin: 0 auto; padding-left: 2.4rem;padding-right: 0.3rem;margin-top: 0.25rem;margin-bottom: 0.25rem;line-height: 1.15rem;color: dimgrey;">
+							根据自己的批款频率，监测网贷黑名单情况，合理定期检查是否命中黑名单和网贷被拒概率，保持信用健康，优化信用（点点有借网贷黑名单检测，不查询央行征信）
+							
+						</div>
+					</div>
+					
+					<div class="jianceMore" style="display: none;">
+						
+						<div style="display: flex;align-items: center;justify-content: center;"><span style="font-size: 1.15rem;color: #f9b4a1;">///</span><span style="padding-left: 0.25rem;padding-right: 0.25rem;font-size: 0.75rem;">定期复查黑名单</span><span style="font-size: 1.15rem;color: #f9b4a1;">///</span></div>
+					</div>
+					
+					<div class="jianceMore">
+						
+						<div style="display: flex;align-items: center;justify-content: center; height: 3.1rem;"><span style="font-size: 1.15rem;color: #f9b4a1;">///</span><span style="padding-left: 0.25rem;padding-right: 0.25rem;font-size: 0.75rem;">报告数据说明</span><span style="font-size: 1.15rem;color: #f9b4a1;">///</span></div>
+						<div style="width: 85%; margin: 0 auto;text-indent: 2rem;font-size: 13px;padding-right: 0.3rem;color: dimgrey;"> 
+							 点点有借网黑命中检测查询报告由本人授权查询，数据来源包括芝
+				麻信用，各大运营商，各类征信平台，各大网贷平台，点点有借
+				只做大数据信息的获取及分析，不对原始数据做任何修改，报告
+				仅供参考使用。如果您对报告由异议，出于对合作平台隐私的保
+				护，点点有借不做任何解释。
+						</div>
+						<div style="width: 85%; margin: 0 auto;text-indent: 2rem;font-size: 13px;padding-right: 0.3rem;margin-bottom:2.25rem;color: dimgrey;"> 
+						由于报表的生产需要处理大量数据，受网络波动等因素的影
+				响，可能会造成部分数据获取不完善的情况，对此我们深表歉意，
+				同时感谢您的理解和支持。
+						</div>
+						<div style="font-size: 0.75rem; text-align: center;color: #f87832;">网贷信用，办卡，贷款一网打尽</div>
+						<div style="margin-top: 0.75rem;margin-bottom: 0.65rem;">
+							<div style="width: 2.5rem;height: 2.5rem;background: red;margin: 0 auto;background: url(../img/bottomIMG.png) no-repeat;background-size: 100% 100%;"></div>
+						</div>
+						<div style="font-size: 0.75rem; text-align: center;">点点有借查黑——专治贷款被拒</div>
+						<div style="font-size: 0.75rem; text-align: center;padding-bottom: 1.25rem;">1000个网贷新产品 </div>
+					</div>
+					<div>
+						<div class="fanhui" @click="window.history.go(-1)">返回</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+	</body>
+<script type="text/javascript" src="../js/md5.min.js"></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8'></script> 
+<script type='text/javascript' src='../js/sm.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script>
+	 window.devicePixelRatio = 2; //在引入echarts.js之前       让echarts更加清晰
+</script>
+<script type="text/javascript" src="../js/echarts.min.js"></script>
+<script type="text/javascript" src="../js/Report2.js"></script>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>我的</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--<link rel="stylesheet" href="../css/sm.css" />-->
+	<link rel="stylesheet" href="../css/sm.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/wode.css" />
+	<link rel="stylesheet" href="../css/mui.css" />
+	<link rel="stylesheet" href="../css/weui.min.css"/>
+	<style>
+				.youhui{
+	animation: youhui infinite 1.5s;
+	animation-fill-mode:forwards
+}
+
+@keyframes youhui
+{
+	0%{
+		transform:translateY(0);
+	}
+	50%{
+		transform:translateY(8px);
+	}
+	100{
+		transform:translateY(0);
+	}
+}
+.page{
+	overflow-y: scroll;
+}
+.content{
+	overflow-y: scroll;
+	padding-bottom: 150px;
+}
+	</style>
+</head>
+
+<body class="page" style="background-color: #f7f3f2;">
+<div id="app" class="content">
+	<div class="wodeTOP">
+		<div class="wodeTOP_L" @click="youjian" style="visibility: hidden;"></div>
+		<div class="wodeTOP_R" @click="shezhi"></div>
+	</div>
+	<div style="width: 100%;height: 12rem;">
+		<div class="wodeBM"></div>
+		<div class="Wcon">
+				<img src="../img/wodeTX.png" class="Wlogo"/>							
+			<div class="Wsheet">
+				<div class="WsheetTX">
+					<div class="WsheetTXIMG"></div>
+					<div class="WsheetIPhone" id="userInfo"></div>
+				</div>
+				<div  style="position: relative;bottom: -4.4rem;" id="guanzuwx" @click="gzh">
+					<div class="WsheetErweima" ></div>
+					<div class="WsheetGZtext" >关注公众号</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="Wcon2">
+		
+		<div class="Wcon2T">
+			<div class="Wcon2L"  @click="heihu">
+				<div class="Wcon2L_BM"></div>
+				<div class="Wcon2Ttxt">黑户查询</div>
+			</div>
+			<div class="Wcon2ConT" style="display: none;">限时五折</div>
+		</div>
+		<div class="Wcon2T" @click="remendaikuan">
+			<div class="Wcon2R">
+				<div class="Wcon2R_BM" ></div>
+				<div class="Wcon2Ttxt">我的额度</div>
+			</div>
+			<div class="Wcon2ConT">火爆贷款</div>
+		</div>
+		
+	</div>
+	<div class="Wcon3">
+		<div class="wodeBMD" @click="chahei">
+			<div class="Wcon3CH"></div>
+			<div class="Wcon3text">查黑记录</div>
+		</div>
+		<div class="wodeBMD" @click="kefuzhong">
+			<div class="Wcon3KF"></div>
+			<div class="Wcon3text">客服中心</div>
+		</div>
+		<div class="wodeBMD" @click="wodefankui">
+			<div class="Wcon3FK"></div>
+			<div class="Wcon3text">反馈意见</div>
+		</div>
+	</div>
+	<div class="Wcon4">
+		<div class="wodeBMD" @click="wodeBZ">
+			<div class="Wcon3BZ"></div>
+			<div class="Wcon3text">帮助中心</div>
+		</div>
+		<div class="wodeBMD" @click="shouc">
+			<div class="Wcon3SC"></div>
+			<div class="Wcon3text">我的收藏</div>
+		</div>
+		<div class="wodeBMD">
+			<!--<div style="width: 1.5rem;height: 2rem;background: url(../img/wodeFK.png) no-repeat;background-size: 100% 100%;margin: 0 auto;margin-top: 0.8rem;"></div>
+			<div class="Wcon3text">反馈意见</div>-->
+		</div>
+	</div>
+	<!--<div class="user_info">
+		<img class="bg_img" src="../img/user_bg.png" />
+		<span class="Member"></span>
+		<a class="info_ui">点点有借</a>
+		<div class="info" id="userInfo"></div>
+	</div>
+	<div class="line" @click="enterMy" id="Mycommissions">
+		<img src="../img/lljl.png" />
+		<div class="line_title">我的佣金</div>
+	</div>
+	<div class="line" style="display: none;">
+		<a href="liulanjilu.html">
+			<img src="../img/lljl.png" />
+			<div class="line_title">浏览记录</div>
+		</a>
+	</div>
+	<div class="line" style="display: none;">
+		<a href="shoucang.html">
+			<img src="../img/sc.png" />
+			<div class="line_title">收藏</div>
+		</a>
+	</div>
+	<div class="line" style="display: none;">
+		<a href="Order.html">
+			<img src="../img/hktx.png" />
+			<div class="line_title">我的订单</div>
+		</a>
+	</div>
+	<div class="line" style="display: none;">
+		<a href="hktx.html">
+			<img src="../img/hktx.png" />
+			<div class="line_title">还款提醒</div>
+		</a>
+	</div>
+	<div class="line">
+		<a href="xiaoxi.html">
+			<img src="../img/wdxx.png" />
+			<div class="line_title">我的消息</div>
+		</a>
+
+	</div>
+	<div class="line">
+		<a href="#" id="guanzuwx">
+			<img src="../img/gzwx.png" />
+			<div class="line_title">关注公众号</div>
+		</a>
+	</div>
+	<div class="line">
+		<a href="help.html">
+			<img src="../img/bzzx.png" />
+			<div class="line_title">帮助中心</div>
+		</a>
+	</div>
+	<div class="line">
+		<a href="yjfk.html">
+			<img src="../img/bzzx.png" />
+			<div class="line_title">意见反馈</div>
+		</a>
+	</div>
+	<div class="line last_one">
+		<a href="shezhi.html">
+			<img src="../img/sz.png" />
+			<div class="line_title">设置</div>
+		</a>
+	</div>-->
+
+</div>
+<div class="youhui" onclick="youhui()" style="display: none;"></div>	
+
+
+
+
+
+
+</body>
+<script type='text/javascript' src='../js/mui.min.js' ></script>
+<script type='text/javascript' src='../js/zepto.min.js' ></script>
+<script type='text/javascript' src='../js/sm.min.js' ></script>
+<script type="text/javascript" src="../js/md5.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/weui.min.js" ></script>
+<script type="text/javascript" src="../js/wode.js"></script>
+<script type="text/javascript" src="../js/IOSReturn.js"></script>
+<script>
+	var userType = localStorage.getItem("userType");
+	if(userType == 3){
+		//mui("#Invitations")[0].style.display="none";
+		//mui("#Mycommissions")[0].style.display="none";
+	};	
+</script>
+
+</html>

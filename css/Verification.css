@@ -1,0 +1,295 @@
+*{
+	margin: 0;
+	padding: 0;
+	touch-action: none;
+}
+.Verification{
+	height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    min-height: 41.6875rem;
+}
+.parentContent1{
+	position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+.programme{
+	overflow-x: hidden;
+    height: 100vh;
+}
+.notAproved{
+	width: 100%;
+	height: auto;
+}
+.CABoxHead{
+	width: 100%;
+    height: 240px;
+    background: #FF5201;
+}
+.CABoxHead-top{
+	display: flex;
+    height: 50px;
+    -webkit-box-align: center;
+    align-items: center;
+    color: #fff;
+}
+.CABoxHead-title{
+	-webkit-box-flex: 4;
+    -webkit-flex: 4;
+    -ms-flex: 4;
+    flex: 4;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 0.15rem;
+}
+.CABoxHead-topRight{
+	-webkit-box-flex: 1.2;
+    -webkit-flex: 1.2;
+    -ms-flex: 1.2;
+    flex: 1.2;
+    text-align: center;
+    border: 1px solid #fff;
+    margin-right: 10px;
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    border-radius: 13px;
+}
+.CABoxHead-subTitle{
+	width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+.CABoxHead-myAmount{
+	width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.amount{
+	font-size: 33px;
+}
+.CABoxHead-processBox{
+	
+}
+.process{
+	width: 85%;
+    margin: 0 auto;
+}
+.numberBar{
+	width: 85%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    color: #fff;
+    font-size: 14px;
+}
+.numberBar li{
+	-webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.numberBar li:first-child{
+	-webkit-box-flex: 0.6;
+    -webkit-flex: 0.6;
+    -ms-flex: 0.6;
+    flex: 0.6;
+}
+.numberBar li:nth-child(2){
+	text-align: left;
+}
+.numberBar li:nth-child(3){
+	text-align: center;
+}
+.numberBar li:nth-child(4){
+	text-align: center;
+}
+.numberBar li:last-child{
+	text-align: right;
+}
+li{
+	list-style: none;
+}
+.mt-progress{
+	margin-bottom: 10px;
+	display: flex;
+	position: relative;
+    height: 30px;
+    line-height: 30px;
+}
+.mt-progress-content{
+	position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.mt-progress-runway{
+	background: transparent;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    left: 1px;
+    right: 0;
+    
+}
+.mt-progress-progress{
+	height: 14px;
+    background: #ffac2f;
+    border-radius: 15px;
+    left: 1px;
+    display: block;
+}
+..mt-progress, .mt-progress>*{
+	display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+.mt-progress-progress, .mt-progress-runway{
+	position: absolute;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
+}
+.CABoxList{
+	background: white;
+}
+.CABoxList ul{
+	width: 17rem;
+    margin: 0 auto;
+    box-shadow: 0 2px 16px 0 #f9f3d1;
+    border-radius: .25rem;
+    background: #fff;
+    padding-bottom: .875rem;
+    top: -1rem;
+    position: relative;
+}
+.CABoxList ul li{
+	width: 100%;
+    height: 90px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 13px;
+    box-sizing: border-box;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+}
+.CABoxList ul li .left{
+	-webkit-box-flex: 2;
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+}
+.CABoxList ul li .left .CAimg img{
+	width: 50px;
+    height: 50px;
+}
+.CABoxList ul li .left .label{
+	position: absolute;
+    top: 14px;
+    left: 38px;
+    background: #f8b603;
+    font-size: 10px;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 8px 8px 8px 0;
+}
+img{
+	max-width: 100%;
+	border: 0;
+}
+.CABoxList ul li .center{
+	-webkit-box-flex: 3.6;
+    -webkit-flex: 3.6;
+    -ms-flex: 3.6;
+    flex: 3.6;
+    box-sizing: border-box;
+}
+.CABoxList ul li .center .CAName{
+	font-size: 16px;
+    font-weight: 700;
+    color: #333;
+}
+.CABoxList ul li .center .CAResult{
+	font-size: 14px;
+    color: #666;
+}
+p{
+	margin: 0;
+}
+.CABoxList ul li .right{
+	-webkit-box-flex: 1.5;
+    -webkit-flex: 1.5;
+    -ms-flex: 1.5;
+    flex: 1.5;
+}
+.CABoxList ul li .right .toApprove{
+	border: 1px solid #f8531b;
+    background: #f8531b;
+    color: rgb(255, 255, 255);
+}
+.CABoxList ul li .right>div{
+	width: 100%;
+    background: none;
+    outline: none;
+    height: 30px;
+    line-height: 29px;
+    border-radius: 15px;
+    font-size: .65rem;
+    text-align: center;
+}
+.CABoxFoot{
+	text-align: center;
+    background: #fff;
+}
+.CABoxFoot .finish{
+	width: 80%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin: 0 auto;
+    background: #ccc;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 0.25rem
+}
+.finishs{
+	width: 80%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin: 0 auto;
+    background: #f8531b;
+    padding: 2px 5px;
+    border: 1px solid #f8531b;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 0.25rem
+}
+.CABoxFoot .tips{
+	height: 35px;
+    line-height: 35px;
+    font-size: 12px;
+    color: #999;
+}
+.btmNO{
+	visibility: hidden;
+}
+

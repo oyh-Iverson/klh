@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>我的收藏</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css" />
+    <link rel="stylesheet" href="../css/shoucang.css" />
+    
+</head>
+
+
+<body style="background: #f7f3f2;">
+	<div id="abc">
+		<div class="container" id="app">
+			<!--<div class="page-title">滑动组件</div>-->
+			<div id="xx-top" class="xx-top">
+				<a href="wode.html">  </a>
+				<span>我的收藏</span>
+				<div style="color: #f8531b;visibility: hidden;">管理</div>
+			</div>
+			<div class="list_ul">
+				<div class="list-item " v-for="(item,index) in daikuanList" data-type="0" v-cloak>
+					<div class="list-box" @touchstart.capture="touchStart" @touchend.capture="touchEnd" @click="skip(item.id,item.loanName)">
+						<!--<div style="width: 2rem;height: 2rem;background: red;display: none;"></div>-->
+						<div class="list-content">							
+							<div class="tips" style="display: flex;align-items: center;">
+								<div class="logos" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
+								<div class="names" v-text="item.loanName"></div>
+								<div class="Ts">
+									<div class="TsList" v-for=" na  in item.keyword" v-text="na"></div>
+								</div>
+							</div>
+							<div class="con">
+								<div class="conL">
+									<div class="conLTop" style="padding-left: 1.9rem;">{{item.minQuota}}-{{item.maxQuota}}</div>
+									<div class="conLBottom" style="padding-left: 1.9rem;">可贷额度(元)</div>
+								</div>
+								<div class="conR">
+									<div class="conLTop" style="padding-left: 2rem;">{{item.monthRate+'%'}}</div>
+									<div class="conLBottom" style="padding-left: 2rem;">综合利率/{{item.unitMonthRate}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="delete" @click="deleteItem(index,item.id)" :data-index="index">取消关注</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<!--<script src="../js/vue-lazyload.js"></script>-->
+<script src="../js/clipboard.min.js"></script>
+<script src="../js/qrcode.min.js"></script>
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+<script type="text/javascript" src="../js/sm.min.js"></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/md5.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/shoucang.js" ></script>
+
+</html>

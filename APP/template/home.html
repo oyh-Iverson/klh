@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>点点有借</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--<link rel="stylesheet" href="../css/sm.css" />-->
+	<link rel="stylesheet" href="../css/sm.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/home.css?v=4.0" />
+	<link rel="stylesheet" href="../css/swiper-4.1.0.min.css" />
+	<link rel="stylesheet" href="../mescroll/mescroll.min.css" />
+	<link rel="stylesheet" href="../css/mui.css" />
+	<!--<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">-->	
+	<link rel="stylesheet" href="../css/weui.min.css"/>
+</head>
+ <style>
+ 	.item-top_logo{
+ 		width: 2.5rem;
+ 		height: 2.5rem;
+ 	}
+ 	[v-cloak]{
+ 		display: none;
+ 	}
+ 	.mescroll-upwarp{
+ 		padding-bottom: 2.25rem;	
+ 	}
+ </style>
+<body class="page" onload="javaScript:func()" style="overflow-y: scroll;background: #f5f5f5; -webkit-overflow-scrolling: touch;">
+<div id="mescroll" class="content mescroll">
+	<!-- 广告轮播图 -->
+	<!--<div class="swiper-container " id="swiper1"></div>-->
+	<div id="swiper1" @click="bannersc()"></div>
+	<!-- 喇叭消息 -->
+	<!--<div class="message" style="display: block;">
+			<div class="laba"></div>
+			<div class="swiper-container" id="swiper2">	
+			</div>
+	</div>-->
+	<div class="huoreCon">
+		<div class="huoreCon_item" @click="borrow()" >
+			<div class="huoreCon_itemIMG huoreCon_itemIMG1"></div>
+			<div class="huoreCon_itemTxt">一定借到钱</div>
+			<span class="huoreCon_itemTip1"></span>
+		</div>
+		<div class="huoreCon_item" @click="Newmouth()">
+			<div class="huoreCon_itemIMG huoreCon_itemIMG2"></div>
+			<div class="huoreCon_itemTxt ">秒下1500</div>
+			
+		</div>
+		<div class="huoreCon_item" @click="large()">
+			<div class="huoreCon_itemIMG huoreCon_itemIMG3"></div>
+			<div class="huoreCon_itemTxt">大额低息</div>
+		</div>
+		<div class="huoreCon_item" @click="jianc()" >
+			<div class="huoreCon_itemIMG huoreCon_itemIMG4"></div>
+			<div class="huoreCon_itemTxt">黑户检测</div>
+			<span class="huoreCon_itemTipY" style="display: none;">五折</span>
+		</div>
+	</div>
+	<div class="jingxJK">
+		<div class="jingxJKCon">
+			<div class="jingxJKConT">精选借款</div>
+			
+		</div>	
+		<div class="jingxLB">	
+				<div class="swiper-container" id="swiper3">	
+					<div class="swiper-wrapper">
+            			<div class="swiper-slide" v-for="item in jxList" @click="jxClick(item.id,item.applyCount,item.loanName)">
+            				<div class="swiper-slideT">
+            					<div class="swiper-slideTIMG" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }" v-cloak></div>
+            					<div class="swiper-slideTt" v-text="item.loanName" v-cloak></div>
+            				</div>
+            				<div class="swiper-slideN">{{item.minQuota}}-{{item.maxQuota}}</div>
+            				<div class="swiper-slideText"  v-text="item.introduce"></div>
+            			</div>
+            			
+        			</div>
+				</div>
+		</div>
+	</div>
+	<div class="hot_title">
+		<div style="width: 110px;padding-left: 7px;color: black;">热门借款</div>
+		
+	</div>
+	<div class="hot">
+		<div id="list-container">			
+			<div class="list-container_item" style="overflow-y: scroll; -webkit-overflow-scrolling: touch;">
+				<div class="list_item" v-for=" item in daikuanList" @click="detailsClick(item.id,item.applyCount,item.loanName)">
+					<div class="list_itemTop">
+						<div class="list_itemTopIMG" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }" v-cloak></div>
+						<div class="list_itemTopName" v-text="item.loanName" v-cloak></div>
+						<div class="list_itemTopTip" v-show="item.loanName.length<5||item.keyword.length>0" v-text="item.keyword[0]"></div>
+					</div>
+					<div class="list_itemBottom">
+						<div class="list_itemL" style="font-size: 0.5rem;color: #9f8484;">{{item.introduce}}</div>						
+					</div>
+					<div class="list_itemBottom">
+						<div class="list_itemL">{{item.minQuota}}-{{item.maxQuota}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="mores" @click="Complete2">
+				查看更多
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<div class="youhui" onclick="youhui()" style="display: none;"></div>
+
+</body>
+<!--<script type="text/javascript" src="../js/md5.js"></script>-->
+<script type="text/javascript" src="../js/md5.min.js"></script>
+<script type="text/javascript" src="../js/weui.min.js" ></script>
+<script type="text/javascript" src="../js/swiper-4.1.0.min.js"></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type="text/javascript" src="../js/mui.js"></script>
+<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8'></script> 
+<script type='text/javascript' src='../js/sm.min.js' charset='utf-8' ></script>
+<script type="text/javascript" src="../mescroll/mescroll.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/home.js?v=4.0"></script>
+<script>
+	var userType = localStorage.getItem("userType");
+	if(userType == 3){
+		//mui("#Invitations")[0].style.display="none";
+	};
+	//监听滚动条
+	var mescroll = document.getElementById("mescroll");
+	var n = 0;
+	var mescrollss = mescroll.addEventListener('scroll', function () {
+		var scrollHeight = document.getElementById("mescroll").scrollHeight;
+		var scrollTop = document.getElementById("mescroll").scrollTop; //0-18;
+		var clientHeight = document.getElementById("mescroll").clientHeight;
+		if (scrollHeight - clientHeight == scrollTop) {
+			n++;
+			if(n==2){
+				setTimeout(function(){
+					window.location.href="daikuan2.html";
+				},1500)
+				
+			}
+			console.log(n);
+		}
+				
+	})
+	
+
+	
+</script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8" />
     <title>详情页</title>
@@ -19,189 +19,142 @@
 
 <body>
 <div class="wrapper" id="detailsPage">
-	
     <div class="header" v-cloak>
-        <a href="javascript:history.go(-1)" class="first-bar"></a>
-        <span class="second-bar" v-text="dataObj.loanName"></span>
+        <a href="javascript:history.go(-1);" class="first-bar"></a>
+        <span class="second-bar">贷款详情页</span>
         <img>
     </div>
-    <div  style="height: 12.1rem;">
-    	<div class="detailsPageBm"></div>
-    
-      <!--<div class="title-sign">
-        <img :src="dataObj.logo" alt="" class="first-bar">
-        <div class="second-bar">
-            <span class="first-text" v-text="dataObj.loanName">></span>
-            <span class="second-text">已成功申请<span class="third-text" v-text="dataObj.applyCount"></span>人</span>
-        </div>
-      </div>
+    <div class="detailCon">
+    	<div class="detailConBM"></div>
+    	<div class="detailC">
+    		<div class="detailCTop" v-cloak>
+    			<div class="detailCTopL">
+    				<div class="detailCTopL_Name" v-text="dataObj.loanName"></div>
+    				<div class="detailCTopL_tip" v-text="dataObj.introduce"></div>
+    			</div>
+    			<div class="detailCTopR">
+    				<div class="detailCTopRXX" @click="xiaoxis" style="visibility: hidden;"></div>
+    				<div class="detailCTopRSC" @click="shoucang(dataObj.id)" v-bind:class="{ actives: isActive }"></div>
+    			</div>
+    		</div>
+    		<div class="detailCxinxi" v-cloak>
+    			<div class="detailCxinxiOne">
+    				<div class="detailCxinxiLogo" v-bind:style="{ 'background-image': 'url(' + dataObj.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
+    				<div class="detailCxinxiN">{{dataObj.loanName}}</div>
+    				<div>
+    					<div class="detailCPf">综合评分</div>
+    					<div class="detailCxingxing">    						
+                        		<div v-for="item in 5" class="detailCxingxing_img"></div>                   	
+    					</div>
+    				</div>
+    			</div>
+    			<div class="detailCxinxiTwo" v-cloak>
+    				<div class="detailCxinxiTwoText">可申请额度(元)</div>
+    				<div class="detailCxinxiTwoED" v-text="dataObj.minQuota+'-'+dataObj.maxQuota"></div>
+    			</div>
+    			<div class="detailCxinxiSrtee" v-cloak>
+    				<div class="detailCxinxiTwoText">平均申请额度(元)</div>
+    				<div class="detailCxinxiTwoED" v-text="dataObj.avgQuota"></div>
+    			</div>
+    			<div class="detailCxinxiFrou" v-cloak>
+    				<div class="detailCxinxiFrou1">
+    					<div class="detailCxinxiFrou1T">
+    						<div class="detailCxinxiFrou1IMG"></div>
+    						<div class="detailCxinxiFrou1Text">贷款{{dataObj.unitMonthRate}}利率</div>
+    						<div class="detailCxinxiFrou1TIP" v-text="dataObj.monthRate+'%'"></div>
+    					</div>
+    					<div class="detailCxinxiFrou1B">
+    						<div class="detailCxinxiFrou1IMG"></div>
+    						<div class="detailCxinxiFrou1Text">贷款成功率</div>
+    						<div class="detailCxinxiFrou1TIP" v-text="dataObj.successRate+'%'"></div>
+    					</div>
+    				</div>
+    				<div class="detailCxinxiFrou2">
+    					<div class="detailCxinxiFrou1T">
+    						<div class="detailCxinxiFrou1IMG"></div>
+    						<div class="detailCxinxiFrou1Text">贷款期限</div>
+    						<div class="detailCxinxiFrou1TIP" v-text="dataObj.minTerm+'-'+dataObj.maxTerm+dataObj.unitTerm"></div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    		<div class="detailCtiaojian" v-cloak>
+    			<div class="detailCxinxiOne">
+    				<div class="detailCtiaojianTxt">申请条件</div>
+    				<div>
+    					<div class="detailCPf">条件简单度</div>
+    					<div class="detailCxingxing">    						
+                        		<div v-for="item in 5" class="detailCxingxing_img"></div>                   	
+    					</div>
+    				</div>
+    			</div>
+    			<div class="detailCtiaojianER" v-for="(item,index) in dataObj.applyCondition">
+    				<div class="detailCtiaojianYuan">{{index+1}}</div>
+    				<div class="detailCtiaojiantip">{{item}}</div>    				
+    			</div>
+    		</div>
+    		<div class="detailCtiaojian" v-cloak>
+    			<div class="detailCxinxiOne">
+    				<div class="detailCtiaojianTxt">申请所需材料</div>
+    				<div>
+    					<div class="detailCPf">材料简单度</div>
+    					<div class="detailCxingxing">    						
+                        		<div v-for="item in 5" class="detailCxingxing_img"></div>                   	
+    					</div>
+    				</div>
+    			</div>
+    			<div class="detailCtiaojianER" v-for="(item,index) in dataObj.certifiedList">
+    				<div class="detailCtiaojianYuan">{{index+1}}</div>
+    				<div class="detailCtiaojiantip">{{item.loan_key}}</div>	
+    			</div>
+    		</div>
+    		<div class="detailCtiaojian" v-cloak>
+    			<div class="detailCxinxiOne">
+    				<div class="detailCtiaojianTxt">产品介绍</div>
+    				<div>
+    					<div class="detailCPf">产品质量</div>
+    					<div class="detailCxingxing">    						
+                        		<div v-for="item in 5" class="detailCxingxing_img"></div>                   	
+    					</div>
+    				</div>
+    			</div>
+    			<div class="canpjieshao" v-text="dataObj.loanInfo"></div>
+    		</div>
+    		<div class="jingxuan" style="color: black;" v-cloak>
+    			<span>—</span><span style="padding-left: 0.25rem;padding-right: 0.25rem;letter-spacing: 0.2rem;">为你精选</span> <span>—</span>
+    		</div>
+    		<div class="jingxuanCanpin" v-cloak>
+    			<div class="jingxuanCanpinS" v-for=" item in datas" @click="detailsClick(item.id,item.applyCount,item.loanName)" v-if="datas.length>0">
+    				<div class="jingxuanCanpintop">
+    					<div class="jingxuanCanpinT" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
+    					<div class="jingxuanCanpinB">{{item.loanName}}</div>
+    				</div>
+    				<div class="jingxuanCanpintext" v-text="item.minQuota+'-'+item.maxQuota"></div>
+    				<div class="jingxuanCanpintext" v-text="item.introduce"></div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="lijishengq" v-cloak>
+    	<div class="lijishengqCon" @click="moneyApply">
+    		<div class="lijishengqConTxt">立即申请</div>
+    		<div class="lijishengqConRenshu">已成功申请{{dataObj.applyCount}}人</div>
+    	</div>
+    </div>
 
-      <div class="banner">
-        <div class="banner-bar first-bar">
-            <span class="first-text" style="margin-left: 2rem">最高额度</span>
-            <span class="second-text" style="margin-left: 2rem" v-text="dataObj.maxQuota"></span>
-        </div>
-        <div class="banner-bar">
-            <span class="first-text">最高月利率</span>
-            <span class="second-text" v-text="dataObj.monthRate+'%'"></span>
-        </div>
-      </div>-->
-      <div class="business">
-      	<div class="title-sign" v-cloak>
-        	<!--<img :src="dataObj.logo" alt="" class="first-bar">
-        	<div class="second-bar">
-            	<span class="first-text" v-text="dataObj.loanName">></span>
-            	<span class="second-text">已成功申请<span class="third-text" v-text="dataObj.applyCount"></span>人</span>
-        	</div>-->
-        	<img :src="dataObj.logo" alt="" class="first-bar" v-cloak>
-        	<div style="margin-right: auto;margin-left: 10px;width: 49%;">
-        		<div v-text="dataObj.loanName" style="font-size: 20px;color: black;"></div>
-        		<div v-text="dataObj.introduce" style="color: darkgray;;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"></div>
-        	</div>
-        	
-      	</div>
-      <div class="banner" v-cloak>
-        <div class="banner-bar first-bar" style="margin-left: -30px;">
-            <span class="first-text" style="margin-left: 2rem" v-cloak>可申请额度</span>
-            <span class="second-text" style="margin-left: 2rem;" v-text="dataObj.minQuota+'-'+dataObj.maxQuota" v-cloak></span>
-           
-        </div>
-        <div class="banner-bar" style="text-align: right;padding-right: 16px;">
-            <span class="first-text" v-cloak>平均额度</span>
-            <span class="second-text" v-text="dataObj.avgQuota" v-cloak></span>
-        </div>
-      </div>
-      <div class="banner" style="margin-bottom: 0;margin-top: -34px;" v-cloak>
-        <div class="banner-bar first-bar" style="margin-left: -30px;">
-            <span class="first-text" style="margin-left: 2rem" v-text="dataObj.unitMonthRate+'利率'" v-cloak></span>
-            <span class="second-text" style="margin-left: 2rem;font-size: 25px;" v-text="dataObj.monthRate+'%'" v-cloak></span>
-           
-        </div>   
-        <div class="banner-bar" style="text-align: right;padding-right: 16px;">
-            <span class="first-text" >成功率</span>
-            <span class="second-text" style="font-size: 25px;" v-text="dataObj.successRate+'%'" v-cloak></span>
-        </div>
-        <!--<div style="text-align: center;">
-        	<span style="color: darkgray;font-size: 14px;">成功率</span>
-        	<div v-text="dataObj.successRate" style="font-size: 15px;color: #FF5201;"></div>
-        	</div>-->
-        <div class="banner-bar" style="text-align: right;padding-right: 16px;">
-            <span class="first-text">期限</span>
-            <span class="second-text" style="font-size: 25px;" v-text="dataObj.minTerm+'-'+dataObj.maxTerm+dataObj.unitTerm" v-cloak></span>
-        </div>
-        
-      </div>
-      </div>
-     
-    </div>
-    <div class="line-gray"></div>
-    <div class="tab-change" v-cloak>
-        <span class="tab-bar" @click="slectBtn(0)">
-            <span  :style="{borderBottom:iconShow?'':'0.15rem solid #FF5201'}">产品详情</span>
-        </span>
-        <span class="tab-bar" @click="slectBtn(1)">
-            <span :style="{borderBottom:iconShow?'0.15rem solid #FF5201':''}">产品评价</span>
-        </span>
-    </div>
-
-    <div class="main" v-show="iconShow" v-cloak>
-        <div class="box-evaluation" style="border-bottom: none;">
-            <div class="first-bar">
-                <span class="first-text"></span>
-                <span class="second-text">产品综合评价</span>
-            </div>
-            <div class="second-bar">
-                <div class="left-bar">
-                    <span>五星</span>
-                    <span>放款速度</span>
-                    <span>利率水平</span>
-                    <span>服务流程</span>
-                </div>
-                <div class="right-bar">              	
-                		<div>
-                        	<div v-for="item in 5" ></div>
-                    	</div>
-                    	<div>
-                        	<div v-for="item in 5"></div>
-                    	</div>
-                    	<div>
-                        	<div v-for="item in 5"></div>
-                    	</div>
-                    	<div>
-                        	<div v-for="item in 5"></div>
-                    	</div>
-                </div>
-            </div>
-        </div>
-        <!--<div class="box-evaluation">
-            <div class="first-bar">
-                <span class="first-text"></span>
-                <span class="second-text">用户评论（0）</span>
-            </div>
-            <div class="comments">
-                <div class="second-bar2">
-                    <div v-for="item in commentInfo" class="input-duo">
-                        <div   v-text="item.commentInfo"></div>
-                        <div class="userPhone" v-text="item.userPhone"></div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-    </div>
-    <div class="main" v-show="!iconShow" v-cloak>
-        <div class="box" style="height: auto;">
-            <div class="first-bar">
-                <span class="first-text"></span>
-                <span class="second-text">申请流程</span>
-            </div>
-            <div class="second-bar  process">
-                <div class="renzheng_item" v-for="item in dataObj.certifiedList">               	
-                	<img src="../img/daik.png" />
-                    <span v-text="item.loan_key"></span>
-                    
-                </div>    
-            </div>
-        </div>
-        <div class="box" style="height: auto;">
-            <div class="first-bar">
-                <span class="first-text"></span>
-                <span class="second-text">申请条件</span>
-            </div>
-            <div class="second-bar" v-text="dataObj.applyCondition" v-cloak></div>
-        </div>
-        <div class="box introduces" style="height: auto; border-bottom: none;">
-            <div class="first-bar">
-                <span class="first-text"></span>
-                <span class="second-text">产品介绍</span>
-            </div>
-            <div class="second-bar" v-text="dataObj.loanInfo" v-cloak></div>
-        </div>
-    </div>
-    <div class="line-gray"></div>
-
-    <div class="footer">
-        <div class="footer-title">Copyright@2015爱加空间(深圳)科技有限公司版权所有</div>
-    </div>
-    <div  class="Loans">
-        <!--<div class="footer-btn" @click="moneyApply">申请借款</div>
-        <div class="footer-btn" @click="moneyApply">申请借款</div>-->
-         <div class="footer-btn" @click="moneyApply">
-         	<div style="height: 35px;line-height: 35px;font-size: 19px;">申请借款</div>
-         	<div style="font-size: 12px;height: 14px;line-height: 14px;margin-top: -4px;" v-cloak>已成功申请  {{dataObj.applyCount}} 人</div>
-         </div>
-    </div>
-    <div class="copyright"></div>
 </div>
 </body>
-<script src="../js/vue-lazyload.js"></script>
+<!--<script src="../js/vue-lazyload.js"></script>-->
 <script src="../js/clipboard.min.js"></script>
 <script src="../js/qrcode.min.js"></script>
-<script type='text/javascript' src='https://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
-<script type='text/javascript' src='https://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<!--<script type='text/javascript' src='https://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>-->
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+<!--<script type='text/javascript' src='https://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>-->
+<script type="text/javascript" src="../js/sm.min.js"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
 <script type="text/javascript" src="../js/vue.js"></script>
 <!--<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>-->
 <script type="text/javascript" src="../js/md5.js"></script>
 <script type="text/javascript" src="../js/util.js" ></script>
-<script type="text/javascript" src="../js/detailsPage.js"></script>
+<script type="text/javascript" src="../js/detailsPage.js?v=2.0"></script>
 </html>

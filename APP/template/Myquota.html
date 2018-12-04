@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>我的</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--<link rel="stylesheet" href="../css/sm.css" />-->
+	<link rel="stylesheet" href="../css/sm.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/mui.css" />
+	<link rel="stylesheet" href="../css/weui.min.css"/>
+	<link rel="stylesheet" href="../css/Myquota.css" />
+</head>
+
+<body class="page" style="background-color: white;overflow: scroll;-webkit-overflow-scrolling: touch;" >
+<div id="app" class="content">
+	<!--<div class="quota">
+		<div class="fanhuis">
+			<div class="fanhuisimg"></div>
+		</div>
+		<div class="monny">
+			<div class="monnyCon">
+				<span class="monnytext" v-text="edNb"></span>元
+			</div>
+			<div class="monnyTip">我的预估额度</div>
+		</div>
+	</div>-->
+	<div>
+		<div class="fanhuis" style="display: none;">
+			<div class="fanhuisimg" @click="window.history.go(-1)"></div>
+		</div>
+		<div class="monny">
+			<div class="monnyCon">
+				<span class="monnytext" v-text="edNb"></span>元
+			</div>
+			<div class="monnyTip">我的预估额度</div>
+		</div>
+		<img src="../img/quotaimg.png" width="100%" height="auto"/>
+	</div>
+	
+	<div class="quotaCenter">
+		<div class="quotaCenterT1">可能贷到的额度</div>
+		<div class="quotaCenterT2">专属为您优选可能贷到的额度 轻轻松松贷到款</div>
+	</div>
+	<div class="quotaList">
+		<div class="quotaListItem" v-for="item in edList" @click="kenengClick(item.id,item.applyCount,item.loanName)">
+			<div class="quotaListItemCon">
+				<div class="quotaListItemL">
+					<div class="quotaListItemLTop">
+						<div class="quotaListItemLToplogo" v-bind:style="{ 'background-image': 'url(' + item.logo + ')','background-repeat':'no-repeat','background-size':'100% 100%' }"></div>
+						<div class="quotaListItemLTopname" v-text="item.loanName"></div>
+					</div>
+					<div class="quotaListItemLText" v-text="item.introduce">有信用卡可秒下8千 年轻人的信贷</div>
+				</div>
+				<div class="quotaListItemR" v-text="item.avgQuota">80000</div>
+			</div>
+			<div class="tips" style="display: none;"></div>
+		</div>
+	</div>
+</div>
+</body>
+<script type='text/javascript' src='../js/mui.min.js' ></script>
+<script type='text/javascript' src='../js/zepto.min.js' ></script>
+<script type='text/javascript' src='../js/sm.min.js' ></script>
+<script type="text/javascript" src="../js/md5.js"></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/weui.min.js" ></script>
+<script type="text/javascript" src="../js/Myquota.js"></script>
+</html>

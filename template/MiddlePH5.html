@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/sm.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<style>
+			.shibai{
+				width: 8rem;
+				height: 7.5rem;
+				background: url(../img/zhifuN.png) no-repeat;
+				background-size: 100% 100%;
+				margin: 0 auto;
+				margin-top: 35%;
+			}
+			.chengg{
+				width: 8rem;
+				height: 7.5rem;
+				background: url(../img/zhifuY.png) no-repeat;
+				background-size: 100% 100%;
+				margin: 0 auto;
+				margin-top: 35%;
+			}
+			.anniu{
+				width: 14rem;
+				height: 2.5rem;
+				line-height: 2.5rem;
+				background: #f8531b;
+				margin: 0 auto;
+				color: white;
+				text-align: center;
+				border-radius: 0.35rem;
+				letter-spacing: 0.1rem;
+			}
+		</style>
+	</head>
+	<body style="background: white;">
+		<div id="MiddlePH5">
+			<div>
+				<div>
+					<div class="shibai" v-if="Mid"></div>
+					<div class="chengg" v-else></div>
+				</div>
+				
+				
+				<div style="margin-top: 1rem;margin-bottom: 2rem;font-size: 1rem;font-weight: bold;">
+					<div v-if="zf" style="text-align: center;">支付失败</div>
+					<div v-else style="text-align: center;">支付成功</div>
+				</div>
+				<div v-if="zouba">
+					<div @click="gos" class="anniu" style="background: green;">查看结果</div>
+				</div>
+				<div v-if="fhs">
+					<div @click="huiqu" class="anniu">返回重新支付</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript" src="../js/sm.min.js"></script>
+	<script type="text/javascript" src="../js/md5.js"></script>
+	<script type="text/javascript" src="../js/util.js" ></script>	
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script>
+
+		 var app = new Vue({
+			el: '#MiddlePH5',
+			data: {
+				Mid:false,
+				zf:false,
+				fhs:false,
+				zouba:false,
+				riskInfoApplyID:""
+			},
+			mounted: function() {
+				if(this.getQueryString('riskInfoApplyID') !== null && this.getQueryString('riskInfoApplyID') !== "") {
+					var self = this;
+					self.riskInfoApplyID = self.getQueryString('riskInfoApplyID');
+					console.log(self.riskInfoApplyID);
+
+				};
+				var riskInfoApplyID = this.riskInfoApplyID;
+				if(riskInfoApplyID =="" || riskInfoApplyID == null){
+					var self = this;
+					self.Mid = true;
+					self.zf = true;
+					self.fhs = true;
+					self.zouba = false;
+					
+					
+				}else{
+					var self = this;
+					self.Mid = false;
+					self.zf = false;
+					self.zouba = true;
+					
+				};
+				
+				
+			},
+			methods: {
+				//获取连接
+				getQueryString(name) {
+					var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+					var r = window.location.search.substr(1).match(reg);
+					if(r != null) return decodeURI(r[2]);
+					return null;
+				},
+				huiqu:function(){
+					window.location.href = "NetBlackziliao.html";
+				},
+				gos:function(){
+					var self = this;
+					var riskInfoApplyID = self.riskInfoApplyID;	
+					
+						window.location.href = "Report2.html?riskInfoApplyID="+riskInfoApplyID;		
+						//console.log("sdasd");
+				}
+			}
+		})
+		  
+	</script>
+</html>

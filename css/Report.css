@@ -1,0 +1,247 @@
+.Report{
+	height: 100%;
+    width: 100%;  
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    background: #fff;
+    min-height: 41.6875rem;
+}
+.parentContent1{
+	position: relative;
+    min-height: 41.6875rem;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    background: #f5f5f5;
+    height: 100%;
+}
+.app1{
+	position: relative;
+    height: 100%;
+    width: 100%;  
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+.theReportSample{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-width: 40px;
+    border-style: solid;
+    border-color: red transparent transparent red;
+    border-image: initial;
+}
+.rejectedBox{
+	height: 150px;
+    color: #fff!important;
+    background-size: cover!important;
+    background-repeat: no-repeat;
+    margin-top: -12px;
+}
+
+.rejectedBox>h3{
+	font-size: 12px;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0 25px;
+    padding-bottom:0;
+}
+.state{
+	width: 100%;
+    text-align: center;
+    font-size: 55px!important;
+    font-weight: 700;
+    text-shadow: -1px 1px 1px rgba(0,0,0,.3);
+}
+.projectExplain{
+	color: red;
+    background: #ffebeb;
+    border-bottom: 1px solid red;
+    font-size: 13px;
+    border-top: 1px solid red;
+    padding: 6px 15px;
+    line-height: 18px;
+}
+.resultproject{
+	height: 63px;
+    padding: 15px;
+}
+.resultproject img{
+	height: 32px;
+    width: 32px;
+    float: left;
+}
+.reportDescribe{
+	height: 32px;
+    width: 200px;
+    margin-left: 10px;
+    float: left;
+    line-height: 32px;
+    color: #333;
+}
+.mintui{
+	font-family: mintui!important;
+    font-size: 24px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+}
+.popIcon{
+	height: 20px!important;
+    width: 20px!important;
+    margin: 6px 0 0 10px;
+}
+.conditionIcon-normal{
+	background: #3cd6b7;
+}
+.conditionIcon{
+	font-size: 14px;
+    float: right;
+    margin-top: -4px;
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff!important;
+}
+.conditionIcon-warning{
+	background: #f7790a;
+}
+.conditionIcon-danger{
+	background: #db2323;
+}
+.testDescription{
+	font-size: 12px;
+    color: #333!important;
+    padding: 0 15px;
+    border-bottom: 1px solid #e6e6e6;
+}
+.echarts{
+	height: 80px;
+    width: 80px;
+    margin: 0 auto;
+}
+.testDescription>p{
+	font-size: 14px;
+}
+.redFont{
+	color: red;
+}
+.register{
+	height: 80px;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 18px;
+    padding: 0 15px;
+}
+.info-left{
+	float: left;
+    width: 50%;
+    height: 100%;
+    border-right: 1px solid #e6e6e6;
+}
+.info-right{
+	float: left;
+    padding-left: 41px;
+}
+.loanFrequency{
+	font-size: 14px;
+    margin: 4px 0;
+    color: #999;
+}
+.margin{
+	padding: 0 15px;
+}
+.dataDescription{
+	margin-top: 25px;
+}
+.info-bottom{
+	height: 200px;
+}
+.loanFrequency{
+	font-size: 14px;
+    margin: 4px 0;
+    color: #999;
+    
+}
+.bottom-left{
+	height: 100%;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+.bottom-title{
+	font-size: 16px;
+    color: #3bc5d5;
+}
+.kelhua{
+	margin-top: 20px!important;
+    width: 55px;
+    height: 55px;
+}
+.creditBottom{
+	width: 100%;
+    height: 74px;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+}
+.creditBottomButton{
+	height: 44px;
+    line-height: 44px;
+    background: #ffac2f;
+    color: #fff;
+    width: 90%;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 44px;
+    margin: 0 auto;
+}
+.transform1,.transform2,.transform3,.transform4,.transform5{
+	transform: rotate(270deg);
+}
+.transform1P,.transform2P,.transform3P,.transform4P,.transform5P{
+	transform: rotate(90deg);
+}
+.tipc{
+	width: 100%; 
+	height: 100%;
+	background:rgba(0,0,0,0.5); 
+	position: fixed;
+	top: 0;
+}
+.tipc .tipcBM{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.tipCon{
+	position: absolute;
+	width: 13.5rem;
+	padding: 20px 16px;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	background: #fff;
+	border-radius: 6px;
+}
+.tipConBtn{
+	width: 89%;
+	margin: 20px auto 0;
+	padding: 13px 0;
+	text-align: center; 
+	color: #fff;
+	border-radius: 50px;
+	background: #3bc5d5;
+}
+
+
+
+
+

@@ -38,6 +38,7 @@
           };
 			self.lan();
 			self.fen();
+			
         },
         methods: {
         	getQueryString(name){
@@ -161,11 +162,11 @@
                 var shortTerm1 = window.localStorage.getItem("shortTerm"); 
                 var largeLoan1 = window.localStorage.getItem("largeLoan"); 
                 if(newLoan1){
-                	self.tiptext = '新口子';               	
+                	self.tiptext = '秒下1500';               	
                 }else if(confirmLoan1){
                 	self.tiptext = '一定借到钱';               	
                 }else if(shortTerm1){               	
-                	self.tiptext = '小额极速贷';
+                	self.tiptext = '信用卡贷';
                 }else if(largeLoan1){
                 	self.tiptext = '大额低息贷';
                 };
@@ -189,7 +190,7 @@
                 	newLoan= null;
                 	confirmLoan=null;
                 }
-                console.log(newLoan);
+               
                 var urlStr = Util.baseUrl + '/DuG/api/basics/loan/findScreenLoanList.do';
                 var md5Str = Util.basekey;
                 var userType = localStorage.getItem("userType");
@@ -252,6 +253,21 @@
                 
 
             },
+
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
    
         }
     });

@@ -1,7 +1,7 @@
- $(document).on('click','#guanzuwx', function () {
-        $.popup('.popup-about');
-       
-    });
+// $(document).on('click','#guanzuwx', function () {
+//    $.popup('.popup-about');
+//   
+//});
 
     var app = new Vue({
         el: '#app',
@@ -28,16 +28,317 @@
         	$("#userInfo").append(str);
         },
         methods: {
+        	//设置
+        	shezhi:function(){
+        		//console.log("131");
+        		window.location.href = "shezhi.html";
+        		
+        	},
+        	//我的消息
+        	youjian:function(){
+        		
+        		window.location.href = "xiaoxi.html";
+        		
+        	},
+        	//反馈意见
+        	wodefankui:function(){
+        		
+        		var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="反馈意见_我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href = "yjfk.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+        	},
+        	//帮助中心
+        	wodeBZ:function(){
+        		
+        		var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="帮助中心_我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href = "help.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+        	},
+        	//关注公众号
+        	gzh:function(){
+        		
+        		var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="关注公众号_我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href = "guanzhuGZH.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+        		//alert("准备中");
+        	},
+        	//客服中心
+        	
+        	kefuzhong:function(){
+        		//console.log("112");
+        		
+        		var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="客服中心_我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href = "kefu.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+        	},
+        	//
+        	heihu:function(){
+        		//window.location.href="daikuan2.html";
+		    		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="黑户查询_我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href = "NetBlack.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+        		
+        	},
+        	//我的额度
+        	remendaikuan:function(){
+		    		var self = this;
+					var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="我的额度_我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href = "Myquota.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+        		
+        	},
+        	//差黑
+        	chahei:function(){
+        		
+        		var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="查黑记录_我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href = "Credithistory.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+        		//$.alert("敬请期待");
+        	},
+        	//收藏
+        	shouc:function(){
+        		var self = this;
+        		
+        		var urlStr = Util.baseUrl + '/DuG/api/user/user/saveFunctionClick.do';
+					var userID = localStorage.getItem('userId') || '';
+					console.log(userID);
+					var functionNum="我的收藏_我的";
+					var sourceType= "0";
+					var md5Str = Util.basekey 
+										+userID
+										+functionNum
+										+sourceType;
+					$.ajax({						
+						type:"post", 
+						url: urlStr,
+                        async:true,                        
+                        data:{
+                        	userID: userID,
+                        	functionNum:functionNum,
+                        	key: Util.basekey,
+                            auth: Util.base32Encode('key,userID,functionNum,sourceType'),
+                            token: md5(md5Str),
+                            sourceType:sourceType
+                        },
+                        success:function(res){
+                        	console.log(res);
+                        	console.log(sourceType);
+                        	window.location.href = "shoucang.html";
+                        },
+                        error: function(res){
+                            $.toast('网路请求失败，请稍后重试');
+                        }
+					 
+					});
+        		
+        	},
             // 获取用户信息
             getUserInfo: function(){
             	var VIPRank = localStorage.getItem('VIPRank');
-            	console.log(VIPRank);
+            	//console.log(VIPRank);
             	if(VIPRank == null || VIPRank == "1"){
-            		mui(".Member")[0].innerHTML="铜牌会员";
+            		//mui(".Member")[0].innerHTML="铜牌会员";
             	}else if(VIPRank == "2"){
-            		mui(".Member")[0].innerHTML="银牌会员";
+            		//mui(".Member")[0].innerHTML="银牌会员";
             	}else if(VIPRank == "3"){
-            		mui(".Member")[0].innerHTML="金牌会员";
+            		//mui(".Member")[0].innerHTML="金牌会员";
             	}
             	
                 var self = this;
